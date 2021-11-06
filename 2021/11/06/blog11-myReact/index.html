@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>react知识点汇总和使用小总结(一) | XingYeBlog</title><meta name="keywords" content="日常学习"><meta name="author" content="Xing Ye"><meta name="copyright" content="Xing Ye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="react 本身react 是一个更加接近原生 js 的框架.相比于 vue,他其中的很多渲染操作都是通过纯 js 来完成,比如条件渲染,循环渲染,实质上都只是 jsx 的条件输出,循环输出而已.因此这样的 react 看起来似乎更加简单,也更加需要对原生 js 的掌握能力.react 是通过虚拟 dom 的 diffing 算法进行页面更新的,通过 jsx 以及本身自带的一些生命周期,利用 st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react知识点汇总和使用小总结(一)">
+<meta property="og:url" content="http://example.com/2021/11/06/blog11-myReact/index.html">
+<meta property="og:site_name" content="XingYeBlog">
+<meta property="og:description" content="react 本身react 是一个更加接近原生 js 的框架.相比于 vue,他其中的很多渲染操作都是通过纯 js 来完成,比如条件渲染,循环渲染,实质上都只是 jsx 的条件输出,循环输出而已.因此这样的 react 看起来似乎更加简单,也更加需要对原生 js 的掌握能力.react 是通过虚拟 dom 的 diffing 算法进行页面更新的,通过 jsx 以及本身自带的一些生命周期,利用 st">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/react.png">
+<meta property="article:published_time" content="2021-11-06T03:00:32.000Z">
+<meta property="article:modified_time" content="2021-11-06T16:30:05.122Z">
+<meta property="article:author" content="Xing Ye">
+<meta property="article:tag" content="日常学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/react.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/11/06/blog11-myReact/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'react知识点汇总和使用小总结(一)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-11-07 00:30:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/pinkstar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/react.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XingYeBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">react知识点汇总和使用小总结(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-06T03:00:32.000Z" title="发表于 2021-11-06 11:00:32">2021-11-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-06T16:30:05.122Z" title="更新于 2021-11-07 00:30:05">2021-11-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="react知识点汇总和使用小总结(一)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="react-本身"><a href="#react-本身" class="headerlink" title="react 本身"></a>react 本身</h1><p>react 是一个更加接近原生 js 的框架.相比于 vue,他其中的很多渲染操作都是通过纯 js 来完成,比如条件渲染,循环渲染,实质上都只是 jsx 的条件输出,循环输出而已.因此这样的 react 看起来似乎更加简单,也更加需要对原生 js 的掌握能力.<br>react 是通过虚拟 dom 的 diffing 算法进行页面更新的,通过 jsx 以及本身自带的一些生命周期,利用 state 和 props 实现单向数据流来更新 ui 的一个框架.这个定义或许不太准确,但是确实有 react 的几大特征.</p>
+<ul>
+<li>props 是入口,state 是出口</li>
+<li>页面更新的方式:state 的改变或父组件 state 的改变</li>
+<li>生命周期的实现,可以在组件从挂载到销毁之间完成很多事情</li>
+<li>创建了位于 jsx 和原生 dom 的中间层,用于监听事件和执行 diffing 算法:即通过最小代价来对比 jsx 和 state 等的变化,从而改变 ui</li>
+<li>…..</li>
+</ul>
+<h1 id="jsx"><a href="#jsx" class="headerlink" title="jsx"></a>jsx</h1><blockquote>
+<p>JSX 是一个 JavaScript 语法扩展。它类似于模板语言，但它具有 JavaScript 的全部能力。JSX 最终会被编译为 React.createElement() 函数调用，返回称为 “React 元素” 的普通 JavaScript 对象。<br>简单来说,jsx 就是可以在 js 中写的 html,比如这个例子:</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">const</span> info = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;info&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">//...</span></span><br></pre></td></tr></table></figure>
+
+<p>这个看起来很神奇,html 元素直接出现并赋值给了一个变量,然后变量又可以直接显示在 html 中.这就是 jsx,其实就是一个相当于 js 元素的东西,但是以 html 形式输出.像上面这种写法可以在 react 用到很多,可以在 return 外部进行 ifelse 判断,或者循环完成后再放进去<br>同理,jsx 中的大括号表示 js 表达式;当在标签内部使用的时候,比如<code>&lt;h1 style=&#123;&#123;color:"red"&#125;&#125;&gt;&lt;/h1&gt;</code>,大括号也表示 js 表达式,也就是说基本上等号后的都要大括号,而字符串只是简写形式<br>对比 vue:vue 中的写法主要是<code>&lt;h1 style=&quot;color:&#39;red&#39;&quot;&gt;&lt;/h1&gt;</code>和<code>&lt;h1 :style=&quot;myStyle&quot;&gt;&lt;/h1&gt;</code>这两种,都是字符串来表示 js 表达式;当需要类似 react 的{}时用的其实是 v-bind 绑定变量<br>当我们创建一个 jsx 的时候,他的实质应该是这样:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="attr">className</span>: <span class="string">&quot;greeting&quot;</span>,</span><br><span class="line">    <span class="attr">children</span>: <span class="string">&quot;Hello, world!&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>因此,jsx 实际上就是一个 js 对象<br>另外,如果想在return内部使用ifelse/for/while之类的可以这样写:(一个含有这些的立即调用函数)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">        &#123;</span><br><span class="line">          (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> domArr = [];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">const</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">              <span class="keyword">if</span>(obj.hasOwnProperty(key)) &#123;</span><br><span class="line">                <span class="keyword">const</span> value = obj[key]</span><br><span class="line">                domArr.push(<span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span>&gt;</span>&#123;value&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> domArr;</span><br><span class="line">          &#125;)()</span><br><span class="line">        &#125;</span><br><span class="line">      &lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h1><blockquote>
+<p>React 元素是不可变对象。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。更新 UI 唯一的方式是创建一个全新的元素，并将其传入 ReactDOM.render()。<br>React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。<br>render()是改变界面的唯一方法,只有在 state 改变和父组件变化时才会调用 render.函数式组件没有明写 render,但是当需要重新渲染的时候实际上也就是调用整个函数可以调用的地方,然后进行 return 的 diffing 比对,进行渲染</p>
+</blockquote>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p><strong>组件首字母必须大写!!!</strong><br>按照官方文档的例子,组件调用时是这样的</p>
+<blockquote>
+<ol>
+<li>我们调用 ReactDOM.render() 函数，并传入 <code>&lt;Welcome name=&quot;Sara&quot; /&gt;</code> 作为参数。</li>
+<li>React 调用 Welcome 组件，并将 <code>&#123;name: &#39;Sara&#39;&#125; </code>作为 props 传入。</li>
+<li>Welcome 组件将 <code>&lt;h1&gt;Hello, Sara&lt;/h1&gt;</code> 元素作为返回值。</li>
+<li>React DOM 将 DOM 高效地更新为 <code>&lt;h1&gt;Hello, Sara&lt;/h1&gt;</code>。<br>也就是说,组件的调用实际上是给 render 函数传了一个参数,然后父组件把 props 作为参数再传入;紧接着组件收到 props 执行,返回一个或一组 html 元素给父组件,最后展示在调用该组件的父组件上.在脚手架中所有组件都挂载到 App 上,然后 App 单独挂载到 html 文件的 root 根元素上,由此完成了整个组件树的创建<br>props 是只读的,不能更改</li>
+</ol>
+</blockquote>
+<h1 id="props"><a href="#props" class="headerlink" title="props"></a>props</h1><p>如果父组件传来的 props 变化,那么直接使用 props 的元素也会响应式的更新.换句话说 props 变化意味着父组件一定变化了,也就会连带子组件重新渲染<br>如果想要监听 props,class 组件可以使用静态方法 getDerivedStateFromProps</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="function"><span class="title">getDerivedStateFromProps</span>(<span class="params">Props, State</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;type&#125; = Props;</span><br><span class="line">    <span class="comment">// 当传入的type发生变化的时候，更新state</span></span><br><span class="line">    <span class="comment">//return的对象就相当于setState中的对象</span></span><br><span class="line">    <span class="keyword">if</span> (type !== State.type) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            type,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 否则，对于state不进行任何操作</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 hooks 可能没有直接的方法,但是可以通过 state 存上一次的 props,对比这次的,不一样就更新</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> (props.count !== count) &#123;</span><br><span class="line">    setCount(props.count);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="state"><a href="#state" class="headerlink" title="state"></a>state</h1><p>state 是组件内部维护的一个状态,通过 setState 可以使组件重新渲染.setState 执行时,会将传入的参数对象与组件当前的状态合并，然后触发调和过程(Reconciliation)。经过调和过程，React 会以相对高效的方式根据新的状态构建 React 元素树并且着手重新渲染整个 UI 界面(diffing 算法)。<br>如果在短时间内频繁 setState。React 会将 state 的改变压入栈中，在合适的时机，批量更新 state 和视图，达到提高性能的效果。<br>注意,setState 一般是异步的</p>
+<ul>
+<li>异步： 在 React 可以控制的地方，比如在 React 生命周期事件和合成事件中，都会走合并操作，延迟更新的策略。</li>
+<li>同步： 在 React 无法控制的地方，比如原生事件，具体就是在 addEventListener 、setTimeout、setInterval 等事件中，就只能同步更新。<br>既然是异步的,根据 js 异步任务的特点,同步完成之前是不会执行异步的,所以你就不可以直接把 setState 之后的 state 拿出来使用;但是可以找个变量先接到更改后的并使用.如果希望全局,可以用 useRef 存一下<br>这个例子:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Comd = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> ref = useRef(<span class="number">0</span>);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleAdd</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    setCount(<span class="function">(<span class="params">count</span>) =&gt;</span> count + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;ref.current&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleAdd&#125;</span>&gt;</span>addState<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="xml">          ref.current++;</span></span><br><span class="line"><span class="xml">        &#125;&#125;</span></span><br><span class="line"><span class="xml">      &gt;</span></span><br><span class="line"><span class="xml">        addRef</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>当我点击 addRef 时,ref 会改变,但是不会在页面上显示;但是当我点击几次 addRef 之后,再点击 addState,就会出现更新,并且 ref 显示的值就是加的 ref 值.因此如果在某些地方 state 更新会引起死循环,可以考虑 useRef 存一下,然后保证更改 ref 之后有页面改变(state 改变或者父组件变化),就可以做到.<br><strong>state 还有第二个参数,表示更新完成 state 之后的回调</strong>,基本上相当于 componentDidUpdate,比较方便执行操作(useState 好像没这个方法)</p>
+<p>另外按照官方文档说法,不能这样做:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(&#123;</span><br><span class="line">  <span class="attr">counter</span>: <span class="built_in">this</span>.state.counter + <span class="built_in">this</span>.props.increment,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>一般是需要 state 的话,写成参数为 state 的回调函数来完成最好</p>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>虽然在 hooks 中弱化了生命周期的概念,但是个人感觉要知道的还是得知道<br><img src="https://i.loli.net/2021/11/06/cJMpZF5m38d6hYk.png" alt="生命周期.png"></p>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><ul>
+<li>初始化组件的 state</li>
+<li>给事件处理方法绑定 this</li>
+</ul>
+<h3 id="getDerivedStateFromProps"><a href="#getDerivedStateFromProps" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h3><p>可以看上面 props 的那一块<br>该函数会在装载时，接收到新的 props 或者调用了 setState 和 forceUpdate 时被调用。如当接收到新的属性想修改 state ，就可以使用。</p>
+<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h3><p>需要注意的一点:如果在 componentDidMount 中调用 setState ，就会触发一次额外的渲染，多调用了一次 render 函数，由于它是在浏览器刷新屏幕前执行的，所以用户对此是没有感知的</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><p>它是在重新渲染组件开始前触发的，默认返回 true，可以比较 this.props 和 nextProps ，this.state 和 nextState 值是否变化，来确认返回 true 或者 false。当返回 false 时，组件的更新过程停止，后续的 render、componentDidUpdate 也不会被调用。</p>
+<h3 id="getSnapshotBeforeUpdate-prevProps-prevState"><a href="#getSnapshotBeforeUpdate-prevProps-prevState" class="headerlink" title="getSnapshotBeforeUpdate(prevProps, prevState)"></a>getSnapshotBeforeUpdate(prevProps, prevState)</h3><blockquote>
+<p>它使您的组件可以在可能更改之前从 DOM 捕获一些信息（例如滚动位置），在聊天气泡页中用来计算滚动高度。它返回的任何值都将作为参数传递给 componentDidUpdate()<br>执行时机： 在 render 之后，可以读取但无法使用 DOM 的时候。</p>
+</blockquote>
+<h3 id="componentDidUpdate-prevProps-prevState-snapshot"><a href="#componentDidUpdate-prevProps-prevState-snapshot" class="headerlink" title="componentDidUpdate(prevProps, prevState, snapshot)"></a>componentDidUpdate(prevProps, prevState, snapshot)</h3><p>该方法有三个参数：</p>
+<ul>
+<li>prevProps: 更新前的 props</li>
+<li>prevState: 更新前的 state</li>
+<li>snapshot: getSnapshotBeforeUpdate()生命周期的返回值</li>
+</ul>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a>componentWillUnmount()</h3><p>在此方法中执行必要的清理操作：</p>
+<ul>
+<li>清除 timer，取消网络请求或清除</li>
+<li>取消在 componentDidMount() 中创建的订阅等；</li>
+</ul>
+<h2 id="不能使用-setState-的生命周期"><a href="#不能使用-setState-的生命周期" class="headerlink" title="不能使用 setState 的生命周期"></a>不能使用 setState 的生命周期</h2><p><img src="https://i.loli.net/2021/11/06/3l1jw2nMZByPepm.png" alt="不能使用state.png"></p>
+<h1 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h1><p>有一个比较特别的地方,比如在 map 产生的元素中想要获取点击的元素,要这样写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onClick=&#123;(<span class="function"><span class="params">e</span>=&gt;</span><span class="function">()=&gt;</span>&#123; getSelected(e, obj)&#125;)(index)&#125;</span><br><span class="line"><span class="comment">//...函数中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleDelete</span>(<span class="params">index,obj</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(obj)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onClick=&#123;<span class="function">(<span class="params">e</span>)=&gt;</span>handleDelete(index,arr,e)&#125;</span><br><span class="line"><span class="comment">//...函数中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleDelete</span>(<span class="params">index,arr</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(index,arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二种是官方文档的方法,第一种是一种不明觉厉的方法,虽然看不懂但是确实有用</p>
+<h1 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h1><p>除了三目运算符和用 if 在 jsx 中渲染,还有一种不常用但是好用的<br>如果条件是 true，&amp;&amp; 右侧的元素就会被渲染，如果是 false，不渲染。但是前面的只能是boolean,不然会渲染</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &#123;ifMessage &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Messages: &#123;message&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a>状态提升</h1><p>按照官方文档的说法,状态提升就相当于两个组件共享一个状态,比如两个输入框想同时显示一个值,但是每个组件也需要操作一下数据.<br>这样最好的方法就是把两个组件的state都提到共同父组件的props中,然后更改props就可以同时更改两个state</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></div><div class="post_share"><div class="social-share" data-image="/img/react.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/11/06/blog12-myReact/"><img class="prev-cover" src="/img/react.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">react知识点汇总和使用小总结(二)</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/27/blog10-react-router/"><img class="next-cover" src="/img/reactrouter.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">react-router的使用</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/10/27/blog10-react-router/" title="react-router的使用"><img class="cover" src="/img/reactrouter.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-27</div><div class="title">react-router的使用</div></div></a></div><div><a href="/2021/10/23/blog2_manyPoint_css/" title="css小总结和复习"><img class="cover" src="/img/codes3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-23</div><div class="title">css小总结和复习</div></div></a></div><div><a href="/2021/11/06/blog12-myReact/" title="react知识点汇总和使用小总结(二)"><img class="cover" src="/img/react.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-06</div><div class="title">react知识点汇总和使用小总结(二)</div></div></a></div><div><a href="/2021/10/23/blog3_bindapplycall/" title="js中call apply bind详解"><img class="cover" src="/img/codes1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-23</div><div class="title">js中call apply bind详解</div></div></a></div><div><a href="/2021/10/23/blog5_js/" title="js复习知识点和部分es6学习"><img class="cover" src="/img/starry3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-23</div><div class="title">js复习知识点和部分es6学习</div></div></a></div><div><a href="/2021/10/23/blog4_gituse/" title="git学习和日常使用"><img class="cover" src="/img/cloud.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-23</div><div class="title">git学习和日常使用</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/pinkstar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Ye</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penghei" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#react-%E6%9C%AC%E8%BA%AB"><span class="toc-number">1.</span> <span class="toc-text">react 本身</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jsx"><span class="toc-number">2.</span> <span class="toc-text">jsx</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93"><span class="toc-number">3.</span> <span class="toc-text">渲染</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#props"><span class="toc-number">5.</span> <span class="toc-text">props</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#state"><span class="toc-number">6.</span> <span class="toc-text">state</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">7.</span> <span class="toc-text">生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD"><span class="toc-number">7.1.</span> <span class="toc-text">挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor-NaN"><span class="toc-number">7.1.1.</span> <span class="toc-text">constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getDerivedStateFromProps"><span class="toc-number">7.1.2.</span> <span class="toc-text">getDerivedStateFromProps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#componentDidMount"><span class="toc-number">7.1.3.</span> <span class="toc-text">componentDidMount</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-number">7.2.</span> <span class="toc-text">更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shouldComponentUpdate"><span class="toc-number">7.2.1.</span> <span class="toc-text">shouldComponentUpdate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getSnapshotBeforeUpdate-prevProps-prevState"><span class="toc-number">7.2.2.</span> <span class="toc-text">getSnapshotBeforeUpdate(prevProps, prevState)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#componentDidUpdate-prevProps-prevState-snapshot"><span class="toc-number">7.2.3.</span> <span class="toc-text">componentDidUpdate(prevProps, prevState, snapshot)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD"><span class="toc-number">7.3.</span> <span class="toc-text">卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#componentWillUnmount"><span class="toc-number">7.3.1.</span> <span class="toc-text">componentWillUnmount()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8-setState-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">7.4.</span> <span class="toc-text">不能使用 setState 的生命周期</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">事件处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="toc-number">9.</span> <span class="toc-text">条件渲染</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87"><span class="toc-number">10.</span> <span class="toc-text">状态提升</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/11/06/blog12-myReact/" title="react知识点汇总和使用小总结(二)"><img src="/img/react.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react知识点汇总和使用小总结(二)"/></a><div class="content"><a class="title" href="/2021/11/06/blog12-myReact/" title="react知识点汇总和使用小总结(二)">react知识点汇总和使用小总结(二)</a><time datetime="2021-11-06T07:28:32.000Z" title="发表于 2021-11-06 15:28:32">2021-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/06/blog11-myReact/" title="react知识点汇总和使用小总结(一)"><img src="/img/react.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react知识点汇总和使用小总结(一)"/></a><div class="content"><a class="title" href="/2021/11/06/blog11-myReact/" title="react知识点汇总和使用小总结(一)">react知识点汇总和使用小总结(一)</a><time datetime="2021-11-06T03:00:32.000Z" title="发表于 2021-11-06 11:00:32">2021-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/27/blog10-react-router/" title="react-router的使用"><img src="/img/reactrouter.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="react-router的使用"/></a><div class="content"><a class="title" href="/2021/10/27/blog10-react-router/" title="react-router的使用">react-router的使用</a><time datetime="2021-10-27T14:17:20.000Z" title="发表于 2021-10-27 22:17:20">2021-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/27/blog9-redux/" title="redux 和 react-redux的使用经验"><img src="/img/redux.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="redux 和 react-redux的使用经验"/></a><div class="content"><a class="title" href="/2021/10/27/blog9-redux/" title="redux 和 react-redux的使用经验">redux 和 react-redux的使用经验</a><time datetime="2021-10-26T16:15:44.000Z" title="发表于 2021-10-27 00:15:44">2021-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/25/blog8-npm-yarn/" title="npm&amp;yarn命令对照"><img src="/img/star.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="npm&amp;yarn命令对照"/></a><div class="content"><a class="title" href="/2021/10/25/blog8-npm-yarn/" title="npm&amp;yarn命令对照">npm&amp;yarn命令对照</a><time datetime="2021-10-25T12:03:15.000Z" title="发表于 2021-10-25 20:03:15">2021-10-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Xing Ye</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello stranger!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
