@@ -1,0 +1,503 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>前端知识深入--网络部分 | XingYeBlog</title><meta name="keywords" content="日常学习"><meta name="author" content="Xing Ye,632885485@qq.com"><meta name="copyright" content="Xing Ye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="互联网是怎么工作的简单解释电脑和电脑之间如果想要交换数据,可以通过一些固定设备比如硬盘等,但是更快更好的方法是通过“连线”。这时如果一台电脑想和其他几十台电脑通信，每台两两连接是不太现实的(线太多)，所以就需要都连接到一个设备上，由这个设备进行接收和分发，这个设备叫做路由器通过路由器和路由器之间的连接就可以做到很多台电脑之间交互数据但是如果路由器还是很多，或者路由器很远呢？我们需要把信息传给互联网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识深入--网络部分">
+<meta property="og:url" content="http://example.com/2021/12/02/blog25-web/index.html">
+<meta property="og:site_name" content="XingYeBlog">
+<meta property="og:description" content="互联网是怎么工作的简单解释电脑和电脑之间如果想要交换数据,可以通过一些固定设备比如硬盘等,但是更快更好的方法是通过“连线”。这时如果一台电脑想和其他几十台电脑通信，每台两两连接是不太现实的(线太多)，所以就需要都连接到一个设备上，由这个设备进行接收和分发，这个设备叫做路由器通过路由器和路由器之间的连接就可以做到很多台电脑之间交互数据但是如果路由器还是很多，或者路由器很远呢？我们需要把信息传给互联网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/web.png">
+<meta property="article:published_time" content="2021-12-02T04:19:49.000Z">
+<meta property="article:modified_time" content="2021-12-03T10:07:50.138Z">
+<meta property="article:author" content="Xing Ye">
+<meta property="article:tag" content="日常学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/web.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://example.com/2021/12/02/blog25-web/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端知识深入--网络部分',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-03 18:07:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/pinkstar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/web.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XingYeBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端知识深入--网络部分</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-02T04:19:49.000Z" title="发表于 2021-12-02 12:19:49">2021-12-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-03T10:07:50.138Z" title="更新于 2021-12-03 18:07:50">2021-12-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">8.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>27分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端知识深入--网络部分"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="互联网是怎么工作的"><a href="#互联网是怎么工作的" class="headerlink" title="互联网是怎么工作的"></a>互联网是怎么工作的</h1><h2 id="简单解释"><a href="#简单解释" class="headerlink" title="简单解释"></a>简单解释</h2><p>电脑和电脑之间如果想要交换数据,可以通过一些固定设备比如硬盘等,但是更快更好的方法是通过“连线”。<br>这时如果一台电脑想和其他几十台电脑通信，每台两两连接是不太现实的(线太多)，所以就需要都连接到一个设备上，由这个设备进行接收和分发，这个设备叫做<strong>路由器</strong><br>通过路由器和路由器之间的连接就可以做到很多台电脑之间交互数据<br>但是如果路由器还是很多，或者路由器很远呢？<br>我们需要把信息传给<strong>互联网服务提供商（ISP）</strong>，相当于提供一些特殊的路由器的公司，可以进行更大的接收、转化和分发<br>当这些所有网络连接在一起，就构成了我们所说的<strong>互联网</strong>。互联网是一种基础的技术，它允许我们把成千上万的电脑连接在一起，但他不完全等同于<strong>网络</strong></p>
+<h2 id="网络怎么工作"><a href="#网络怎么工作" class="headerlink" title="网络怎么工作"></a>网络怎么工作</h2><p>当你访问一个网站时发生了什么？<br>首先，连接到互联网的计算机被称作客户端和服务器，但客户端和服务器并不能完成全部工作。还有其他必要的部分。</p>
+<ul>
+<li>互联网：连接到世界各处的道路</li>
+<li>网络连接：使得你的设备可以连接到互联网的道路</li>
+<li>协议：传输过程中，数据需要遵守的格式以及对数据的操作的规范<ul>
+<li>TCP/IP：TCP/IP 是在 IP 协议的通信过程中，使用到的协议族的统称，并不专指 TCP 协议和 IP 协议</li>
+</ul>
+</li>
+<li>IP 地址：规定设备在网络中的位置，是访问网站的关键</li>
+<li>DNS：域名系统，通过域名找到对应网站的 IP 地址</li>
+<li>HTTP：超文本传输协议，是定义与服务端和客户端信息传递的协议</li>
+<li>文件：服务端分发给客户端的代码、资源等</li>
+</ul>
+<p>当你在浏览器里输入一个网址时（在我们的例子里就是走向商店的路上时）：</p>
+<ol>
+<li>浏览器在域名系统（DNS）服务器上找出存放网页的服务器的实际地址（找出商店的位置）。</li>
+<li>浏览器发送 HTTP 请求信息到服务器来请拷贝一份网页到客户端（你走到商店并下订单）。<strong>这条消息，包括其他所有在客户端和服务器之间传递的数据都是通过互联网使用 TCP/IP 协议传输的。</strong></li>
+<li>服务器同意客户端的请求后，会返回一个“200 OK”信息，意味着“你可以查看这个网页”，然后开始将网页的文件以数据包的形式传输到浏览器（商店给你商品，你将商品带回家）。</li>
+<li>浏览器将数据包聚集成完整的网页然后将网页呈现给你（商品到了你的门口）。</li>
+</ol>
+<h1 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h1><h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><p>前面说过，TCP/IP 是在 IP 协议的通信过程中，使用到的协议族的统称，并不专指 TCP 协议和 IP 协议。而协议因为有很多，所以分为四个层面的协议：</p>
+<ul>
+<li><p>应用层<br>主要是客户端所在的位置，以及和服务器交互所在的层<br>应用层决定了向用户提供应用服务时通信的活动。TCP/IP 协议族内预存了各类通用的应用服务。比如，FTP（FileTransferProtocol，文件传输协议）和 DNS（Domain Name System，域名系统）服务就是其中两类。HTTP 协议也处于该层。</p>
+</li>
+<li><p>传输层<br>不同设备间的数据传输层<br>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。在传输层有两个性质不同的协议：TCP（Transmission ControlProtocol，传输控制协议）和 UDP（User Data Protocol，用户数据报协议）。</p>
+</li>
+<li><p>网络层（又名网络互连层）<br>数据包处理层<br>网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计算机，并把数据包传送给对方。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</p>
+</li>
+<li><p>链路层（又名数据链路层，网络接口层）<br>硬件层<br>用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱动、NIC（Network Interface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在链路层的作用范围之内。</p>
+</li>
+</ul>
+<h2 id="主要协议"><a href="#主要协议" class="headerlink" title="主要协议"></a>主要协议</h2><h3 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h3><p>IP（Internet Protocol）网际协议位于网络层，几乎所有使用网络的系统都会用到 IP 协议<br>IP 协议的作用是把各种数据包传送给对方，而要保证确实传送到对方那里，则需要满足各类条件。其中两个重要的条件是 <strong>IP 地址</strong>和 <strong>MAC 地址</strong></p>
+<ul>
+<li>IP 地址指明了节点被分配到的地址，也就是上面说的在互联网中设备的“位置”</li>
+<li>MAC 地址是指网卡所属的固定地址，基本不会更改，是偏向硬件的地址<br>由于通信双方的传输一般是要经过多台设备中转才能连接到对方的，所以会利用下一站中转设备的 MAC 地址来搜索下一个中转目标。这时，会采用 ARP 协议，根据通信方的 IP 地址就可以反查出对应的 MAC 地址。<br>来自网上的图图：<br><img src="https://i.loli.net/2021/12/02/G4P5bBIxHwOtup7.jpg" alt="MAC.jpg"></li>
+</ul>
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>TCP 连接通常分为三个阶段：启动（<strong>三次握手</strong>）、数据传输、退出（<strong>四次挥手</strong>）。<br>TCP 位于传输层，提供可靠的字节流服务。</p>
+<ul>
+<li>一定是[一对一]才能连接，</li>
+<li>字节流服务就是把大段数据切割成小段，用一个个单位数据包进行传输</li>
+<li>可靠是指，TCP 协议还会确认数据是否到达对方–三次握手，四次挥手</li>
+</ul>
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p><img src="https://i.loli.net/2021/12/02/Awz6QGunRmcsgx1.jpg" alt="三次握手.jpg"><br>首先是单词的意思：</p>
+<ul>
+<li>ACK —— 确认，使得确认号有效。</li>
+<li>RST —— 重置连接</li>
+<li>SYN —— 用于初始化一个连接的序列号。</li>
+<li>FIN —— 该报文段的发送方已经结束向对方发送数据。<br>三次握手的过程：</li>
+</ul>
+<ol>
+<li>发送端首先发送一个带 SYN 标志的数据包给对方。客户端发送网络包，服务端收到了。这样服务端就能得出结论：<strong>客户端的发送能力</strong>、<strong>服务端的接收能力</strong>是正常的。</li>
+<li>接收端收到后，回传一个带有 SYN/ACK 标志的数据包以示传达确认信息。服务端发包，客户端收到了。这样客户端就能得出结论：<strong>服务端的接收、发送能力</strong>，<strong>客户端的接收、发送能力</strong>是正常的。注意这里是<strong>客户端知道</strong>双方收发能力正常，但<strong>服务端还不知道</strong></li>
+<li>发送端再回传一个带 ACK 标志的数据包，代表“握手”结束。客户端发包，服务端收到了。这样服务端就能得出结论：客户端的接收、发送能力，服务端的发送、接收能力是正常的。 第一、二次握手后，服务端并不知道客户端的接收能力以及自己的发送能力是否正常。而在第三次握手时，服务端收到了客户端对第二次握手作的回应，这下<strong>双方都知道双方的收发能力正常</strong>；<br>若在握手过程中某个阶段中断，TCP 协议会再次以相同的顺序发送相同的数据包。</li>
+</ol>
+<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><p><img src="https://image-static.segmentfault.com/488/440/488440040-663440dbccce962f_fix732" alt="四次挥手.jpg"></p>
+<ol>
+<li>第一次挥手：客户端发送一个 FIN 报文（请求连接终止：FIN = 1），并停止再发送数据，主动关闭 TCP 连接。此时客户端处于 FIN_WAIT1 状态，等待服务端的确认。</li>
+<li>第二次挥手：服务端收到 FIN 之后，此时服务端处于 CLOSE_WAIT 状态。此时的 TCP 处于半关闭状态，<strong>客户端到服务端的连接释放</strong>。客户端收到服务端的确认后，进入 FIN_WAIT2（终止等待 2）状态，等待服务端发出的连接释放报文段。这个时候<strong>服务端到客户端还没有断连</strong>，如果还想发送信息是可以发送的，所以叫做半关闭</li>
+<li>第三次挥手：如果<strong>服务端也想断开连接</strong>了（没有要向客户端发出的数据）。此时服务端处于 LAST_ACK 的状态，等待客户端的确认。</li>
+<li>第四次挥手：客户端收到 FIN，此时客户端处于 TIME_WAIT （时间等待）状态。但是这时还不是完全关闭，需要经过时间等待计时器设置的时间 2MSL（一个报文的来回时间） 后才会进入 CLOSED 状态，也就是还要再等一个小周期</li>
+</ol>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><h4 id="Domain（域名）"><a href="#Domain（域名）" class="headerlink" title="Domain（域名）"></a>Domain（域名）</h4><p>在了解域名之前，还需要先了解<strong>超链接</strong>和<strong>URL</strong></p>
+<h5 id="链接-超链接"><a href="#链接-超链接" class="headerlink" title="链接/超链接"></a>链接/超链接</h5><blockquote>
+<p>网站的三大支柱：</p>
+<ul>
+<li>URL, 跟踪 Web 文档的地址系统</li>
+<li>HTTP, 一个传输协议，以便在给定 URL 时查找文档</li>
+<li>HTML, 允许嵌入超链接的文档格式</li>
+</ul>
+</blockquote>
+<p>链接可以将任何文本与 URL 相关联，因此用户只要激活链接就可以到达目标文档。<br>链接的类型有：</p>
+<ul>
+<li>内链：网页内的链接，用于网页里面的变化，比如滚动条滚动</li>
+<li>外链：网页到另一个网页的链接</li>
+<li>传入链接：从其他人的网页链接到你的网页的链接。</li>
+</ul>
+<h5 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h5><blockquote>
+<p>URL 是浏览器用来检索 web 上公布的任何资源的机制。<br>URL 代表着是统一资源定位符（Uniform Resource Locator），就是资源在 web 上的地址；就像设备在 web 上的地址是 IP 一样</p>
+</blockquote>
+<p>URL 的组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.example.com:80/path/to/myfile.html?key1=value1&amp;key2=value2#SomewhereInTheDocument</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>http://</code>，超文本传输协议，它表明了浏览器必须使用何种协议，也可是 HTTPS；当然还可以是<code>file://</code>文件协议，或者邮箱协议等</li>
+<li><code>www.example.com 是域名</code>，这个也可以用域名代替</li>
+<li><code>:80</code>是端口。IP 地址与网络服务的关系是一对多的，所以需要表示用于访问 Web 服务器上的资源的技术“门”。如果 Web 服务器使用 HTTP 协议的标准端口（HTTP 为 80，HTTPS 为 443）来授予其资源的访问权限，则通常会被忽略。否则是强制性的。一般 80 端口就是网络服务器，如果你自己想有个网站，就需要通过 80 端口来向外展示</li>
+<li><code>/path/to/myfile.html </code>是文件或资源位于服务器上的路径（服务器也是一台电脑），也被称为路由；当然路由时一种抽象的路径</li>
+<li><code>?key1=value1&amp;key2=value2</code>传输的参数，这种一般是 query 或者 parmas 参数</li>
+<li><code>#SomewhereInTheDocument</code> 是资源本身的另一部分的锚点. 锚点表示资源中的一种“书签”，给浏览器显示位于该“加书签”位置的内容的方向。<br>上面给出的 URL 是<strong>绝对 URL</strong>，因访问服务器没有上下文，所以要用绝对路径访问</li>
+</ol>
+<h5 id="域名："><a href="#域名：" class="headerlink" title="域名："></a>域名：</h5><p>域名需要从右到左阅读。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.google.com</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>.com</code>是顶级域名, 除了.com 之外还有一些顶级域名都有要求 - 地区的顶级域名，如.us，.fr，或.cn，可以要求必须提供给定语言的服务器或者托管在指定国家。 - 包含.gov 的顶级域名只能被政府部门使用。 - .edu 只能为教育或研究机构使用。<br>注: 域名用<code>.</code>分割,从右向左分别为顶级,二级,三级以及更后,上不设限,所以比如<code>www.a.b.c.d.e.f.com</code>,这里的 abcdef 都是不同级别的域名,每一级的域名控制它下一级域名的分配。每个域名内部是标签,标签在下面解释;</li>
+<li><code>google</code>是标签, 标签由 1 到 63 个大小写不敏感的字符组成，这些字符包含字母 A-z，数字 0-9，还有<code>-</code>号.一般都是小写字母,但可以是大写,都是一样的;为了区分 I 和 l,一般把 L 大写</li>
+<li><code>www</code>是主机名,这里就是万维网,或者还可以是<code>blog``sina</code>等等</li>
+</ol>
+<h4 id="DNS-1"><a href="#DNS-1" class="headerlink" title="DNS"></a>DNS</h4><p>DNS（Domain Name System）服务是和 HTTP 协议一样位于应用层的协议。它提供域名到 IP 地址之间的解析服务。</p>
+<h5 id="DNS-刷新"><a href="#DNS-刷新" class="headerlink" title="DNS 刷新"></a>DNS 刷新</h5><p>DNS 数据库存储在全球每个 DNS 服务器上，所有这些服务器都源于(refer to)几个被称为“权威名称服务器”或“顶级 DNS 服务器”。只要您的注册商创建或更新给定域名的任何信息，信息就必须在每个 DNS 数据库中刷新。 知道给定域名的每个 DNS 服务器都会存储一段时间的信息，然后再次刷新（DNS 服务器再次查询权威服务器）。 因此，知道此域名的 DNS 服务器需要一些时间才能获取最新信息。</p>
+<h5 id="DNS-请求"><a href="#DNS-请求" class="headerlink" title="DNS 请求"></a>DNS 请求</h5><ol>
+<li>在你的浏览器地址栏输入 example.com</li>
+<li>您的浏览器询问您的计算机是否已经识别此域名所确定的 IP 地址（使用本地 DNS 缓存）。 如果是的话，这个域名被转换为 IP 地址，然后浏览器与网络服务器交换内容。结束。</li>
+<li>如果你的电脑不知道 example.com 域名背后的 IP, 它会询问一个 DNS 服务器，这个服务器的工作就是告诉你的电脑已经注册的域名所匹配的 IP。</li>
+<li>现在电脑知道了要请求的 IP 地址，你的浏览器能够与网络服务器交换内容。</li>
+</ol>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p>UDP 协议特点：</p>
+<ul>
+<li>无连接，也就是没有 tcp 的握手</li>
+<li>UDP 不保证数据的交付</li>
+<li>UDP 没有拥塞控制，网络出现的拥塞不会使源主机的发送速率降低。这对某些实时应用是很重要的</li>
+<li>UDP 支持一对一、一对多、多对一和多对多的交互通信</li>
+<li>UDP 的首部开销小，只有 8 个字节，比 TCP 的 20 个字节的首部要短<br>从以上这些特点可以看出，udp 传输代价更小，因此传输更快，适合一些实时应用的网络需求</li>
+</ul>
+<h3 id="文件相关"><a href="#文件相关" class="headerlink" title="文件相关"></a>文件相关</h3><h4 id="FTP（文件传输协议）"><a href="#FTP（文件传输协议）" class="headerlink" title="FTP（文件传输协议）"></a>FTP（文件传输协议）</h4><p>主要功能：传输下载文件</p>
+<h4 id="file（本地文件传输协议）"><a href="#file（本地文件传输协议）" class="headerlink" title="file（本地文件传输协议）"></a>file（本地文件传输协议）</h4><p>主要用于访问本地计算机中的文件<br>格式是<code>file:///</code>，三个斜杠的原因是<strong>没有域名</strong>，相当于直接是后面的路径</p>
+<h3 id="协议之间关系"><a href="#协议之间关系" class="headerlink" title="协议之间关系"></a>协议之间关系</h3><p><img src="https://i.loli.net/2021/12/02/Uwe2Sb3oAJZKGVq.jpg" alt="协议关系.jpg"></p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP 协议是 Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。<br>HTTP 是一种能够获取如 HTML 这样的网络资源的通讯协议。它是在 Web 上进行数据交换的基础，是一种 client-server 协议，也就是说，请求通常是由像浏览器这样的接受方发起的。一个完整的 Web 文档通常是由不同的子文档拼接而成的，像是文本、布局描述、图片、视频、脚本等等。</p>
+<h3 id="HTTP-的主要特点"><a href="#HTTP-的主要特点" class="headerlink" title="HTTP 的主要特点"></a>HTTP 的主要特点</h3><ul>
+<li>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有 GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于 HTTP 协议简单，使得 HTTP 服务器的程序规模小，因而通信速度很快。</li>
+<li>灵活：HTTP 允许传输任意类型的数据对象。正在传输的类型由 Content-Type 加以标记。</li>
+<li>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>无状态：HTTP 协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。当然可以通过 cookie 来增加状态</li>
+</ul>
+<h3 id="HTTP-工作原理"><a href="#HTTP-工作原理" class="headerlink" title="HTTP 工作原理"></a>HTTP 工作原理</h3><ol>
+<li><p>客户端连接到 Web 服务器<br>一个 HTTP 客户端，通常是浏览器，与 Web 服务器的 HTTP 端口（默认为 80）建立一个 TCP 套接字连接。例如，<a href="http://www.example.com(:80)">http://www.example.com(:80)</a></p>
+</li>
+<li><p>发送 HTTP 请求(request)<br>通过 TCP 套接字，客户端向 Web 服务器发送一个文本的请求报文，一个请求报文由请求行、请求头部、空行和请求数据 4 部分组成。</p>
+</li>
+<li><p>服务器接受请求并返回 HTTP 响应(response)<br>Web 服务器解析请求，定位请求资源。服务器将资源复本写到 TCP 套接字，由客户端读取。一个响应由状态行、响应头部、空行和响应数据 4 部分组成。</p>
+</li>
+<li><p>释放连接 TCP 连接<br>若 connection 模式为 close，则服务器主动关闭 TCP 连接，客户端被动关闭连接，释放 TCP 连接;若 connection 模式为 keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求;</p>
+</li>
+<li><p>客户端浏览器解析 HTML 内容<br>客户端浏览器首先解析状态行，查看表明请求是否成功的状态代码。然后解析每一个响应头，响应头告知以下为若干字节的 HTML 文档和文档的字符集。客户端读取数据,并按照一定格式展示</p>
+</li>
+</ol>
+<p>例如：在浏览器地址栏键入 URL，按下回车之后会经历以下流程：</p>
+<ol>
+<li><p>浏览器向 DNS 服务器请求解析该 URL 中的域名所对应的 IP 地址;</p>
+</li>
+<li><p>解析出 IP 地址后，根据该 IP 地址和默认端口 80，和服务器建立 TCP 连接;</p>
+</li>
+<li><p>浏览器发出读取文件(URL 中域名后面部分对应的文件)的 HTTP 请求，该请求报文作为 TCP 三次握手的第三个报文的数据发送给服务器;</p>
+</li>
+<li><p>服务器对浏览器请求作出响应，并把对应的 html 文本发送给浏览器;</p>
+</li>
+<li><p>释放 TCP 连接;</p>
+</li>
+<li><p>客户端获取到数据并处理数据</p>
+</li>
+</ol>
+<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><p><img src="https://i.loli.net/2021/12/02/geW1ol4FckqY7ty.png" alt="request.png"></p>
+<ol>
+<li>请求行，用来说明请求类型,要访问的资源以及所使用的 HTTP 版本.<br>GET 说明请求类型为 GET,<code>/562f25980001b1b106000338.jpg</code>为要访问的资源，该行的最后一部分说明使用的是 HTTP1.1 版本。</li>
+<li>请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息<br>从第二行起为请求头部，HOST 将指出请求的目的地.User-Agent,服务器端和客户端脚本都能访问它,它是浏览器类型检测逻辑的重要基础.该信息由你的浏览器来定义,并且在每个请求中自动发送等等</li>
+<li>空行，请求头部后面的空行是必须的<br>即使第四部分的请求数据为空，也必须有空行。</li>
+<li>请求数据也叫主体，可以添加任意的其他数据。<br>一个 POST 的例子:</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP1.1</span><br><span class="line">Host:www.wrox.com</span><br><span class="line">User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)</span><br><span class="line">Content-Type:application/x-www-form-urlencoded</span><br><span class="line">Content-Length:40</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line"></span><br><span class="line">name=Professional%20Ajax&amp;publisher=Wiley</span><br></pre></td></tr></table></figure>
+
+<h4 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Date: Fri, 22 May 2009 06:07:21 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">      &lt;head&gt;&lt;/head&gt;</span><br><span class="line">      &lt;body&gt;</span><br><span class="line">            &lt;!--body goes here--&gt;</span><br><span class="line">      &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>状态行，由 HTTP 协议版本号， 状态码， 状态消息 三部分组成。<br>第一行为状态行，（HTTP/1.1）表明 HTTP 版本为 1.1 版本，状态码为 200，状态消息为（ok）</li>
+<li>消息报头，用来说明客户端要使用的一些附加信息,第二行和第三行为消息报头<br>Date:生成响应的日期和时间；Content-Type:指定了 MIME 类型的 HTML(text/html),编码类型是 UTF-8</li>
+<li>空行，消息报头后面的空行是必须的</li>
+<li>响应正文，服务器返回给客户端的文本信息。空行后面的 html 部分为响应正文。</li>
+</ol>
+<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><ul>
+<li>1xx：指示信息–表示请求已接收，继续处理</li>
+<li>2xx：成功–表示请求已被成功接收、理解、接受</li>
+<li>3xx：重定向–要完成请求必须进行更进一步的操作</li>
+<li>4xx：客户端错误–请求有语法错误或请求无法实现</li>
+<li>5xx：服务器端错误–服务器未能实现合法的请求</li>
+</ul>
+<h4 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h4><ul>
+<li>GET 请求指定的页面信息，并返回实体主体。</li>
+<li>HEAD 类似于 get 请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
+<li>POST 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。</li>
+<li>PUT 从客户端向服务器传送的数据取代指定的文档的内容。</li>
+<li>DELETE 请求服务器删除指定的页面。</li>
+<li>CONNECT HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。</li>
+<li>OPTIONS 允许客户端查看服务器的性能。</li>
+<li>TRACE 回显服务器收到的请求，主要用于测试或诊断。</li>
+</ul>
+<h3 id="HTTP-其他概念"><a href="#HTTP-其他概念" class="headerlink" title="HTTP 其他概念"></a>HTTP 其他概念</h3><p>有关于 session/token/JWT 的更多解释可以看这里：<a target="_blank" rel="noopener" href="https://mubu.com/doc/12i79Sq9hmP">https://mubu.com/doc/12i79Sq9hmP</a></p>
+<h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p>cookie 的详细解释可以看这篇文章:<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904073934667790">https://juejin.cn/post/6844904073934667790</a></p>
+<blockquote>
+<p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。</p>
+</blockquote>
+<p>因此 cookie 的主要工作方式是:在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。</p>
+<ul>
+<li>创建方式<br>服务器在响应头里添加<code>Set-Cookie</code>选项,比如这样</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK</span><br><span class="line">Content-type: text/html</span><br><span class="line">Set-Cookie: yummy_cookie=choco</span><br><span class="line">Set-Cookie: tasty_cookie=strawberry</span><br></pre></td></tr></table></figure>
+
+<p>js 也可以直接通过<code>document.cookie</code>来读写 cookie</p>
+<ul>
+<li>cookie 属性<ul>
+<li>名称:表示该 cookie 的名字,一般常用_开头表示一些身份信息或 id 等</li>
+<li>值: 就是 cookie 的值,可以是任意字符</li>
+<li>Domain: 限制访问域名,不设置就是都可以访问</li>
+<li>Path: 主机下哪些路径可以访问,比如登录路径访问,就可以设置为<code>/login</code></li>
+<li>SameSite:用于判断跨站时是否发送 cookie</li>
+<li>Expires/Max-Age: 生命周期,定义 Cookie 的有效时间</li>
+<li>HttpOnly:为避免跨域脚本 (XSS) 攻击，通过 JavaScript 的 Document.cookie API 无法访问带有 HttpOnly 标记的 Cookie，它们只应该发送给服务端。</li>
+<li>Secure: 标记时只能通过 https 发给服务端</li>
+</ul>
+</li>
+</ul>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><p>是另一种 cookie，同时依赖于 cookie，但是存储在服务端，sessionId 会被存储到客户端的 cookie 中</p>
+<ul>
+<li>用户第一次请求服务器的时候，服务器根据用户提交的相关信息，创建对应的 Session</li>
+<li>请求返回时将此 Session 的唯一标识信息 SessionID 返回给浏览器</li>
+<li>浏览器接收到服务器返回的 SessionID 信息后，会将此信息存入到 Cookie 中，同时 Cookie 记录此 SessionID 属于哪个域名</li>
+<li>当用户第二次访问服务器的时候，请求会自动判断此域名下是否存在 Cookie 信息，如果存在自动将 Cookie 信息也发送给服务端，服务端会从 Cookie 中获取 SessionID，再根据 SessionID 查找对应的 Session 信息，如果没有找到说明用户没有登录或者登录失效，如果找到 Session 证明用户已经登录可执行后面操作。</li>
+</ul>
+<p>大部分系统是根据此原理来验证用户登录状态。</p>
+<h4 id="Token（令牌）"><a href="#Token（令牌）" class="headerlink" title="Token（令牌）"></a>Token（令牌）</h4><h5 id="Access-Token"><a href="#Access-Token" class="headerlink" title="Access Token"></a>Access Token</h5><p>访问资源接口（API）时所需要的资源凭证，相当于展示证件才能进入或访问的过程<br>简单 token 的组成： uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign（签名，token 的前几位以哈希算法压缩成的一定长度的十六进制字符串）<br><img src="https://i.loli.net/2021/12/02/EKhFUQzAP3vcjxa.png" alt="accesstoken.png"></p>
+<ul>
+<li>客户端每一次请求都需要携带 token，需要把 token 放到 HTTP 的 Header 里</li>
+<li>token 完全由应用管理，所以它可以避开同源策略</li>
+<li>客户端收到 token 以后，会把它存储起来，比如放在 cookie 里或者 localStorage 里</li>
+</ul>
+<h5 id="Refresh-Token"><a href="#Refresh-Token" class="headerlink" title="Refresh Token"></a>Refresh Token</h5><p>是一种延长 accesstoken 的方法，主要解决方法是：</p>
+<ul>
+<li>如果 accesstoken 没过期，就正常使用</li>
+<li>如果 accesstoken 过期，但 Refresh Token 没过期，就可以获取到新的 Token</li>
+<li>如果都过期就需要重新登录</li>
+<li>Refresh Token 及过期时间是存储在服务器的数据库中，只有在申请新的 Acesss Token 时才会验证</li>
+</ul>
+<h4 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h4><p>JSON Web Token（简称 JWT）是目前最流行的<strong>跨域认证</strong>解决方案。是一种认证授权机制。<br>原理图：<br><img src="https://i.loli.net/2021/12/02/chSBlOHZ9dDIQiJ.png" alt="JWT.png"><br>使用方式：</p>
+<ul>
+<li>跨域的时候，可以把 JWT 放在 POST 请求的数据体里。</li>
+<li>通过 URL 传输，比如<code>http://www.example.com/user?token=xxx</code></li>
+<li>放在 HTTP 请求头信息的 Authorization 字段里</li>
+</ul>
+<h4 id="OAuth"><a href="#OAuth" class="headerlink" title="OAuth"></a>OAuth</h4><p>OAuth 就是一种授权机制。数据的所有者告诉系统，同意授权第三方应用进入系统，获取这些数据。系统从而产生一个短期的进入令牌（token），用来代替密码，供第三方应用使用。OAuth 在”客户端”与”服务提供商”之间，设置了一个授权层（authorization layer）。”客户端”不能直接登录”服务提供商”，只能登录授权层，以此将用户与客户端区分开来。”客户端”登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期。<br><img src="https://obohe.com/i/2021/12/03/sf3lt0.png"><br>流程如下:</p>
+<ol>
+<li>用户打开客户端以后，客户端要求用户给予授权。</li>
+<li>用户同意给予客户端授权。</li>
+<li>客户端使用上一步获得的授权，向认证服务器申请令牌。</li>
+<li>认证服务器对客户端进行认证以后，确认无误，同意发放令牌。</li>
+<li>客户端使用令牌，向资源服务器申请获取资源。</li>
+<li>资源服务器确认令牌无误，同意向客户端开放资源。<h4 id="SSO"><a href="#SSO" class="headerlink" title="SSO"></a>SSO</h4>SSO(单点登录)指的是在多个应用系统中，只需登录一次，就可以访问其他相互信任的应用系统。<br>详细可以看这篇文章<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/35165725">https://www.zhihu.com/question/35165725</a><h4 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h4></li>
+</ol>
+<p>发生在不同源之间的非简单请求会被阻止，解决的方法就是跨域<br>同源的条件：</p>
+<ul>
+<li>主机相同</li>
+<li>协议相同（http 和 https 不同）</li>
+<li>端口相同<br>同理还有一些特殊情况也不是同源：</li>
+<li>同一网站的域名和 ip</li>
+<li>主域相同，子域不同<br>同源策略的出现主要是为了保证安全<br>为了解决同源策略导致的壁垒，就需要跨域。跨域两种解决方案：CORS 和 JSONP</li>
+</ul>
+<h4 id="跨域-CORS"><a href="#跨域-CORS" class="headerlink" title="跨域(CORS)"></a>跨域(CORS)</h4><p>CORS 请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request)<br>简单请求的范围:</p>
+<ul>
+<li>请求方法是以下三种方法之一：<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+</li>
+<li>HTTP 的头信息不超出以下几种字段：<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>text/plain</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>简单请求时浏览器会直接发送 CORS 请求,也就是会在请求头加一个 Origin 字段,用来说明本次请求来自哪个源（协议 + 域名 + 端口）<br>相应的，响应头也会多出几个信息字段</p>
+<ul>
+<li>Access-Control-Allow-Origin（必须字段）<br>它的值要么是请求时 Origin 字段的值，要么是一个*，表示接受任意域名的请求。如果没有这个字段，浏览器就知道出错了，就会报错</li>
+</ul>
+<h5 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h5><p>非简单请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为”预检”请求（preflight）。<br>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些 HTTP 动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的 XMLHttpRequest 请求，否则就报错<br>举个预检请求的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /cors HTTP/1.1</span><br><span class="line">Origin: http://api.bob.com</span><br><span class="line">Access-Control-Request-Method: PUT</span><br><span class="line">Access-Control-Request-Headers: X-Custom-Header</span><br><span class="line">Host: api.alice.com</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">Connection: keep-alive</span><br><span class="line">User-Agent: Mozilla/5.0...</span><br></pre></td></tr></table></figure>
+
+<p>这里边的关键是这两个字段：</p>
+<ul>
+<li>Access-Control-Request-Method（必须）<br>用来列出浏览器的 CORS 请求会用到哪些 HTTP 方法，上例是 PUT。</li>
+<li>Access-Control-Request-Headers<br>是一个逗号分隔的字符串，指定浏览器 CORS 请求会额外发送的头信息字段，上例是 X-Custom-Header。<br>服务器收到预检请求之后，如果允许跨域，就会回应；回应也会有一些字段</li>
+<li>Access-Control-Allow-Origin（必须）<br>值是源请求地址或是*号，如果没有这个属性就说明跨域失败了，浏览器会报错；平常看到的跨域报错都是报缺少这个响应头的问题</li>
+</ul>
+<h5 id="解决跨域"><a href="#解决跨域" class="headerlink" title="解决跨域"></a>解决跨域</h5><ul>
+<li>服务器可以在响应头加上<code>Access-Control-Allow-Origin: *</code>或者是请求地址，这是一种解决方法</li>
+<li>当然还有一种代理的方法，代理实际上是在客户端和服务器中间的一个服务器；它<strong>与客户端同源</strong>，可以把客户端的请求转发给目标服务器；再把服务器的响应传回给客户端，利用的原理是<strong>服务器之间不受同源限制</strong>。</li>
+</ul>
+<h4 id="HTTP-和-HTTPS"><a href="#HTTP-和-HTTPS" class="headerlink" title="HTTP 和 HTTPS"></a>HTTP 和 HTTPS</h4><h5 id="https-相对于-http-的特点："><a href="#https-相对于-http-的特点：" class="headerlink" title="https 相对于 http 的特点："></a>https 相对于 http 的特点：</h5><ul>
+<li>HTTP 是超文本传输协议，信息是明文传输，存在安全风险的问题。HTTPS 则解决 HTTP 不安全的缺陷，在 TCP 和 HTTP 网络层之间加入了 SSL/TLS 安全协议，使得报文能够加密传输。</li>
+<li>HTTPS 在 TCP 三次握手之后，还需进行 SSL/TLS 的握手过程，才可进入加密报文传输。</li>
+<li>HTTPS 的端口号是 443。</li>
+<li>HTTPS 协议需要向 CA（证书权威机构）申请数字证书，来保证服务器的身份是可信的。<br><img src="https://i.loli.net/2021/12/02/Wlm3TKsZYBtc67H.png" alt="https.jpg"></li>
+</ul>
+<h5 id="https-的安全依据："><a href="#https-的安全依据：" class="headerlink" title="https 的安全依据："></a>https 的安全依据：</h5><ul>
+<li>混合加密</li>
+<li>摘要算法<br>简单来说就是客户端发送明文数据之前会通过摘要算法算出明文的“指纹”，然后服务器需要进行比较客户端携带的和自己存储的，如果一致就是安全的</li>
+<li>数字证书<ul>
+<li>客户端先向服务器端索要公钥，然后用公钥加密信息，服务器收到密文后，用自己的私钥解密</li>
+<li>借助第三方权威机构 CA （数字证书认证机构），将服务器公钥放在数字证书（由数字证书认证机构颁发）中，只要证书是可信的，公钥就是可信的。</li>
+</ul>
+</li>
+</ul>
+<h5 id="SSL-TLS-协议基本流程："><a href="#SSL-TLS-协议基本流程：" class="headerlink" title="SSL/TLS 协议基本流程："></a>SSL/TLS 协议基本流程：</h5><ul>
+<li>客户端向服务器索要并验证服务器的公钥。</li>
+<li>双方协商生产「会话秘钥」。</li>
+<li>双方采用「会话秘钥」进行加密通信。</li>
+</ul>
+<h4 id="HTTP-2"><a href="#HTTP-2" class="headerlink" title="HTTP/2"></a>HTTP/2</h4><p>HTTP2 相对于 http1.1 的变化：</p>
+<ul>
+<li>HTTP/2 采用二进制格式传输数据，而非 HTTP 1.x 的文本格式</li>
+<li>HTTP/2 将请求和响应数据分割为更小的帧，并且它们采用二进制编码。帧变成了 HTTP2 的最小单位</li>
+<li>HTTP/2 中，同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。流也是新的概念，相当于一个可以传送双向数据的通道</li>
+<li>多路复用，所有请求都是通过一个 TCP 连接并发完成，节约时间，也不会造成挂起</li>
+<li>每个请求都可以带一个优先值，0 表示最高优先级， 数值越大优先级越低，这样可以自行选择处理帧的方式</li>
+<li>服务器可以主动向用户推送 js、css，而不是只能拿通过解析 html 获得</li>
+<li>头部压缩，主要方式是去重，相同数据不会再次请求发送</li>
+</ul>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p>CDN（内容分发网络）：尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，CDN 系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。<br>也就是说，cdn 可以尽可能把你连接到最近、最快的服务器<br>基本实现：</p>
+<ul>
+<li>cdn 由一个 dns 服务器和几台缓存服务器组成</li>
+</ul>
+<ol>
+<li>当用户点击网站页面上的内容 URL，经过本地 DNS 系统解析，DNS 系统会最终将域名的解析权交给 CNAME 指向的 CDN 专用 DNS 服务器。</li>
+<li>CDN 的 DNS 服务器将 CDN 的全局负载均衡设备 IP 地址返回用户。</li>
+<li>用户向 CDN 的全局负载均衡设备发起内容 URL 访问请求。</li>
+</ol>
+<ul>
+<li>这三步过后，用户连接的是 CDN 的 DNS 解析后的</li>
+</ul>
+<ol start="4">
+<li>CDN 全局负载均衡设备根据用户 IP 地址，以及用户请求的内容 URL，选择一台用户所属区域的区域负载均衡设备，告诉用户向这台设备发起请求。</li>
+<li>区域负载均衡设备会为用户选择一台合适的缓存服务器提供服务，尽可能减少延迟，提高速度</li>
+<li>全局负载均衡设备把找到的好的服务器的 IP 地址返回给用户。</li>
+<li>用户向缓存服务器发起请求，缓存服务器响应用户请求，将用户所需内容传送到用户终端。如果这台缓存服务器上并没有用户想要的内容，而区域均衡设备依然将它分配给了用户，那么这台服务器就要向它的上一级缓存服务器请求内容，直至追溯到网站的源服务器将内容拉到本地。</li>
+</ol>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></div><div class="post_share"><div class="social-share" data-image="/img/web.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/02/blog27-browser/"><img class="prev-cover" src="/img/Chrome.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端知识深入--浏览器深入</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/02/blog26-browser/"><img class="next-cover" src="/img/Chrome.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">前端知识深入--浏览器部分</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/01/blog0-knowledge-graph/" title="未知知识图谱(接下来要学习的)"><img class="cover" src="/img/knowledges.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-01</div><div class="title">未知知识图谱(接下来要学习的)</div></div></a></div><div><a href="/2021/10/27/blog10-react-router/" title="react-router的使用"><img class="cover" src="/img/reactrouter.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-27</div><div class="title">react-router的使用</div></div></a></div><div><a href="/2021/11/06/blog11-myReact/" title="react知识点汇总和使用小总结(一)"><img class="cover" src="/img/react.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-06</div><div class="title">react知识点汇总和使用小总结(一)</div></div></a></div><div><a href="/2021/11/06/blog12-myReact/" title="react知识点汇总和使用小总结(二)"><img class="cover" src="/img/react.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-06</div><div class="title">react知识点汇总和使用小总结(二)</div></div></a></div><div><a href="/2021/11/20/blog14-react-ts-basic/" title="typescript+react基础部分"><img class="cover" src="/img/typescript.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-20</div><div class="title">typescript+react基础部分</div></div></a></div><div><a href="/2021/11/20/blog15-react-ts-router/" title="typescript+react:react-routerv6和旧版v5的使用"><img class="cover" src="/img/typescript.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-20</div><div class="title">typescript+react:react-routerv6和旧版v5的使用</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/pinkstar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Ye</div><div class="author-info__description">a singleThreaded boy's blog</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penghei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penghei" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:632885485@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">A SingleThreaded Boy...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">互联网是怎么工作的</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.</span> <span class="toc-text">简单解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">网络怎么工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">关键概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP"><span class="toc-number">2.1.</span> <span class="toc-text">TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.2.</span> <span class="toc-text">主要协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP"><span class="toc-number">2.2.1.</span> <span class="toc-text">IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP"><span class="toc-number">2.2.2.</span> <span class="toc-text">TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">四次挥手</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS"><span class="toc-number">2.2.3.</span> <span class="toc-text">DNS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Domain%EF%BC%88%E5%9F%9F%E5%90%8D%EF%BC%89"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">Domain（域名）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5-%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-number">2.2.3.1.1.</span> <span class="toc-text">链接&#x2F;超链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#URL"><span class="toc-number">2.2.3.1.2.</span> <span class="toc-text">URL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%EF%BC%9A"><span class="toc-number">2.2.3.1.3.</span> <span class="toc-text">域名：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DNS-1"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">DNS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#DNS-%E5%88%B7%E6%96%B0"><span class="toc-number">2.2.3.2.1.</span> <span class="toc-text">DNS 刷新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DNS-%E8%AF%B7%E6%B1%82"><span class="toc-number">2.2.3.2.2.</span> <span class="toc-text">DNS 请求</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UDP"><span class="toc-number">2.2.4.</span> <span class="toc-text">UDP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3"><span class="toc-number">2.2.5.</span> <span class="toc-text">文件相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FTP%EF%BC%88%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-number">2.2.5.1.</span> <span class="toc-text">FTP（文件传输协议）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#file%EF%BC%88%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="toc-number">2.2.5.2.</span> <span class="toc-text">file（本地文件传输协议）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-number">2.2.6.</span> <span class="toc-text">协议之间关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-number">2.3.</span> <span class="toc-text">HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">2.3.1.</span> <span class="toc-text">HTTP 的主要特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.2.</span> <span class="toc-text">HTTP 工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Request"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">Request</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">Response</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">状态码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.2.4.</span> <span class="toc-text">请求方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E5%85%B6%E4%BB%96%E6%A6%82%E5%BF%B5"><span class="toc-number">2.3.3.</span> <span class="toc-text">HTTP 其他概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Session"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Token%EF%BC%88%E4%BB%A4%E7%89%8C%EF%BC%89"><span class="toc-number">2.3.3.3.</span> <span class="toc-text">Token（令牌）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Access-Token"><span class="toc-number">2.3.3.3.1.</span> <span class="toc-text">Access Token</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Refresh-Token"><span class="toc-number">2.3.3.3.2.</span> <span class="toc-text">Refresh Token</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT"><span class="toc-number">2.3.3.4.</span> <span class="toc-text">JWT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OAuth"><span class="toc-number">2.3.3.5.</span> <span class="toc-text">OAuth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSO"><span class="toc-number">2.3.3.6.</span> <span class="toc-text">SSO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-number">2.3.3.7.</span> <span class="toc-text">同源策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F-CORS"><span class="toc-number">2.3.3.8.</span> <span class="toc-text">跨域(CORS)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%9E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82"><span class="toc-number">2.3.3.8.1.</span> <span class="toc-text">非简单请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-number">2.3.3.8.2.</span> <span class="toc-text">解决跨域</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-%E5%92%8C-HTTPS"><span class="toc-number">2.3.3.9.</span> <span class="toc-text">HTTP 和 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#https-%E7%9B%B8%E5%AF%B9%E4%BA%8E-http-%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-number">2.3.3.9.1.</span> <span class="toc-text">https 相对于 http 的特点：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#https-%E7%9A%84%E5%AE%89%E5%85%A8%E4%BE%9D%E6%8D%AE%EF%BC%9A"><span class="toc-number">2.3.3.9.2.</span> <span class="toc-text">https 的安全依据：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SSL-TLS-%E5%8D%8F%E8%AE%AE%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">2.3.3.9.3.</span> <span class="toc-text">SSL&#x2F;TLS 协议基本流程：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-2"><span class="toc-number">2.3.3.10.</span> <span class="toc-text">HTTP&#x2F;2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CDN"><span class="toc-number">2.4.</span> <span class="toc-text">CDN</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/02/blog27-browser/" title="前端知识深入--浏览器深入"><img src="/img/Chrome.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识深入--浏览器深入"/></a><div class="content"><a class="title" href="/2021/12/02/blog27-browser/" title="前端知识深入--浏览器深入">前端知识深入--浏览器深入</a><time datetime="2021-12-02T04:21:26.000Z" title="发表于 2021-12-02 12:21:26">2021-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/02/blog25-web/" title="前端知识深入--网络部分"><img src="/img/web.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识深入--网络部分"/></a><div class="content"><a class="title" href="/2021/12/02/blog25-web/" title="前端知识深入--网络部分">前端知识深入--网络部分</a><time datetime="2021-12-02T04:19:49.000Z" title="发表于 2021-12-02 12:19:49">2021-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/02/blog26-browser/" title="前端知识深入--浏览器部分"><img src="/img/Chrome.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端知识深入--浏览器部分"/></a><div class="content"><a class="title" href="/2021/12/02/blog26-browser/" title="前端知识深入--浏览器部分">前端知识深入--浏览器部分</a><time datetime="2021-12-02T04:19:49.000Z" title="发表于 2021-12-02 12:19:49">2021-12-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/01/blog0-knowledge-graph/" title="未知知识图谱(接下来要学习的)"><img src="/img/knowledges.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="未知知识图谱(接下来要学习的)"/></a><div class="content"><a class="title" href="/2021/12/01/blog0-knowledge-graph/" title="未知知识图谱(接下来要学习的)">未知知识图谱(接下来要学习的)</a><time datetime="2021-11-30T16:51:19.000Z" title="发表于 2021-12-01 00:51:19">2021-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/29/blog23-tailwindcss/" title="tailwindcss学习笔记和常用总结"><img src="/img/tailwindcss.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="tailwindcss学习笔记和常用总结"/></a><div class="content"><a class="title" href="/2021/11/29/blog23-tailwindcss/" title="tailwindcss学习笔记和常用总结">tailwindcss学习笔记和常用总结</a><time datetime="2021-11-29T14:27:19.000Z" title="发表于 2021-11-29 22:27:19">2021-11-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Xing Ye</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello stranger!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
