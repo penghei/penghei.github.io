@@ -1,0 +1,804 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XingYeBlog | XingYeBlog</title><meta name="author" content="Xing Ye,632885485@qq.com"><meta name="copyright" content="Xing Ye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTML &lt;link&gt;、&lt;meta&gt;标签都是干什么用的 &lt;script&gt;标签的 defer 和 async 表示什么，还有哪些属性 preload 和 prefetch 有什么区别 语义化是什么，作用？  CSS  什么是 css 的层叠和继承，哪些属性可以继承，哪些不能？  css 选择器有哪些，优先级是怎么样的  伪类和伪元素有什么区别，常见的有哪些  cs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XingYeBlog">
+<meta property="og:url" content="http://example.com/2023/07/08/stereotype/index.html">
+<meta property="og:site_name" content="XingYeBlog">
+<meta property="og:description" content="HTML &lt;link&gt;、&lt;meta&gt;标签都是干什么用的 &lt;script&gt;标签的 defer 和 async 表示什么，还有哪些属性 preload 和 prefetch 有什么区别 语义化是什么，作用？  CSS  什么是 css 的层叠和继承，哪些属性可以继承，哪些不能？  css 选择器有哪些，优先级是怎么样的  伪类和伪元素有什么区别，常见的有哪些  cs">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/codes1.jpg">
+<meta property="article:published_time" content="2023-07-07T18:59:52.445Z">
+<meta property="article:modified_time" content="2023-03-23T05:29:37.767Z">
+<meta property="article:author" content="Xing Ye">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/codes1.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://example.com/2023/07/08/stereotype/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'XingYeBlog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-23 13:29:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/pinkstar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/codes1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XingYeBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-07T18:59:52.445Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-23T05:29:37.767Z" title="更新于 2023-03-23 13:29:37">2023-03-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><ol>
+<li><code>&lt;link&gt;</code>、<code>&lt;meta&gt;</code>标签都是干什么用的</li>
+<li><code>&lt;script&gt;</code>标签的 defer 和 async 表示什么，还有哪些属性</li>
+<li>preload 和 prefetch 有什么区别</li>
+<li>语义化是什么，作用？</li>
+</ol>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><ol>
+<li> 什么是 css 的层叠和继承，<strong>哪些属性可以继承</strong>，哪些不能？</li>
+<li> <strong>css 选择器有哪些，优先级是怎么样的</strong></li>
+<li> 伪类和伪元素有什么区别，常见的有哪些</li>
+<li> <strong>css 的单位都有哪些</strong></li>
+<li> 常见的块级元素、行内块、行内元素都有哪些，什么特点？</li>
+<li> <strong>盒模型是什么</strong></li>
+<li> 外边距折叠是什么情况，怎么处理</li>
+<li> <strong>BFC 是什么</strong>，有什么用，怎么触发</li>
+<li> 浮动是什么，有什么用，怎么清除</li>
+<li>position/display 有哪些属性，有什么特点</li>
+<li>隐藏元素的方法有哪些，各自什么特点</li>
+<li>单论 css，有哪些优化方法</li>
+<li><strong>怎么创建一个响应式图片</strong></li>
+<li>flex 和 grid 怎么用，有哪些属性</li>
+<li>css 雪碧图</li>
+<li><strong>怎么判断元素是否进入可视区域？判断依据的属性都是什么意思？</strong></li>
+<li>css 怎么画一个三角形</li>
+<li><strong>垂直居中、水平居中、垂直水平居中</strong>，如果不知道父元素宽高的话怎么做？如果不知道子元素宽高怎么做？都不知道怎么做？</li>
+<li>两栏布局怎么实现</li>
+<li><strong>三栏布局怎么实现</strong></li>
+<li>实现一个高度始终为宽度一半的矩形</li>
+<li><strong>什么是响应式布局，怎么实现？</strong></li>
+</ol>
+<h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><ol>
+<li>数据类型有哪些，分为几种</li>
+<li>引用数据类型和基本数据类型有什么区别？</li>
+<li><code>==</code>的转换规则</li>
+<li>对象转化为原始数据类型的规则</li>
+<li><strong>检测数据类型的方法</strong>，检测数组有几种方法，函数呢？</li>
+<li>怎么实现一个浅拷贝、深拷贝</li>
+<li>Symbol 是什么，有哪些用处</li>
+<li>迭代器是什么，如何创建，怎么使用</li>
+<li>怎么把一个类数组对象转为数组</li>
+<li>怎么创建一个指定大小的空数组</li>
+<li>Map 和 Set 是什么，有什么特点</li>
+<li>对象怎么配置一个属性（比如可读、可写）</li>
+<li>函数声明有几种方式</li>
+<li><strong>柯里化是什么</strong>，怎么实现一个一层柯里化，怎么实现任意多层？</li>
+<li>箭头函数有哪些限制</li>
+<li><strong>闭包是什么，怎么产生的，有什么用，利弊</strong></li>
+<li><strong>作用域和作用域链是什么</strong></li>
+<li><strong>执行上下文是什么，和作用域的区别，有哪些内容</strong></li>
+<li><strong>this 是什么，有什么用，怎么指定 this 的指向？</strong></li>
+<li>new 的执行过程？</li>
+<li><strong>原型链是什么</strong></li>
+<li>js 的继承方式</li>
+<li><strong>Promise 的功能，解决的问题，怎么实现的，怎么使用，特点，有哪些 api</strong></li>
+<li>async/await 的原理（协程），使用</li>
+<li>模块化的发展历程</li>
+<li><strong>commonjs 和 es6 module 的不同</strong></li>
+<li>Proxy 和 Reflect 是啥</li>
+<li>事件循环，怎么实现的异步任务，宏任务和微任务？</li>
+<li>js 的内存管理、垃圾回收方式</li>
+<li>dom 树概述，dom 节点的概念（七种节点）</li>
+<li>dom 事件流？</li>
+<li>事件对象是什么，怎么产生的，有什么用，自定义事件是什么。浏览器的事件模型</li>
+<li>浏览器默认事件有哪些，怎么阻止</li>
+<li>怎么封装一个 ajax（xhr 的用法）</li>
+<li>怎么使用 fetch</li>
+<li>防抖和节流怎么实现</li>
+<li>webcomponents 是啥</li>
+<li>shadowdom 是啥</li>
+<li>一个 HTML 页面的生命周期</li>
+<li>ArrayBuffer 是什么，有什么用</li>
+<li>Blob 和 File 是什么，有什么用</li>
+<li>Generator 相关</li>
+<li>H5 history api</li>
+</ol>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ol>
+<li>URL 和 URI 是什么</li>
+<li>同源策略，跨域解决方案（jsonp 手写）</li>
+<li>OSI7 层网络模型、TCP/IP4 层模型，5 层模型</li>
+<li>session、token、cookie 是什么，有什么特点和区别</li>
+<li>HTTP 的基本特点</li>
+<li>HTTP 的请求和响应报文结构</li>
+<li>HTTP 的常见字段</li>
+<li>HTTP 的方法有哪些</li>
+<li><strong>HTTP 状态码</strong></li>
+<li>HTTPS 是什么，怎么保证安全，<strong>握手过程</strong>？</li>
+<li><strong>HTTP1.0 1.1 2.0 3.0 都有哪些变化</strong></li>
+<li>HTTP 缓存，有哪些字段，缓存存放在本地的位置</li>
+<li>DNS 是啥，怎么查询的</li>
+<li>CDN 是啥，有什么用</li>
+<li>UDP 协议的特点、应用、报文结构，和 TCP 的区别</li>
+<li>TCP 的特点</li>
+<li><strong>TCP 的三次握手四次挥手</strong></li>
+<li>TCP 的报文段结构</li>
+<li>TCP 的可靠数据传输实现</li>
+<li>TCP 的流量控制实现</li>
+<li>TCP 的拥塞控制</li>
+<li>IP 协议中的子网掩码和前缀是什么</li>
+<li>特殊的 IP 地址</li>
+<li>链路层有什么作用</li>
+<li><strong>从浏览器输入 url 到显示页面的过程</strong></li>
+<li>CSP 是什么，怎么开启</li>
+<li><strong>XSS 攻击和防范</strong></li>
+<li>CSRF 攻击和防范</li>
+</ol>
+<h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><ol>
+<li>浏览器中的主要进程和线程有哪些</li>
+<li><strong>浏览器渲染页面的过程</strong></li>
+<li>怎么优化浏览器加载过程、渲染过程</li>
+<li><strong>重绘重排，触发原因，优化</strong></li>
+<li>解释和编译型语言</li>
+<li>v8 怎么执行一段 js 代码的</li>
+</ol>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>概述，功能，为什么需要 webpack<br>核心概念</p>
+<ul>
+<li>chunk<ul>
+<li>三种chunk</li>
+<li>hash</li>
+</ul>
+</li>
+<li>module</li>
+<li>bundle</li>
+<li>dependence</li>
+<li>plugin</li>
+<li>loader</li>
+</ul>
+<p>配置：</p>
+<ul>
+<li>配置文件<ul>
+<li>导出的值的不同：<ul>
+<li>对象</li>
+<li>函数</li>
+<li>数组</li>
+</ul>
+</li>
+<li>多个配置文件<ul>
+<li>webpack.common.js/webpack.development.js/webpack.production.js</li>
+<li>merge函数合并配置</li>
+<li>webpack –config选定配置文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本配置项及其配置方式，比如 entry 的多种配置方式及其效果<ul>
+<li>entry<ul>
+<li>四种形式<ul>
+<li>对象<ul>
+<li>配置项：import、dependOn、runtime、filename</li>
+</ul>
+</li>
+<li>数组</li>
+<li>函数：make阶段调用</li>
+<li>字符串</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>output<ul>
+<li>输出hash和缓存</li>
+</ul>
+</li>
+<li>module<ul>
+<li>rules配置loader</li>
+</ul>
+</li>
+<li>resolve</li>
+<li>plugins</li>
+<li>devServer</li>
+<li>其他：optimitize、target、cache</li>
+</ul>
+</li>
+</ul>
+<p>优化：</p>
+<ul>
+<li>开发环境<ul>
+<li>构建速度<ul>
+<li>减小解析范围<ul>
+<li>loader</li>
+<li>resolve</li>
+<li>极端：noParse/externals</li>
+</ul>
+</li>
+<li>多进程<ul>
+<li>thread-loader</li>
+<li>压缩过程的并行</li>
+</ul>
+</li>
+<li>关闭某些生产环境的优化<ul>
+<li>splitChunk</li>
+<li>minisize</li>
+<li>useExports</li>
+</ul>
+</li>
+<li>cache</li>
+<li>devtools</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>生产环境<ul>
+<li>构建产物<ul>
+<li>压缩代码<ul>
+<li>terserwebpackplugin-压缩js</li>
+<li>MiniCssExtractPlugin-分离并压缩css</li>
+</ul>
+</li>
+<li>tree-shaking<ul>
+<li>效果和目的</li>
+<li>开启方式</li>
+<li>基本原理</li>
+<li>注意事项<ul>
+<li>减少导入赋值</li>
+<li>使用es6的库</li>
+<li>禁止babel编译import</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>代码分割<ul>
+<li>三种方式<ul>
+<li>多入口手动分离</li>
+<li>动态导入</li>
+<li>splitChunk<ul>
+<li><code>&#39;all&#39;</code>配置在所有chunk之间共享模块</li>
+<li>maxSize和minSize</li>
+<li>cacheGroup</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其他<ul>
+<li>http缓存<ul>
+<li>contenthash</li>
+<li>利用splitChunk对不经常变动的模块分包<ul>
+<li>runtime</li>
+<li>第三方库单独打包</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>原理：</p>
+<ul>
+<li>一些核心概念，比如 module、chunk、compiler、compilation、hook、dependencies、chunkGraph、moduleGraph</li>
+<li>基本工作流程，三步的具体工作内容<ul>
+<li>初始化<ul>
+<li>收集参数</li>
+<li>创建compiler对象</li>
+<li>启动编译流程</li>
+</ul>
+</li>
+<li>构建<ul>
+<li>从入口进入</li>
+<li>调用loader翻译模块，生成模块ast</li>
+<li>解析导入导出，递归生成module</li>
+</ul>
+</li>
+<li>生成<ul>
+<li>创建chunkgraph</li>
+<li>从入口开始递归生成各个chunk</li>
+<li>生成代码，输出文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>hook 机制，hook 是什么，怎么用 hook，webpack 是怎么用 hook 的，有什么用，我们能用到什么</li>
+<li>loader：原理，以及自己编写的 loader 的原理，使用了哪些 api 和上下文</li>
+<li>plugin：原理，自己编写 plugin 的原理，使用了哪些 hook 和 api</li>
+<li>hmr<ul>
+<li>概念，用处</li>
+<li>使用：hot，module.hot.accept</li>
+<li>fast refresh 两者区别<ul>
+<li>使用上的区别</li>
+<li>原理上的区别</li>
+</ul>
+</li>
+<li>原理<ul>
+<li>注入runtime</li>
+<li>建立 浏览器-devserver ws连接</li>
+<li>文件变化 -&gt; hash事件 -&gt; 浏览器请求manifest</li>
+<li>devserver返回manifest -&gt; 浏览器请求对应的更新文件 -&gt; express返回该文件</li>
+<li>执行module.hot.accept更新</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>使用经验：</p>
+<ul>
+<li>如何配置 react 脚手架</li>
+<li>webpack.config.ts</li>
+<li>babel 配置，解析 ts 和 react</li>
+<li>引入 hmr 和 fastrefresh</li>
+<li>配置 css module</li>
+</ul>
+<h1 id="工程化"><a href="#工程化" class="headerlink" title="工程化"></a>工程化</h1><ul>
+<li>package.json 和 package-lock.json 是什么，有哪些属性<ul>
+<li>锁定版本号</li>
+<li>确定依赖树</li>
+</ul>
+</li>
+<li>semver版本的机制</li>
+<li>node 查找模块的方式、顺序</li>
+<li><strong>npm install 发生了什么</strong> </li>
+<li>npm run 发生了什么，为什么能直接执行<ul>
+<li>软链接</li>
+<li>npx</li>
+</ul>
+</li>
+<li><strong>Babel 是什么</strong>，核心配置，和 webpack 结合</li>
+<li>ESLint 怎么配置</li>
+</ul>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><ul>
+<li>优化方式<ul>
+<li><strong>网络优化</strong><ul>
+<li>网络请求优化<ul>
+<li>http优化<ul>
+<li>1.1版本优化<ul>
+<li>减少资源数量</li>
+<li>减少请求数量</li>
+<li>充分利用缓存</li>
+<li>减小请求大小</li>
+</ul>
+</li>
+<li>2.0版本优化<ul>
+<li>减小请求大小</li>
+<li>增大请求数量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用http2.0/3.0</li>
+<li>dns预解析</li>
+<li>预连接</li>
+<li>cdn</li>
+<li>http报文体压缩</li>
+<li>js请求的防抖节流</li>
+</ul>
+</li>
+<li>http缓存优化<ul>
+<li>webpack配置缓存的方式</li>
+<li>服务端配置合理的缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>静态资源优化</strong><ul>
+<li>预加载<ul>
+<li>手动添加preload、prefetch库</li>
+<li>webpack动态导入</li>
+<li>js预加载</li>
+<li>react-loadable/React.lazy</li>
+</ul>
+</li>
+<li>懒加载<ul>
+<li>判断进入可视区域</li>
+<li>列表懒加载</li>
+</ul>
+</li>
+<li>图片<ul>
+<li>小图合并</li>
+<li>图片压缩</li>
+<li>采用webp格式</li>
+<li>媒体查询、响应式图片采用低分辨率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>运行时优化（代码优化）</strong><ul>
+<li>js<ul>
+<li>减少dom操作、集中dom操作</li>
+<li>script标签位置</li>
+<li>代码质量优化</li>
+</ul>
+</li>
+<li>css<ul>
+<li>不使用@import</li>
+<li>css代码性能<ul>
+<li>减少缩写</li>
+<li>少用浮动、绝对定位</li>
+<li>减少重绘重排</li>
+</ul>
+</li>
+<li>css选择器性能<ul>
+<li>少用低性能选择器</li>
+<li>少用通配符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>减少重绘重排<ul>
+<li>不用table布局，用弹性布局</li>
+<li>改变class而不是style</li>
+<li>css动画</li>
+<li>gpu加速</li>
+<li>减少影响文档流</li>
+<li>操作dom集中</li>
+</ul>
+</li>
+<li>webpack优化</li>
+<li>react优化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>性能指标<ul>
+<li>RAIL性能模型</li>
+<li>web用户指标<ul>
+<li>FP</li>
+<li>FCP</li>
+<li>FMP</li>
+<li><strong>LCP</strong></li>
+<li>TTI</li>
+<li><strong>FID</strong></li>
+<li><strong>CLS</strong></li>
+</ul>
+</li>
+<li>检测方式<ul>
+<li>PerformanceEntry</li>
+<li>web-vitals库</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>性能检测工具<ul>
+<li>lighthouse</li>
+<li>chrome devtools</li>
+</ul>
+</li>
+</ul>
+<h1 id="React（原理）"><a href="#React（原理）" class="headerlink" title="React（原理）"></a>React（原理）</h1><ul>
+<li>jsx<ul>
+<li>jsx 文件为什么要引入 react，为什么现在不需要</li>
+<li>React element 怎么产生，有哪些种</li>
+<li>jsx、fiber、ReactElement、真实 dom 有什么关系</li>
+</ul>
+</li>
+<li>组件<ul>
+<li>类组件和函数组件有什么区别</li>
+<li>类组件生命周期：都有哪些，什么作用，什么时候执行，为什么有几个不能用</li>
+</ul>
+</li>
+<li>事件系统<ul>
+<li>React 事件系统为什么是独立的</li>
+<li>React 事件合成是什么，事件插件是什么，有什么作用</li>
+<li>React 事件回调是怎么绑定到真实 dom 上的</li>
+<li>从触发 dom 事件到执行回调流程</li>
+</ul>
+</li>
+<li>fiber<ul>
+<li>为什么引入 Reactfiber，fiber 是什么？</li>
+<li>fiber 的结构，保存哪些数据？</li>
+<li>fiber 原理，怎么构建，怎么更新</li>
+</ul>
+</li>
+<li>调度<ul>
+<li>React 怎么解决卡顿问题（时间分片、异步调度）</li>
+<li>调度流程？怎么开启一轮调度？</li>
+<li>ensureRootIsScheduled 函数内部的实现，怎么实现的批量更新</li>
+<li>scheduler 的原理，taskQueue 和 timerQueue，怎么实现任务执行中断并放到下个时间片？</li>
+</ul>
+</li>
+<li>调和<ul>
+<li>调和是什么？调和的全过程（哪几步，每步什么作用，怎么执行，结果如何）？</li>
+<li>render 阶段做了什么？beginWork 阶段做了什么</li>
+<li>组件更新任务的调度为什么统一发生在 RootFiber 上，怎么确定具体在哪个组件更新呢？</li>
+<li>Reconciler 是什么，实现？</li>
+<li>React diff 算法，单节点、多节点流程</li>
+<li>completeWork 阶段做了什么</li>
+<li>commit 阶段做了什么，其中的三步每一步又做了什么</li>
+</ul>
+</li>
+<li>state 机制<ul>
+<li>React 批量更新是什么，React18 为什么不一样</li>
+<li>为什么 setState 是异步的</li>
+<li>对函数组件：当调用 setState 时发生了什么，为什么可以导致更新</li>
+<li>useState 怎么消费 update</li>
+<li>update 是什么？updateQueue 是什么？</li>
+<li>更新优先级是什么，怎么实现不同更新优先级，低优先级更新会怎么处理？如果优先级不同，怎么保证最终数据一致</li>
+</ul>
+</li>
+<li>hook<ul>
+<li>hooks 为什么不能在条件语句中调用</li>
+<li>hook 和 fiber 的关系？hook 在哪里保存数据，hook 的基本结构？</li>
+<li>hook 怎么初始化，怎么处理更新，做了哪些事</li>
+<li>useState 原理，内部逻辑？useState 是怎么消费一个 update，而这个 update 是怎么从 dispach 中产生的？useState 怎么处理更新优先级问题，低优先级的更新被怎么处理</li>
+<li>useEffect 简单原理，以及 useMemo、useRef 等其他类似 hook</li>
+</ul>
+</li>
+<li>Concurrent<ul>
+<li>React Concurrent 是什么，有哪些改变，在哪里体现？</li>
+<li>为什么要采取 createRoot 而不是直接 render？createRoot 做了什么，流程是什么？</li>
+</ul>
+</li>
+</ul>
+<h1 id="React（使用）"><a href="#React（使用）" class="headerlink" title="React（使用）"></a>React（使用）</h1><ul>
+<li>React 优化<ul>
+<li>核心思想：降低渲染成本，或者尽量避免渲染</li>
+</ul>
+</li>
+<li>React 高阶组件是什么，怎么用<ul>
+<li>功能<ul>
+<li>强化props</li>
+<li>渲染拦截</li>
+<li>外层包装</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>React18 带来了哪些更新？</li>
+<li>React 错误边界</li>
+<li>React-Router 简单原理，基本实现原理，两种路由方式的区别，以及基本使用</li>
+<li>React 状态管理库：<ul>
+<li>flux 理念<ul>
+<li>action -&gt; dispatcher -&gt; store -&gt; view -&gt; action -&gt; dispatcher</li>
+</ul>
+</li>
+<li>Redux：基本理念、基本组成部分及其实现、常用的几个 api 和实现，怎么和 react 结合的，具体使用<ul>
+<li>基本理念<ul>
+<li>单向数据流</li>
+<li>数据不可变（state）</li>
+</ul>
+</li>
+<li>基本结构<ul>
+<li>store</li>
+<li>state</li>
+<li>reducer</li>
+<li>dispatch</li>
+<li>action</li>
+<li>subscriber</li>
+</ul>
+</li>
+<li>middleware机制</li>
+<li>react-redux<ul>
+<li>react和redux连接的方式<ul>
+<li>provider添加订阅，状态改变触发listeners</li>
+<li>useSelector获取最新state</li>
+<li>useSyncExternalStore</li>
+<li>connect</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>现代使用<ul>
+<li>createSlice</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Recoil：几个特点、atom 和 selector 两个核心概念、和 redux 的不同<ul>
+<li>基本特点<ul>
+<li>状态原子化</li>
+<li>有向图 数据流</li>
+<li>对Concurrentmode的支持</li>
+</ul>
+</li>
+<li>和redux的差别<ul>
+<li>状态更细分</li>
+<li>状态连接更随意</li>
+<li>轻量</li>
+<li>对Concurrent支持好</li>
+<li>使用层面：更简单，对ts支持更好<h1 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h1></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>进程的特点</li>
+<li>线程</li>
+<li>死锁</li>
+<li>僵尸进程和孤儿进程</li>
+</ol>
+<h1 id="TS"><a href="#TS" class="headerlink" title="TS"></a>TS</h1><ol>
+<li>type 和 interface 的区别</li>
+</ol>
+<ul>
+<li>写法区别</li>
+<li>性质区别，type本质是类型别名</li>
+<li>规范问题</li>
+<li>接口的extends、implement，接口和类的关系；type的<code>|</code>和<code>&amp;</code></li>
+<li>多次声明interface会合并</li>
+</ul>
+<ol start="2">
+<li>声明文件，作用，写法，实际使用</li>
+<li>基本数据类型（ts 类型）<ul>
+<li>基本类型（number、string 等）</li>
+<li>数组、对象类型</li>
+<li>接口的定义和使用、接口的继承、索引签名、接口和类</li>
+<li>函数类型声明、函数重载、this</li>
+<li>泛型</li>
+<li>高级类型：交叉、联合、索引</li>
+</ul>
+</li>
+<li>tsconfig.json：配置编译选项，存在的目录就是 TS 识别的根目录，指定了根目录下的 ts 文件编译选项</li>
+</ol>
+<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><ol>
+<li>git 的组成<ul>
+<li>分区</li>
+<li>HEAD 指针</li>
+<li>分支</li>
+</ul>
+</li>
+<li>管理修改<ul>
+<li>修改的跟踪和恢复</li>
+</ul>
+</li>
+<li>回退操作</li>
+<li>分支操作<ul>
+<li>创建分支</li>
+<li>合并分支和解决冲突</li>
+</ul>
+</li>
+<li>远程仓库<ul>
+<li>push 和 pull 操作</li>
+<li>PR</li>
+</ul>
+</li>
+</ol>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ol>
+<li>设计模式的三个基本类型、常见的设计模式</li>
+<li>各个设计模式的原理和实现：<ul>
+<li>工厂模式</li>
+<li>单例模式</li>
+<li>装饰器</li>
+<li>原型</li>
+<li>适配器</li>
+<li>代理</li>
+<li>策略</li>
+<li>观察者和发布订阅</li>
+<li>两者区别</li>
+</ul>
+</li>
+</ol>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/codes1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/08/stereotype-methodical-answer/"><img class="prev-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/07/08/readme/"><img class="next-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/pinkstar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Ye</div><div class="author-info__description">a singleThreaded boy's blog</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penghei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penghei" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:632885485@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">A SingleThreaded Boy...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS"><span class="toc-number">2.</span> <span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS"><span class="toc-number">3.</span> <span class="toc-text">JS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C"><span class="toc-number">4.</span> <span class="toc-text">网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">5.</span> <span class="toc-text">浏览器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack"><span class="toc-number">6.</span> <span class="toc-text">webpack</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">工程化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%EF%BC%88%E5%8E%9F%E7%90%86%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">React（原理）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React%EF%BC%88%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">React（使用）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OS"><span class="toc-number">11.</span> <span class="toc-text">OS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TS"><span class="toc-number">12.</span> <span class="toc-text">TS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git"><span class="toc-number">13.</span> <span class="toc-text">git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">设计模式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/stereotype-methodical-answer/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/stereotype-methodical-answer/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.468Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/stereotype/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/stereotype/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.445Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/readme/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/readme/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.412Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/react-priority/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/react-priority/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.357Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/RACF-optimization/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/RACF-optimization/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.304Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Xing Ye</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello stranger!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
