@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React Native 学习 | XingYeBlog</title><meta name="keywords" content="日常学习"><meta name="author" content="Xing Ye,632885485@qq.com"><meta name="copyright" content="Xing Ye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本使用rn和react有一点不太相同的是，rn更像是一个完善的框架，其内部包含了大量的内置组件，这些组件通常含有很多props，因此学习rn的一个关键点就是搞清这些组件的使用方式，以及他们的内部实现、区别等。 组件核心组件核心组件列表：https:&#x2F;&#x2F;reactnative.cn&#x2F;docs&#x2F;components-and-apis rn中的基础组件主要指View、Text、TextInput这些没">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React Native 学习 | XingYeBlog</title><meta name="keywords" content="日常学习"><meta name="author" content="Xing Ye,632885485@qq.com"><meta name="copyright" content="Xing Ye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本使用rn 和 react 有一点不太相同的是，rn 更像是一个完善的框架，其内部包含了大量的内置组件，这些组件通常含有很多 props，因此学习 rn 的一个关键点就是搞清这些组件的使用方式，以及他们的内部实现、区别等。 交互导航rn 使用的导航是 react-navigation 开源库，本质上是一个类似 react router 的路由功能，通过堆栈记录的方式来完成页面的跳转、数据的传递等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Native 学习">
 <meta property="og:url" content="http://example.com/2023/05/17/react-native/index.html">
 <meta property="og:site_name" content="XingYeBlog">
-<meta property="og:description" content="基本使用rn和react有一点不太相同的是，rn更像是一个完善的框架，其内部包含了大量的内置组件，这些组件通常含有很多props，因此学习rn的一个关键点就是搞清这些组件的使用方式，以及他们的内部实现、区别等。 组件核心组件核心组件列表：https:&#x2F;&#x2F;reactnative.cn&#x2F;docs&#x2F;components-and-apis rn中的基础组件主要指View、Text、TextInput这些没">
+<meta property="og:description" content="基本使用rn 和 react 有一点不太相同的是，rn 更像是一个完善的框架，其内部包含了大量的内置组件，这些组件通常含有很多 props，因此学习 rn 的一个关键点就是搞清这些组件的使用方式，以及他们的内部实现、区别等。 交互导航rn 使用的导航是 react-navigation 开源库，本质上是一个类似 react router 的路由功能，通过堆栈记录的方式来完成页面的跳转、数据的传递等">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/codes1.jpg">
 <meta property="article:published_time" content="2023-05-17T06:58:28.000Z">
-<meta property="article:modified_time" content="2023-06-20T17:11:43.981Z">
+<meta property="article:modified_time" content="2023-07-14T22:44:35.165Z">
 <meta property="article:author" content="Xing Ye">
 <meta property="article:tag" content="日常学习">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-06-21 01:11:43'
+  postUpdate: '2023-07-15 06:44:35'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -147,48 +147,131 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/pinkstar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/codes1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XingYeBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">React Native 学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-17T06:58:28.000Z" title="发表于 2023-05-17 14:58:28">2023-05-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-20T17:11:43.981Z" title="更新于 2023-06-21 01:11:43">2023-06-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/React/">React</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="React Native 学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>rn和react有一点不太相同的是，rn更像是一个完善的框架，其内部包含了大量的内置组件，这些组件通常含有很多props，因此学习rn的一个关键点就是搞清这些组件的使用方式，以及他们的内部实现、区别等。</p>
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/pinkstar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/codes1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XingYeBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">React Native 学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-17T06:58:28.000Z" title="发表于 2023-05-17 14:58:28">2023-05-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-14T22:44:35.165Z" title="更新于 2023-07-15 06:44:35">2023-07-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/React/">React</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">16.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>54分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="React Native 学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>rn 和 react 有一点不太相同的是，rn 更像是一个完善的框架，其内部包含了大量的内置组件，这些组件通常含有很多 props，因此学习 rn 的一个关键点就是搞清这些组件的使用方式，以及他们的内部实现、区别等。</p>
+<h2 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h2><h3 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h3><p>rn 使用的导航是 react-navigation 开源库，本质上是一个类似 react router 的路由功能，通过堆栈记录的方式来完成页面的跳转、数据的传递等。<br>rnav 实现的导航和 react router 类似，实际上是应用内部的页面切换，比如很多应用的底部 tab 切换等。如果要在不同的 rn 打包出的页面间跳转，就不能使用 rnav 了。</p>
+<blockquote>
+<p>A key difference between how this works in a web browser and in React Navigation is that React Navigation’s native stack navigator provides the gestures and animations that you would expect on Android and iOS when navigating between routes in the stack.</p>
+</blockquote>
+<p>正如官方文档所说，rnav 就是在模拟 web 端的路由实现，在基础上还增加了适用于不同平台的跳转动画、手势识别等。<br>在使用方面，rnav 和 react router 也很相似，通过 Stack.Navigator 包裹 Stack.Screen，即可实现不同页面的切换。</p>
+<p>在 rnav 中有一个特点，即用户离开上一个页面时，该页面对应的页面组件不会被卸载；当用户返回该页面时，也不会再次触发渲染。这点和在 web 端是不同的。</p>
+<blockquote>
+<p>具有屏幕 A 和 B 的堆栈导航器。导航到 A 后，调用其 componentDidMount。当压入 B 时，它的 componentDidMount 也会被调用，但 A 仍然挂载在堆栈上，因此不会调用它的 componentWillUnmount 。</p>
+</blockquote>
+<p>可以通过 rnav 提供的 hooks 或事件监听来得到用户当前是否进入或离开页面。</p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><p>rn 的动画有两个类别：</p>
+<ul>
+<li>Animated: 声明式动画。即，rn 通过预先声明一个动画的值、时间等，将其传递给特定组件的 style 属性。然后在恰当的时机内通过调用 start、stop 等方法来开始、结束动画。</li>
+</ul>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useRef, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Animated, Text, View &#125; <span class="keyword">from</span> <span class="string">&quot;react-native&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> FadeInView = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> fadeAnim = useRef(<span class="keyword">new</span> Animated.Value(<span class="number">0</span>)).current; <span class="comment">// 透明度初始值设为0</span></span><br><span class="line"></span><br><span class="line">  React.useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    Animated.timing(</span><br><span class="line">      <span class="comment">// 随时间变化而执行动画</span></span><br><span class="line">      fadeAnim, <span class="comment">// 动画中的变量值</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">toValue</span>: <span class="number">1</span>, <span class="comment">// 透明度最终变为1，即完全不透明</span></span><br><span class="line">        <span class="attr">duration</span>: <span class="number">10000</span>, <span class="comment">// 让动画持续一段时间</span></span><br><span class="line">      &#125;</span><br><span class="line">    ).start(); <span class="comment">// 开始执行动画</span></span><br><span class="line">  &#125;, [fadeAnim]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Animated.View</span> // 使用专门的可动画化的<span class="attr">View</span>组件</span></span></span><br><span class="line"><span class="tag"><span class="xml">      <span class="attr">style</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">...props.style</span>,</span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">opacity:</span> <span class="attr">fadeAnim</span>, // 将透明度绑定到动画变量值</span></span></span><br><span class="line"><span class="tag"><span class="xml">      &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="xml">    &gt;</span></span></span><br><span class="line"><span class="xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">Animated.View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Animated.View 就是专门执行动画的组件，类似的还有 Animated.Text、Image 等等。<br>Animated 动画通常有着比修改 state 实现的动画更好的性能。一般来说动画的实现可能是通过 rAF 等 js 代码，不断通过 bridge 将动画数据发送给原生端进行渲染，并不会直接修改动画组件的 state。</p>
+<p>如果在 timing 函数传入的参数中加一个属性，就可以启用原生动画驱动。通过下发给原生的形式，让动画在 native 上执行，从而大大提升动画的性能，避免和 js 线程的冲突。</p>
+<blockquote>
+<p>启用原生驱动，我们在启动动画前就把其所有配置信息都发送到原生端，利用原生代码在 UI 线程执行动画，而不用每一帧都在两端间来回沟通。如此一来，动画一开始就完全脱离了 JS 线程，因此此时即便 JS 线程被卡住，也不会影响到动画了。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Animated.timing(<span class="built_in">this</span>.state.animatedValue, &#123;</span><br><span class="line">  <span class="attr">toValue</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">duration</span>: <span class="number">500</span>,</span><br><span class="line">  <span class="attr">useNativeDriver</span>: <span class="literal">true</span>, <span class="comment">// &lt;-- 加上这一行</span></span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+<p>但是有一个缺陷是，这样的动画通常不能应用于布局改变，比如改变元素宽高、定位等，而只能用于元素的透明度、颜色等修改。</p>
+<ul>
+<li>LayoutAnimation：可以用于一些布局动画的实现，并且用法更简单。</li>
+</ul>
+<p>比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// part 1: 使用普通的state来定义变量</span></span><br><span class="line">state = &#123;</span><br><span class="line">  <span class="attr">bottom</span>: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// part 2:</span></span><br><span class="line"><span class="comment">// 此处假设我们在某个View的style中，使用了this.state.bottom这个变量作为bottom的值</span></span><br><span class="line">LayoutAnimation.spring();</span><br><span class="line"><span class="built_in">this</span>.setState(&#123; <span class="attr">bottom</span>: <span class="number">20</span> &#125;); <span class="comment">// 只要改变state，就可以生效动画</span></span><br></pre></td></tr></table></figure>
+
+<p>spring 方法是 LayoutAnimation 的一个预设，其他预设还有 linear、easeout 等，和通常的动画速度曲线一致。<br>当然也可自定义动画，可以参考<a target="_blank" rel="noopener" href="https://reactnative.dev/docs/animations#layoutanimation-api">官方文档</a></p>
+<h2 id="原生模块"><a href="#原生模块" class="headerlink" title="原生模块"></a>原生模块</h2><p>React Native 的原生模块是指使用原生代码编写的 JavaScript 模块，可以在 React Native 应用程序中使用。这些模块可以访问设备硬件和 API，例如相机、传感器、文件系统等，以及执行与 React Native 框架本身无法直接处理的任务。<br>原生代码可以直接调用原生功能，然后通过一些打包的方式让 js 能够调用(或者是通过发布 npm 包)，还可以使用 React Native 框架提供的 Bridge API 与 JavaScript 代码进行通信<br>rn 中的原生模块主要是帮助一些需要原生 api 的功能实现，比如打开日历等。</p>
+<h2 id="原生方法"><a href="#原生方法" class="headerlink" title="原生方法"></a>原生方法</h2><p>在 rn 中有时候需要直接修改某个原生模块的状态或样式，而不是通过 react 的 state。类似于在 web 端的 react 中，通过 dom 的方式直接修改元素。<br>rn 提供了一个 setNativeProps 方法，可以用于直接操作原生组件的状态。</p>
+<p>setNativeProps 常用于出现性能问题的时候，比如频繁的动画、更新等。<br>比如，TouchableOpacity 这个组件就在内部使用了 setNativeProps 方法来更新其子组件的透明度：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">setOpacityTo</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">  <span class="comment">// Redacted: animation related code</span></span><br><span class="line">  <span class="built_in">this</span>.refs[CHILD_REF].setNativeProps(&#123;</span><br><span class="line">    <span class="attr">opacity</span>: value</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这个过程相当于跳过了 react，直接去更新原生组件的状态。</p>
+<p>其他类似的原生方法还有</p>
+<ul>
+<li>measure：测量元素宽高，异步返回</li>
+<li>measureInWindow：测量元素位置，异步返回</li>
+<li>focus 和 blur：聚焦 input 或 view</li>
+</ul>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="性能综述"><a href="#性能综述" class="headerlink" title="性能综述"></a>性能综述</h3><p>rn 的性能主要关注点有以下几个：</p>
+<ol>
+<li>帧率。帧率又分为 ui 帧率和 js 帧率</li>
+</ol>
+<ul>
+<li>js 帧率：即 react 的执行在 js 线程上有没有每一帧都被响应。如果线程中的任务发生冲突，就有可能造成不能及时响应的情况，相当于是 js 的丢帧。最常见的情况就是 react 的渲染开销非常大，导致线程在很长一段时间内都在执行 react 的渲染，而不会响应事件回调和动画的执行，表现上就是卡顿。</li>
+<li>ui 帧率：即视觉上的，页面有没有发生卡顿，比如动画是否能稳定帧数、滚动等操作有没有卡顿等。不同于浏览器，在 native 端的渲染并不会被 js 阻塞，因此由 native 控制的动画、响应等（比如 scroll）不会被 js 线程所影响。</li>
+</ul>
+<ol start="2">
+<li>编译性能。通常指的是 rn 项目 build 时的时间开销和产物。前者通常不用过于关注，而后者则可以通过合理的优化方式来减少包体积。</li>
+<li>列表性能。这是一个专项的性能，通常指的是列表的渲染速度、加载、更新时的性能，在组件那一部分有优化的详述</li>
+<li>React 渲染性能。本质上，在 web 端也要关注 React 渲染，这和 rn 本身无关，而是 react 的性能要求。具体来说就是尽可能减少额外渲染，比如通过 memo 等优化方式。</li>
+</ol>
+<blockquote>
+<p>官方文档额外提到了 immutable，即不可变数据结构。immutable 是指一类不可变的对象等，对其修改会返回一个新的对象，同时不会造成过大的深拷贝性能开销。具体可以参考<a target="_blank" rel="noopener" href="https://blog.logrocket.com/immutability-react-should-you-mutate-objects/%E5%92%8Chttps://github.com/camsong/blog/issues/3">https://blog.logrocket.com/immutability-react-should-you-mutate-objects/和https://github.com/camsong/blog/issues/3</a></p>
+</blockquote>
+<h3 id="RAM-Bundles-和内联引用优化"><a href="#RAM-Bundles-和内联引用优化" class="headerlink" title="RAM Bundles 和内联引用优化"></a>RAM Bundles 和内联引用优化</h3><p>类似于在 web 端进行的分包优化，在 rn 中也有一些手段可以对模块进行分包、动态加载等方式。具体来说有两种</p>
+<ul>
+<li>使用 RAM 格式的包</li>
+<li>通过 require 方式进行内联引用优化。其实就是一种代码分割</li>
+</ul>
+<p>RAM 的全称为 Random Access Modules，它是⼀种 bundle 的格式。RAM bundle 的作⽤是：让打包后的产物以 JS 模块（⼀个 JS ⽂件会被打包成⼀个JS 模块）粒度获取，可有实现按需进⾏加载。<br>如下图所示，加载 bundle 的时候会⾸先加载⼀段初始代码，代码⾥⾯会执⾏⼊⼝模块，但是这个时候⼊⼝模块 A 还没有被加载到 JS 引擎中，所以会去加载 A 模块并执⾏，执⾏ A 模块时⼜会执⾏ A 模块的依赖模块，直到所有依赖模块被执⾏，⾸屏展示。</p>
+<p><img src="https://pic.imgdb.cn/item/64b04c571ddac507cc240b51.jpg"></p>
+<p>RAM bundle 需要配合内联引⽤⼀起使⽤才会有优化效果，否则的话，模块虽然是被⼀个个加载进去的，但是在⼊⼝模块加载后，会直接将当前 bundle 所⽤到的所有模块都⼀个个的加载进去，反⽽拖慢了⻚⾯加载时间。配合内联引⽤可以将⾮⾸屏模块，延迟到需要使⽤时才加载，从⽽实现⾸屏优化。</p>
+<p>RN官⽅打包⼯具 metro 对于 RAM bundle 提供了两种实现，分别是：File RAM bundle 和 Indexed RAM Bundle。</p>
+<ul>
+<li>File RAM Bundle：每个模块都存储为⼀个⽂件，名称为 js-modules/${id} .js，外加⼀个名为 UNBUNDLE 的⽂件。这种打包⽅式存在⼩⽂件过多，⽂件损坏⼏率变⼤的问题</li>
+</ul>
+<p><img src="https://pic.imgdb.cn/item/64b04dae1ddac507cc25b78b.jpg"></p>
+<ul>
+<li>Indexed RAM Bundle：这种打包⽅式，打包出来的包格式为⼆进制⽂件，但仍然以每个文件为单位。内部维护了一个偏移表，偏移表⾥⾯存储了每个 module 的代码开始位置和代码⻓度。通过偏移表可以确定每个module的位置</li>
+</ul>
+<hr>
+<p>按需引用不等同于<code>import()</code>方式的懒加载。具体来说，有以下区别：</p>
+<ol>
+<li>包内懒加载的 import() 的返回值是⼀个 Promise ，导致代码逻辑会编程异步，处理起来不优雅。⽽ require 是⼀个同步⽅法不存在这种问题</li>
+<li>由于 import(xxx) 会⽣成很多⼩⽂件，会使⽂件损坏出现的概率变⾼，造成业务不可⽤，⽽ indexed RAM bundle 是将若⼲⼩⽂件组合成⼀个⼆进制⽂件，避免了这个问题</li>
+<li>再包内懒加载中，假如我们懒加载的 A 模块 和 B模块都同时依赖了 C 模块，那么 C 是打进⼊⼝⽂件 (index.js)，还是 A 和 B 分开打呢？如果打进⼊⼝⽂件，common js 会越来越多，同样会影响⾸屏性能。如果分别打包到 A 和 B 模块中，会造成 Bundle 体积增加以及 C 被重复加载的问题，⽽内联引⽤ + indexed RAM bundle 的最⼩加载粒度是⽂件，所以不存在这种问题。</li>
+</ol>
 <h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><p>核心组件列表：<a target="_blank" rel="noopener" href="https://reactnative.cn/docs/components-and-apis">https://reactnative.cn/docs/components-and-apis</a></p>
-<p>rn中的基础组件主要指View、Text、TextInput这些没有经过过多封装的组件，使用方式比较基础。<br>除了基础组件之外，还有诸如Button这样的交互组件、FlatList这样的列表组件，以及Modal这样的功能组件。这些组件统称核心组件，指的是rn默认提供的一些组件。</p>
+<p>rn 中的基础组件主要指 View、Text、TextInput 这些没有经过过多封装的组件，使用方式比较基础。<br>除了基础组件之外，还有诸如 Button 这样的交互组件、FlatList 这样的列表组件，以及 Modal 这样的功能组件。这些组件统称核心组件，指的是 rn 默认提供的一些组件。</p>
 <h3 id="列表组件"><a href="#列表组件" class="headerlink" title="列表组件"></a>列表组件</h3><p>React Native 有好几个列表组件，先简单介绍一下：</p>
 <ul>
-<li>ScrollView：会把视图里的所有 View 渲染，直接对接 Native 的滚动列表，也不会复用，就是最基本的渲染。当列表数据非常多时，view会等到所有项都渲染完成再显示</li>
+<li>ScrollView：会把视图里的所有 View 渲染，直接对接 Native 的滚动列表，也不会复用，就是最基本的渲染。当列表数据非常多时，view 会等到所有项都渲染完成再显示</li>
 <li>VirtualizedList：虚拟列表核心文件，使用 ScrollView，长列表优化配置项主要是控制它</li>
 <li>FlatList：使用 VirtualizedList，实现了一行多列的功能，大部分功能都是 VirtualizedList 提供的</li>
 <li>SectionList：使用 VirtualizedList，底层使用 VirtualizedSectionList，把二维数据转为一维数据</li>
 </ul>
-<p>后三者其实都是虚拟列表，师出同源。rn的虚拟列表实现方式和简单原理可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/skychx/p/react-native-flatlist.html%E3%80%82">https://www.cnblogs.com/skychx/p/react-native-flatlist.html。</a><br>这篇文章有对源码的简单解析：<a target="_blank" rel="noopener" href="https://shengshuqiang.github.io/2019/07/17/%E8%BF%9B%E5%87%BBReactNative-FlatList%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">https://shengshuqiang.github.io/2019/07/17/%E8%BF%9B%E5%87%BBReactNative-FlatList%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html</a></p>
-<h4 id="rn中的虚拟列表"><a href="#rn中的虚拟列表" class="headerlink" title="rn中的虚拟列表"></a>rn中的虚拟列表</h4><p>基本结构：都采用下图这种方式：</p>
+<p>后三者其实都是虚拟列表，师出同源。rn 的虚拟列表实现方式和简单原理可以参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/skychx/p/react-native-flatlist.html%E3%80%82">https://www.cnblogs.com/skychx/p/react-native-flatlist.html。</a><br>这篇文章有对源码的简单解析：<a target="_blank" rel="noopener" href="https://shengshuqiang.github.io/2019/07/17/%E8%BF%9B%E5%87%BBReactNative-FlatList%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">https://shengshuqiang.github.io/2019/07/17/%E8%BF%9B%E5%87%BBReactNative-FlatList%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html</a></p>
+<h4 id="rn-中的虚拟列表"><a href="#rn-中的虚拟列表" class="headerlink" title="rn 中的虚拟列表"></a>rn 中的虚拟列表</h4><p>基本结构：都采用下图这种方式：</p>
 <p><img src="https://pic.imgdb.cn/item/649172e11ddac507cc145937.jpg"></p>
-<p>FlatList、VirtualizedList、SectionList的基本实现原理都相同，关键点有以下几个：</p>
+<p>FlatList、VirtualizedList、SectionList 的基本实现原理都相同，关键点有以下几个：</p>
 <ol>
-<li><p>只渲染可视区域。这是最基本的内容，VirtualizedList会通过异步计算的方式确定当前渲染的位置、需要渲染的元素，然后只渲染这部分内容。而之前的列表项则会被选择性的回收复用或销毁以减小内存，并使用上下空白区域去填充空间。并且可视区域的列表项也并不只是在可视区域内的大小，还会超出一些部分。</p>
+<li><p>只渲染可视区域。这是最基本的内容，VirtualizedList 会通过异步计算的方式确定当前渲染的位置、需要渲染的元素，然后只渲染这部分内容。而之前的列表项则会被选择性的回收复用或销毁以减小内存，并使用上下空白区域去填充空间。并且可视区域的列表项也并不只是在可视区域内的大小，还会超出一些部分。</p>
 </li>
-<li><p>复用和回收。虚拟列表的复用过程与React的diff算法类似。在React中，diff算法通过比较元素的key和type来决定是否复用之前的虚拟DOM节点，从而减少对实际DOM的操作，提高性能。同样地，在虚拟列表中，组件会根据列表项的key属性来判断是否复用之前的列表项组件。</p>
+<li><p>复用和回收。虚拟列表的复用过程与 React 的 diff 算法类似。在 React 中，diff 算法通过比较元素的 key 和 type 来决定是否复用之前的虚拟 DOM 节点，从而减少对实际 DOM 的操作，提高性能。同样地，在虚拟列表中，组件会根据列表项的 key 属性来判断是否复用之前的列表项组件。</p>
 </li>
 </ol>
-<p>当用户滚动虚拟列表时，组件会根据可见区域计算出需要渲染的列表项，并根据这些列表项的key属性来判断是否复用之前的列表项组件。如果列表项的key属性稳定且类型相同，组件会将之前渲染过的列表项组件进行复用，只更新列表项的数据，而不重新创建新的组件实例。这样可以避免不必要的渲染和DOM操作，提高性能和内存效率。</p>
-<p>虚拟列表的复用过程是一种优化策略，通过减少组件的创建和销毁操作，可以有效降低CPU消耗，提高列表的滚动流畅度。它与React的diff算法相互补充，共同提供了高效的列表渲染和更新机制。</p>
+<p>当用户滚动虚拟列表时，组件会根据可见区域计算出需要渲染的列表项，并根据这些列表项的 key 属性来判断是否复用之前的列表项组件。如果列表项的 key 属性稳定且类型相同，组件会将之前渲染过的列表项组件进行复用，只更新列表项的数据，而不重新创建新的组件实例。这样可以避免不必要的渲染和 DOM 操作，提高性能和内存效率。</p>
+<p>虚拟列表的复用过程是一种优化策略，通过减少组件的创建和销毁操作，可以有效降低 CPU 消耗，提高列表的滚动流畅度。它与 React 的 diff 算法相互补充，共同提供了高效的列表渲染和更新机制。</p>
 <ol start="3">
-<li>异步计算和渲染。VirtualizedList通过异步方式加载和渲染新的列表项，以避免阻塞主线程和用户操作。异步加载的过程可以分为两个阶段：计算和渲染。</li>
+<li>异步计算和渲染。VirtualizedList 通过异步方式加载和渲染新的列表项，以避免阻塞主线程和用户操作。异步加载的过程可以分为两个阶段：计算和渲染。</li>
 </ol>
-<p>在用户滚动到未渲染的列表项范围时，VirtualizedList会触发异步计算的过程。在这个过程中，组件会根据当前滚动位置和可见区域的变化，计算出需要加载的新列表项的数量和位置。这个计算过程是异步的，它会在后台线程中进行，不会阻塞主线程的运行。<br>在计算完成后，VirtualizedList会触发异步渲染的过程。在这个过程中，组件会根据计算得到的新列表项的数量和位置，异步地加载数据并渲染新的列表项。这个渲染过程也是异步的，它会在后台线程中进行，并在渲染完成后将新的列表项渲染到屏幕上。<br>同时渲染和计算的过程都会在用户操作和动画执行之后，尽可能减少cpu的抢占而造成的阻塞。</p>
+<p>在用户滚动到未渲染的列表项范围时，VirtualizedList 会触发异步计算的过程。在这个过程中，组件会根据当前滚动位置和可见区域的变化，计算出需要加载的新列表项的数量和位置。这个计算过程是异步的，它会在后台线程中进行，不会阻塞主线程的运行。<br>在计算完成后，VirtualizedList 会触发异步渲染的过程。在这个过程中，组件会根据计算得到的新列表项的数量和位置，异步地加载数据并渲染新的列表项。这个渲染过程也是异步的，它会在后台线程中进行，并在渲染完成后将新的列表项渲染到屏幕上。<br>同时渲染和计算的过程都会在用户操作和动画执行之后，尽可能减少 cpu 的抢占而造成的阻塞。</p>
 <ol start="4">
-<li>渲染优先级。在FlatList中，列表项的渲染优先级是根据滚动速度和方向来动态调整的。当用户进行快速滚动时，FlatList会根据当前的滚动情况，优先加载和渲染可见区域附近的列表项，以保持滚动的流畅性。这个优化策略可以减少不必要的渲染和资源消耗，提高性能。</li>
+<li>渲染优先级。在 FlatList 中，列表项的渲染优先级是根据滚动速度和方向来动态调整的。当用户进行快速滚动时，FlatList 会根据当前的滚动情况，优先加载和渲染可见区域附近的列表项，以保持滚动的流畅性。这个优化策略可以减少不必要的渲染和资源消耗，提高性能。</li>
 </ol>
-<p>具体而言，FlatList会根据以下几个因素来决定列表项的渲染优先级：</p>
+<p>具体而言，FlatList 会根据以下几个因素来决定列表项的渲染优先级：</p>
 <ul>
-<li>滚动速度：如果用户进行快速滚动，FlatList会尽量快速地加载和渲染新的列表项，以避免出现白屏。在这种情况下，FlatList可能会优先加载和渲染离可见区域较远的列表项，以跟上滚动的速度。</li>
-<li>滚动方向：当用户滚动到一个新的位置时，FlatList会优先加载和渲染滚动方向上的列表项。例如，如果用户向下滚动，FlatList会优先加载和渲染下方的列表项。</li>
-<li>可见区域：FlatList会根据可见区域的大小和位置来确定哪些列表项是可见的。只有可见区域内的列表项才会被加载和渲染，而不可见区域的列表项会被延迟加载。这样可以减少不必要的渲染和资源消耗。</li>
+<li>滚动速度：如果用户进行快速滚动，FlatList 会尽量快速地加载和渲染新的列表项，以避免出现白屏。在这种情况下，FlatList 可能会优先加载和渲染离可见区域较远的列表项，以跟上滚动的速度。</li>
+<li>滚动方向：当用户滚动到一个新的位置时，FlatList 会优先加载和渲染滚动方向上的列表项。例如，如果用户向下滚动，FlatList 会优先加载和渲染下方的列表项。</li>
+<li>可见区域：FlatList 会根据可见区域的大小和位置来确定哪些列表项是可见的。只有可见区域内的列表项才会被加载和渲染，而不可见区域的列表项会被延迟加载。这样可以减少不必要的渲染和资源消耗。</li>
 </ul>
-<h4 id="列表优化"><a href="#列表优化" class="headerlink" title="列表优化"></a>列表优化</h4><p>对于不同的rn列表组件，优化方式也不尽相同。以常用的FlatList为例，优化的大方向有两个：</p>
+<h4 id="列表优化"><a href="#列表优化" class="headerlink" title="列表优化"></a>列表优化</h4><p>对于不同的 rn 列表组件，优化方式也不尽相同。以常用的 FlatList 为例，优化的大方向有两个：</p>
 <ol>
-<li>通过特殊的props进行优化，比如getItemLayout等</li>
+<li>通过特殊的 props 进行优化，比如 getItemLayout 等</li>
 <li>通过对数据的处理或其他列表本身之外的方式进行优化</li>
 </ol>
 <p>优化方式在官方文档已经讲的很清楚了：<a target="_blank" rel="noopener" href="https://reactnative.cn/docs/optimizing-flatlist-configuration">https://reactnative.cn/docs/optimizing-flatlist-configuration</a></p>
-<h4 id="FlatList"><a href="#FlatList" class="headerlink" title="FlatList"></a>FlatList</h4><p>FlatList除了包含虚拟列表的基本功能之外，还有一些其他组件功能，常用于native开发中，比如：</p>
+<h4 id="FlatList"><a href="#FlatList" class="headerlink" title="FlatList"></a>FlatList</h4><p>FlatList 除了包含虚拟列表的基本功能之外，还有一些其他组件功能，常用于 native 开发中，比如：</p>
 <ul>
 <li>支持水平布局模式。</li>
 <li>行组件显示或隐藏时可配置回调事件。</li>
@@ -201,70 +284,135 @@
 <li>支持多列布局。</li>
 </ul>
 <p>这其中比较关键的是上拉下拉以及跳转，这也是在开发中常用的方法。</p>
-<p>FlatList有几个比较重要的使用要点：</p>
+<p>FlatList 有几个比较重要的使用要点：</p>
 <ol>
-<li>当某行滑出渲染区域之外后，其内部状态将不会保留。也就是说对于每个ListItem组件来说，滑出渲染区域之后组件将会被卸载或重置复用，其上的状态不会保留；</li>
+<li>当某行滑出渲染区域之外后，其内部状态将不会保留。也就是说对于每个 ListItem 组件来说，滑出渲染区域之后组件将会被卸载或重置复用，其上的状态不会保留；</li>
 </ol>
-<p>比如一个功能是修改列表的某一项，如果只是修改了对应的ListItem组件内部的state或props则不能保留，除非修改的是data源数据。</p>
+<p>比如一个功能是修改列表的某一项，如果只是修改了对应的 ListItem 组件内部的 state 或 props 则不能保留，除非修改的是 data 源数据。</p>
 <ol start="2">
-<li>组件继承自PureComponent，如果其props在浅比较中是相等的，则不会重新渲染。所以请先检查你的renderItem函数所依赖的props数据（包括data属性以及可能用到的父组件的 state），如果是一个引用类型（Object 或者数组都是引用类型），则需要先修改其引用地址（比如先复制到一个新的 Object 或者数组中），然后再修改其值，否则界面很可能不会刷新。</li>
+<li>组件继承自 PureComponent，如果其 props 在浅比较中是相等的，则不会重新渲染。所以请先检查你的 renderItem 函数所依赖的 props 数据（包括 data 属性以及可能用到的父组件的 state），如果是一个引用类型（Object 或者数组都是引用类型），则需要先修改其引用地址（比如先复制到一个新的 Object 或者数组中），然后再修改其值，否则界面很可能不会刷新。</li>
 </ol>
-<p>上面这一段是官方文档的内容。其实大概意思就是更新FlatList的data属性时需要修改索引，否则不会更新。也就是说即使你通过setState修改了data，但data如果没有被重新创建，就还是不会更新。</p>
+<p>上面这一段是官方文档的内容。其实大概意思就是更新 FlatList 的 data 属性时需要修改索引，否则不会更新。也就是说即使你通过 setState 修改了 data，但 data 如果没有被重新创建，就还是不会更新。</p>
 <p>举个例子：</p>
-<p>下面这样修改state是不会让FlatList更新的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.push(&#123;<span class="attr">id</span>: <span class="string">&#x27;xxx&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;ttt&#x27;</span> &#125;);</span><br><span class="line">setData(data);</span><br></pre></td></tr></table></figure>
+<p>下面这样修改 state 是不会让 FlatList 更新的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.push(&#123; <span class="attr">id</span>: <span class="string">&quot;xxx&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;ttt&quot;</span> &#125;);</span><br><span class="line">setData(data);</span><br></pre></td></tr></table></figure>
 
 <p>这样是可以的：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.push(&#123;<span class="attr">id</span>: <span class="string">&#x27;xxx&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;ttt&#x27;</span> &#125;);</span><br><span class="line">setData([...data]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data.push(&#123; <span class="attr">id</span>: <span class="string">&quot;xxx&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;ttt&quot;</span> &#125;);</span><br><span class="line">setData([...data]);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>当然这种方式容易造成内存的浪费，如果频繁增加元素，那么每次data都需要重新创建。为了优化这个问题，我们可以采用两个数组交替复制的方式。这是一个小技巧，可以参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/7201425436835151930">https://juejin.cn/post/7201425436835151930</a></p>
+<p>当然这种方式容易造成内存的浪费，如果频繁增加元素，那么每次 data 都需要重新创建。为了优化这个问题，我们可以采用两个数组交替复制的方式。这是一个小技巧，可以参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/7201425436835151930">https://juejin.cn/post/7201425436835151930</a></p>
 </blockquote>
-<p>除了上面这种情况之外，如果列表还依赖于其他state，还可以使用extraData属性来控制FlatList更新。当然extraData也和data一样，也有浅比较的检查。</p>
-<p>我们可以修改extraData，来让FlatList强制更新。比如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = useState([<span class="string">&#x27;Item 1&#x27;</span>, <span class="string">&#x27;Item 2&#x27;</span>, <span class="string">&#x27;Item 3&#x27;</span>]);</span><br><span class="line">  <span class="keyword">const</span> [extraData, setExtraData] = useState(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> updateData = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    setData([<span class="string">&#x27;Item 1&#x27;</span>, <span class="string">&#x27;Item 2&#x27;</span>, <span class="string">&#x27;Item 3&#x27;</span>, <span class="string">&#x27;Item 4&#x27;</span>]);</span><br><span class="line">    setExtraData(!extraData); <span class="comment">// 切换extraData的值，强制FlatList重新渲染</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">FlatList</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">data</span>=<span class="string">&#123;data&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">keyExtractor</span>=<span class="string">&#123;(item)</span> =&gt;</span> item&#125;</span></span><br><span class="line"><span class="xml">        renderItem=&#123;renderItem&#125;</span></span><br><span class="line"><span class="xml">        extraData=&#123;extraData&#125; // 将extraData属性设置为依赖项的状态值</span></span><br><span class="line"><span class="xml">      /&gt;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">title</span>=<span class="string">&quot;Update Data&quot;</span> <span class="attr">onPress</span>=<span class="string">&#123;updateData&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>除了上面这种情况之外，如果列表还依赖于其他 state，还可以使用 extraData 属性来控制 FlatList 更新。当然 extraData 也和 data 一样，也有浅比较的检查。</p>
+<p>我们可以修改 extraData，来让 FlatList 强制更新。比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [data, setData] = useState([<span class="string">&quot;Item 1&quot;</span>, <span class="string">&quot;Item 2&quot;</span>, <span class="string">&quot;Item 3&quot;</span>]);</span><br><span class="line">  <span class="keyword">const</span> [extraData, setExtraData] = useState(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> updateData = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    setData([<span class="string">&quot;Item 1&quot;</span>, <span class="string">&quot;Item 2&quot;</span>, <span class="string">&quot;Item 3&quot;</span>, <span class="string">&quot;Item 4&quot;</span>]);</span><br><span class="line">    setExtraData(!extraData); <span class="comment">// 切换extraData的值，强制FlatList重新渲染</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">FlatList</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">data</span>=<span class="string">&#123;data&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">keyExtractor</span>=<span class="string">&#123;(item)</span> =&gt;</span> item&#125;</span></span><br><span class="line"><span class="xml">        renderItem=&#123;renderItem&#125;</span></span><br><span class="line"><span class="xml">        extraData=&#123;extraData&#125; // 将extraData属性设置为依赖项的状态值</span></span><br><span class="line"><span class="xml">      /&gt;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">title</span>=<span class="string">&quot;Update Data&quot;</span> <span class="attr">onPress</span>=<span class="string">&#123;updateData&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>当然这种方式不是很好。大多数情况下，extraData主要用于处理额外依赖数据的情况。</p>
+<p>当然这种方式不是很好。大多数情况下，extraData 主要用于处理额外依赖数据的情况。</p>
 <ol start="3">
 <li>为了优化内存占用同时保持滑动的流畅，列表内容会在屏幕外异步绘制。这意味着如果用户滑动的速度超过渲染的速度，则会先看到空白的内容。这是为了优化不得不作出的妥协，你可以根据自己的需求调整相应的参数，而我们也在设法持续改进。</li>
 </ol>
-<p>这也是上面介绍虚拟列表时提到的，可能的白屏情况。FlatList提供了很多可能的调优属性，比如</p>
+<p>这也是上面介绍虚拟列表时提到的，可能的白屏情况。FlatList 提供了很多可能的调优属性，比如</p>
 <ul>
-<li>getItemLayout：返回列表元素的偏移、高度等信息，避免动态测量内容尺寸的开销。如果不提供，FlatList需要通过自行测量的方式得知每个元素的偏移量等属性，就会导致每次计算开销增大。（但是如果每个元素高度不确定这个属性就不能用）</li>
-<li>keyExtractor：用于为给定的 item 生成一个不重复的 key。如果没有这个属性，默认抽取item.key作为 key 值。若item.key也不存在，则使用数组下标。因此最好提供好key值，key在react的重要性不言而喻。</li>
-<li>maxToRenderPerBatch：每次批处理更新时更新多少项目，或者说在渲染时每批最多渲染多少个列表项。默认情况下，FlatList会将更新操作批处理成一批，以减少重绘的次数，从而提高性能。这个和下面的属性都是用于控制批处理过程的。</li>
-<li>updateCellsBatchingPeriod：用于设置批处理的时间间隔（以毫秒为单位），如果在这个时间间隔内有多个更新操作，则这些更新操作会被批处理成一批。如果设置为0，则表示禁用批处理，每个更新操作都会立即重绘。<strong>如果不设置updateCellsBatchingPeriod属性，则默认禁用批处理。</strong></li>
+<li>getItemLayout：返回列表元素的偏移、高度等信息，避免动态测量内容尺寸的开销。如果不提供，FlatList 需要通过自行测量的方式得知每个元素的偏移量等属性，就会导致每次计算开销增大。（但是如果每个元素高度不确定这个属性就不能用）</li>
+<li>keyExtractor：用于为给定的 item 生成一个不重复的 key。如果没有这个属性，默认抽取 item.key 作为 key 值。若 item.key 也不存在，则使用数组下标。因此最好提供好 key 值，key 在 react 的重要性不言而喻。</li>
+<li>maxToRenderPerBatch：每次批处理更新时更新多少项目，或者说在渲染时每批最多渲染多少个列表项。默认情况下，FlatList 会将更新操作批处理成一批，以减少重绘的次数，从而提高性能。这个和下面的属性都是用于控制批处理过程的。</li>
+<li>updateCellsBatchingPeriod：用于设置批处理的时间间隔（以毫秒为单位），如果在这个时间间隔内有多个更新操作，则这些更新操作会被批处理成一批。如果设置为 0，则表示禁用批处理，每个更新操作都会立即重绘。<strong>如果不设置 updateCellsBatchingPeriod 属性，则默认禁用批处理。</strong></li>
 </ul>
 <blockquote>
-<p>批处理，可以让FlatList能够在一段时间内更新一组Cell，而不是一次更新所有Cell。<br>批处理和虚拟列表的渲染无关，它主要指的是当FlatList需要更新时如何进行分批更新，而非一次性更新全部项。<br>比如在FlatList中进行一系列更新操作，例如添加、删除、移动或更新列表项。这些更新操作将被添加到批处理队列中，而不会立即执行重绘操作。<br>FlatList还会等待updateCellsBatchingPeriod属性所设置的时间间隔。在这个时间间隔内，如果有其他更新操作，则这些更新操作也将被添加到批处理队列中。<br>最后当时间间隔到达后，FlatList将执行批处理操作，将批处理队列中的所有更新操作合并成一个单独的操作，并执行重绘操作。这样，就可以减少重绘的次数，从而提高性能。<br>这个过程类似react的批量更新，大致思路是相同的。</p>
+<p>批处理，可以让 FlatList 能够在一段时间内更新一组 Cell，而不是一次更新所有 Cell。<br>批处理和虚拟列表的渲染无关，它主要指的是当 FlatList 需要更新时如何进行分批更新，而非一次性更新全部项。<br>比如在 FlatList 中进行一系列更新操作，例如添加、删除、移动或更新列表项。这些更新操作将被添加到批处理队列中，而不会立即执行重绘操作。<br>FlatList 还会等待 updateCellsBatchingPeriod 属性所设置的时间间隔。在这个时间间隔内，如果有其他更新操作，则这些更新操作也将被添加到批处理队列中。<br>最后当时间间隔到达后，FlatList 将执行批处理操作，将批处理队列中的所有更新操作合并成一个单独的操作，并执行重绘操作。这样，就可以减少重绘的次数，从而提高性能。<br>这个过程类似 react 的批量更新，大致思路是相同的。</p>
 </blockquote>
 <ol start="4">
-<li>默认情况下每行都需要提供一个不重复的 key 属性。你也可以提供一个keyExtractor函数来生成 key。</li>
+<li>默认情况下每行都需要提供一个不重复的 key 属性。你也可以提供一个 keyExtractor 函数来生成 key。</li>
 </ol>
-<h1 id="简单原理"><a href="#简单原理" class="headerlink" title="简单原理"></a>简单原理</h1><p>rn的原理部分，除开react和native端的实现，核心部分其实就是两个：</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>rn 的原理部分，除开 react 和 native 端的实现，核心部分其实就是两个：</p>
 <ul>
-<li>渲染：即如何从jsx渲染成为native的元素</li>
-<li>通信：即js和native语言之间是怎么交互的，怎么样传递信息、互相调用；</li>
+<li>渲染：即如何从 jsx 渲染成为 native 的元素</li>
+<li>通信：即 js 和 native 语言之间是怎么交互的，怎么样传递信息、互相调用；</li>
 </ul>
 <p>参考：<a target="_blank" rel="noopener" href="https://km.sankuai.com/page/337425524">https://km.sankuai.com/page/337425524</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903442079563784">https://juejin.cn/post/6844903442079563784</a><br><a target="_blank" rel="noopener" href="http://blog.cnbang.net/tech/2698/">http://blog.cnbang.net/tech/2698/</a><br><a target="_blank" rel="noopener" href="https://km.sankuai.com/page/883771103">https://km.sankuai.com/page/883771103</a></p>
-<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><h3 id="渲染树"><a href="#渲染树" class="headerlink" title="渲染树"></a>渲染树</h3><p>在 React Native 的世界里，总共存在三种树，他们分别是 </p>
+<h2 id="架构（旧版）"><a href="#架构（旧版）" class="headerlink" title="架构（旧版）"></a>架构（旧版）</h2><p>rn 的基本架构如下图</p>
+<p><img src="https://pic.imgdb.cn/item/64aeeecc1ddac507cc02f153.jpg"></p>
+<p>从图中可以看到有几个关键的部分</p>
+<ul>
+<li><strong>js 代码</strong>：即 react 代码的部分</li>
+<li><strong>js 引擎</strong>：解释和执行 JavaScript 代码。在 React Native 里面，JavaScriptCore 负责 bundle 产出的 JS 代码的解析和执行。</li>
+</ul>
+<p>js 引擎通常有几个：</p>
+<ul>
+<li><p>Hermes：最新的安卓端 js 引擎，优势是比较轻便，并且针对安卓做了专门的优化</p>
+</li>
+<li><p>JavaScriptCore：在 ios 上的引擎，也是 safari 的引擎</p>
+</li>
+<li><p>V8：web 端引擎，在 native 端的性能上不如上面两个</p>
+</li>
+<li><p><strong>bridge</strong>：原生端和 JavaScript 交互是通过 Bridge 进行的，Bridge 的作用就是给 React Native 内嵌的 JS Engine 提供原生接口的扩展供 JS 调用。</p>
+</li>
+</ul>
+<p>所有的本地存储、图片资源访问、图形图像绘制、3D 加速、网络访问、震动效果、NFC、原生控件绘制、地图、定位、通知等都是通过 Bridge 封装成 JS 接口以后注入 JS Engine 供 JS 调用。理论上，任何原生代码能实现的效果都可以通过 Bridge 封装成 JS 可以调用的组件和方法, 以 JS 模块的形式提供给 RN 使用。</p>
+<ul>
+<li><strong>原生模块</strong>：即 native 侧的 api、模块等，可以通过 bridge 让 js 进行调用</li>
+</ul>
+<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><h3 id="渲染线程"><a href="#渲染线程" class="headerlink" title="渲染线程"></a>渲染线程</h3><p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/388681402">https://zhuanlan.zhihu.com/p/388681402</a></p>
+<p>和渲染树一样，rn 的渲染线程也有三个。无论是还在开发中的新架构，还是当前的旧架构，一个 React Native App 渲染过程都会涉及到三个线程</p>
+<ul>
+<li>Main thread: 主线程又称 UI thread，主要负责 UI 的渲染以及用户行为的监听等等，是 App 启动时首先创建的线程</li>
+<li>JavaScript thread: js 执行的线程</li>
+<li>Shadow thread: 可以理解为是在 native 侧，负责和 react 的的虚拟 dom 进行交互，并控制 native 渲染的一个线程。</li>
+</ul>
+<p>react 存在 diff 算法，通过 diff 算法尽可能减小虚拟 dom 的更新损耗。在 rn 中也有类似的虚拟 dom 结构，也有 diff 的过程；但是不同于浏览器环境中 React DOM 直接调用浏览器 API 来完成真正的 DOM 更新操作，Native 环境下 React Native 是通过 Bridge ，将需要变更的指令（Commands）以字符串的方式发送到 Native Side，而对应在 Native 这边负责处理这些指令的进程就是 Shadow Thread。<br>Shadow Thread 通过维护一个 Shadow Tree 来计算 “Virtual DOM” 在 Native 页面的实际布局，然后通过 Bridge 异步通知 Main Thread 渲染 UI。<br>Shadow Tree 可以理解为是 “Virtual DOM” 在 Native 的映射，拥有和 Virtual DOM 相同的树形层级关系<br>因此我们可以理解为，shadowThread 就是一个用于“接收布局消息”的线程，然后控制 native 的渲染结构。</p>
+<h3 id="渲染树"><a href="#渲染树" class="headerlink" title="渲染树"></a>渲染树</h3><p>在 React Native 的世界里，总共存在三种树，他们分别是</p>
 <ul>
 <li>Fiber 树</li>
 <li>Shadow 树</li>
-<li>Android 原生 UI 树</li>
+<li>原生 UI 树</li>
 </ul>
 <blockquote>
 <p>React Native 维护和更新开发者创建的 Component 的状态，创建出表达 UI 的第一种数据结构——Fiber 树。然后通过 Fiber 算法高效地执行树的更新动作，输出的结果表现为原生侧的 Shadow 树数据结构，再经过一些最终调整后，创建出原生平台上的 UI 结构——Android View 或 iOS UIView 所构成的树结构，由原生平台的渲染机制来完成屏幕内容的渲染。</p>
 </blockquote>
-<p>其中，fiber树很熟悉就不再赘述，而shadow树则是原生渲染过程中的一个重要结构，作为最终渲染之前的一步。</p>
+<p>其中，fiber 树很熟悉就不再赘述，而 shadow 树则是原生渲染过程中的一个重要结构，作为最终渲染之前的一步。</p>
 <p>大致的流程为：</p>
 <ul>
 <li>JavaScript 层通过维护 Fiber 树，计算出数据结构变化的副作用，生成结点更新指令（createView / updateView / setChildren 等）送往 Java 层</li>
 <li>根据上面的节点更新指令，实体结构 shadow tree 在 Java 层 UIImplementation 中生成。</li>
 <li>UIImplementation 的下一级 NativeViewHierarchyOptimizer 类，负责将 shadow tree 转译为真正的原生 view 树。</li>
 </ul>
-<p>shadow tree 和原生 view 树有何不同呢？后者去掉了前者结构之中多余的 “纯布局 view”（layout-only view，即只影响 layout 但自身不绘制任何东西的 view）。<br>简单理解就是原生view树去掉了一些不进行绘制的部分，就像浏览器中的dom树和layout树之间的差别一样。</p>
-<h3 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h3><p>rn和react的渲染核心区别就在于，react会把虚拟dom结构利用dom api转化成真实dom结构，而rn则是通过一个 API 去创建 Native 的 View，再由native进行原生的渲染操作。<br>React Native 使用的全部是自定义标签，和 Native View 一一对应，所以需要通过一个 API 去创建 Native 的 View，这个 API 就是 UIManager，主要执行从 Virtual DOM -&gt; RenderDOM 节点的 CRUD 操作</p>
+<p>shadow tree 和原生 view 树有何不同呢？后者去掉了前者结构之中多余的 “纯布局 view”（layout-only view，即只影响 layout 但自身不绘制任何东西的 view）。<br>简单理解就是原生 view 树去掉了一些不进行绘制的部分，就像浏览器中的 dom 树和 layout 树之间的差别一样。</p>
+<h3 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h3><p>rn 项目的首次渲染流程可以分为几步：</p>
+<ol>
+<li>Native 打开 RN 页面（在此之前，js 上下文、引擎已被加载完毕，桥已建立，bundle 也被加载到 native 中开始执行）</li>
+<li>JS 线程运行，Virtual DOM Tree 被创建</li>
+<li>JS 线程异步通知 Shadow Thread 有节点变更</li>
+<li>Shadow Thread 创建 Shadow Tree</li>
+<li>Shadow Thread 计算布局，异步通知 Main Thread 创建 Views</li>
+<li>Main Thread 处理 View 的创建，展示给用户</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/64ae96351ddac507ccc1a3fc.jpg"></p>
+<p>更新时的流程则可以分为四步</p>
+<ol>
+<li>Virtual DOM Tree 发生变更（比如 background-color 发生变化）</li>
+<li>JS 线程异步通知 Shadow Thread 有节点变更</li>
+<li>Shadow Tread 更新 Shadow Tree，计算新布局，同时异步通知 Main Thread 更新 View</li>
+<li>Main Thread 更新 UI</li>
+</ol>
+<p>如上面的图所示，在不同线程之间进行交互和信息传递都是通过 bridge 实现的。Bridge 由 C++ 实现，可以复用在 iOS &amp; Android，用与 JS side 和 Native side 相互通讯 (two-way-communacation)</p>
+<blockquote>
+<p>bridge 是老的 rn 架构，当前新的架构则是 jsi 为核心的动态方案，具体后面会提到</p>
+</blockquote>
+<p><img src="https://pic.imgdb.cn/item/64ae96af1ddac507ccc3c77c.jpg"></p>
+<p>这种方式的优点是，Main Thread 不会阻塞 (block)，也就是说，UI 渲染是流畅的，所以用户体验不会卡顿<br>但是桥调用方式使得所有交互都是异步的。对于需要比较强烈实时性的场景，比如频繁的交互、快速的更新、动画等都有可能造成一种延迟感。并且当需要传输的数据非常大时，本身的内存消耗和对于数据处理的时间消耗也会非常大。</p>
+<p>另外，rn 的渲染消耗要比 web 端大得多。因为 react 完成 fiber 的创建之后，shadow 线程也要维护一棵树来实现构建，这个过程比 web 端的 dom 操作要繁琐很多，更何况线程之间的通信本就是异步、效率不高的。因此 rn 的优化中对于渲染控制应该要求更高</p>
+<p>从上向下看 rn 的渲染过程则为：</p>
+<p><img src="https://pic.imgdb.cn/item/64ae974a1ddac507ccc65dbe.jpg"></p>
+<ol>
+<li>React Component，也就是 JS 代码 render 的 React 组件</li>
+<li>React Native Renderer 会将 React Component 转换为 “Virtual DOM tree”</li>
+<li>React Native Bridge 会将 “Virtual DOM tree” 更新的 commands 传递到 Native Side</li>
+<li>UI Manager Module 是 Native Side 处理 commands 的模块，负责根据 commands 创建/更新（与 “Virtual DOM tree” 对应的 Native 这边的） Shadow Tree</li>
+<li>Shadow Tree / Layout，一旦 Shadow Tree 完成更新，就会触发每个 Shadow Tree Node 的布局信息</li>
+<li>View Managers，一旦有了每个节点的布局信息，便会通知对应 View Manager 渲染 UI</li>
+</ol>
+<hr>
+<p>rn 和 react 的渲染核心区别就在于，react 会把虚拟 dom 结构利用 dom api 转化成真实 dom 结构，而 rn 则是通过一个 API 去创建 Native 的 View，再由 native 进行原生的渲染操作。<br>React Native 使用的全部是自定义标签，和 Native View 一一对应，所以需要通过一个 API 去创建 Native 的 View，这个 API 就是 UIManager，主要执行从 Virtual DOM -&gt; RenderDOM 节点的 CRUD 操作</p>
 <ul>
 <li>UIManager.createView：创建节点</li>
 <li>UIManager.measure / measureXXX：获取节点布局信息</li>
@@ -273,24 +421,296 @@
 <li>UIManager.manageChildren / setChildren：设置树结构信息，批量删除、增加、移动节点等</li>
 </ul>
 <p>UIManager.js 是什么？它是从 NativeModules.js 中导出的，NativeModules.js 通过 Native 设置的 NativeModuleRegistry 的信息生成名字和实际类型的映射表，NativeModules 本身也是类似 Java 代理的风格去生成的，最终 UIManager.createView 这样一个函数调用，会变成消息队列的一个命令调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BatchedBridge.enqueueNativeCall(</span><br><span class="line">  moduleID,</span><br><span class="line">  methodID,</span><br><span class="line">  args,</span><br><span class="line">  onFail,</span><br><span class="line">  onSuccess,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BatchedBridge.enqueueNativeCall(moduleID, methodID, args, onFail, onSuccess);</span><br></pre></td></tr></table></figure>
 
-<p>对于每个要渲染的虚拟dom元素，rn会像传递其他消息一样传递一个包含moduleId、methodId等参数的数据，然后通过通信的方式传递给native侧。比如一个<code>&lt;Text&gt;</code>jsx元素可能会变成这样的参数</p>
+<p>对于每个要渲染的虚拟 dom 元素，rn 会像传递其他消息一样传递一个包含 moduleId、methodId 等参数的数据，然后通过通信的方式传递给 native 侧。比如一个<code>&lt;Text&gt;</code>jsx 元素可能会变成这样的参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	moduleId: 5,</span><br><span class="line">  methodId: 2,</span><br><span class="line">  args: [</span><br><span class="line">    15405,</span><br><span class="line">    &quot;RCTText&quot;,</span><br><span class="line">    31,</span><br><span class="line">    &#123;</span><br><span class="line">      accessible: true, allowFontScaling: true</span><br><span class="line">      ellipsizeMode: &quot;tail&quot;</span><br><span class="line">      fontSize: 14</span><br><span class="line">      fontWeight: &quot;500&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>最后这个数据会到达native侧，再由native侧的代码执行具体的渲染步骤。</p>
+<p>最后这个数据会到达 native 侧，再由 native 侧的代码执行具体的渲染步骤。</p>
 <p>具体的渲染过程可以参考：<a target="_blank" rel="noopener" href="https://km.sankuai.com/page/337425524#id-3.%E6%8E%92%E7%89%88%E6%B8%B2%E6%9F%93">https://km.sankuai.com/page/337425524#id-3.%E6%8E%92%E7%89%88%E6%B8%B2%E6%9F%93</a></p>
-<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><p>这里的通信指的是js和native语言之间的交互、通信，具体来说其实是两者的互相调用。在ios和安卓端的native语言有所不同，前者是objective-c，后者是java。在具体实现上有所不同，但在大致原理上是近似的。</p>
-<h3 id="js调用native"><a href="#js调用native" class="headerlink" title="js调用native"></a>js调用native</h3><p>js是一个不能自执行的语言，意思就是js必需一个执行它的“引擎”。在ios上是JavaScript Core，在安卓上则有专门执行js的c++部分。<br>因此js调用native的过程，本质上可以理解为是引擎执行js，然后将js的执行结果或在js中的某些操作传递给native的过程。</p>
-<p>以ios上的objective-c为例，React Native 解决这个问题的方案是在 Objective-C 和 JavaScript 两端都保存了一份配置表，里面标记了所有 Objective-C 暴露给 JavaScript 的模块和方法。这样，无论是哪一方调用另一方的方法，实际上传递的数据只有 ModuleId、MethodId 和 Arguments 这三个元素，它们分别表示类、方法和方法参数，当 Objective-C 接收到这三个值后，就可以通过 runtime 唯一确定要调用的是哪个函数，然后调用这个函数。</p>
-<p>当js生成包含ModuleId、MethodId 和 Arguments的对象后，会放入到 MessageQueue 中，等待 Objective-C 主动拿走，或者超时后主动发送给 Objective-C。</p>
+<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><p>这里的通信指的是 js 和 native 语言之间的交互、通信，具体来说其实是两者的互相调用。在 ios 和安卓端的 native 语言有所不同，前者是 objective-c，后者是 java。在具体实现上有所不同，但在大致原理上是近似的。</p>
+<h3 id="基本通信原理"><a href="#基本通信原理" class="headerlink" title="基本通信原理"></a>基本通信原理</h3><p>假设不通过 rn，js 和 native 仅通过引擎也可完成基本的通信。比如 native 侧和 js 侧都把想共享的模块暴露到全局，让对方获取并调用。但这样会导致大量的全局变量污染，所以为了规范这个通信过程，React Native 自己实现了 Bridge。</p>
+<p>bridge 本质上就是 js 和 native 的互相调用，夹杂着一些参数的传递。</p>
+<h3 id="js-调用-native"><a href="#js-调用-native" class="headerlink" title="js 调用 native"></a>js 调用 native</h3><p>js 是一个不能自执行的语言，意思就是 js 必需一个执行它的“引擎”。在 ios 上是 JavaScript Core，在安卓上则有专门执行 js 的 c++部分。<br>因此 js 调用 native 的过程，本质上可以理解为是引擎执行 js，然后将 js 的执行结果或在 js 中的某些操作传递给 native 的过程。</p>
+<p>以 ios 上的 objective-c 为例，React Native 解决这个问题的方案是在 Objective-C 和 JavaScript 两端都保存了一份配置表，里面标记了所有 Objective-C 暴露给 JavaScript 的模块和方法。这样，无论是哪一方调用另一方的方法，实际上传递的数据只有 ModuleId、MethodId 和 Arguments 这三个元素，它们分别表示类、方法和方法参数，当 Objective-C 接收到这三个值后，就可以通过 runtime 唯一确定要调用的是哪个函数，然后调用这个函数。</p>
+<p>简单来说，当 JS 调用 Native 模块的时候，会调用一个 Native 暴露出来的全局方法，并通过传入要调用的 moduleName 、methodName、callback 参数给这个方法，然后这个方法再<em>通知</em>给 Native 侧找到相应的模块并执行。</p>
+<p><img src="https://pic.imgdb.cn/item/64aef3a61ddac507cc0aafd9.jpg"></p>
 <hr>
-<p>另外，js不会主动将数据发送给oc。也就是说必须当oc在某些条件下执行js时，才会执行上面步骤，而不是由js代码主动驱动数据的发送。JS不会主动传递数据给OC，在调OC方法时，会把ModuleID,MethodID等数据加到一个队列里，等OC过来调JS的任意方法时，再把这个队列返回给OC，此时OC再执行这个队列里要调用的方法。</p>
-<p>这样的执行方式就类似于事件触发。native开发里只在有事件触发的时候才会执行代码，这个事件可以是启动事件，触摸事件，timer事件，系统事件，回调事件。而在React Native里，这些事件发生时OC都会调用JS相应的模块方法去处理，处理完这些事件后再执行JS想让OC执行的方法，而没有事件发生的时候，是不会执行任何代码的。</p>
-<h3 id="native调用js"><a href="#native调用js" class="headerlink" title="native调用js"></a>native调用js</h3><p>对于 Objective-C 来说，执行完 JavaScript 代码再执行 Objective-C 回调毫无难度，难点依然在于 JavaScript 代码调用 Objective-C 之后，如何在 Objective-C 的代码中，回调执行 JavaScript  代码。<br>目前 React Native 的做法是：在 JavaScript 调用 Objective-C 代码时，注册要回调的 Block，并且把 BlockId 作为参数发送给 Objective-C，Objective-C 收到参数时会创建 Block，调用完 Objective-C 函数后就会执行这个刚刚创建的 Block。<br>Objective-C 会向 Block 中传入参数和 BlockId，然后在 Block 内部调用 JavaScript 的方法，随后 JavaScript 查找到当时注册的 Block 并执行。</p>
-<p>本质上native调用js就是一个回调的过程，即js预先把自己的回调也传给oc，然后oc只需要执行这个block即可。</p>
-<p><img src="https://pic2.imgdb.cn/item/6464bee50d2dde5777c3dfd9.jpg"></p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></div><div class="post_share"><div class="social-share" data-image="/img/codes1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/08/interview-summary/"><img class="prev-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/03/05/konva/"><img class="next-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">konva学习和原理浅析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/12/OS/" title="操作系统知识点总结"><img class="cover" src="/img/codes1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-12</div><div class="title">操作系统知识点总结</div></div></a></div><div><a href="/2021/12/05/blog1-h5-deeping/" title="前端知识深入--HTML5深入"><img class="cover" src="/img/Chrome.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-05</div><div class="title">前端知识深入--HTML5深入</div></div></a></div><div><a href="/2022/02/02/RegExp/" title="正则表达式学习和常用正则"><img class="cover" src="/img/canvas.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-02</div><div class="title">正则表达式学习和常用正则</div></div></a></div><div><a href="/2021/12/10/blog2-css-deeping/" title="CSS学习总结"><img class="cover" src="/img/CSS.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-10</div><div class="title">CSS学习总结</div></div></a></div><div><a href="/2021/12/02/blog4-web/" title="网络知识学习总结"><img class="cover" src="/img/web.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="title">网络知识学习总结</div></div></a></div><div><a href="/2021/12/02/blog5-browser/" title="浏览器知识学习总结"><img class="cover" src="/img/Chrome.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="title">浏览器知识学习总结</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/pinkstar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Ye</div><div class="author-info__description">a singleThreaded boy's blog</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penghei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penghei" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:632885485@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">A SingleThreaded Boy...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">核心组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text">列表组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rn%E4%B8%AD%E7%9A%84%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">rn中的虚拟列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E4%BC%98%E5%8C%96"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">列表优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FlatList"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">FlatList</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">简单原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93"><span class="toc-number">2.1.</span> <span class="toc-text">渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%A0%91"><span class="toc-number">2.1.1.</span> <span class="toc-text">渲染树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">渲染过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1"><span class="toc-number">2.2.</span> <span class="toc-text">通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js%E8%B0%83%E7%94%A8native"><span class="toc-number">2.2.1.</span> <span class="toc-text">js调用native</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#native%E8%B0%83%E7%94%A8js"><span class="toc-number">2.2.2.</span> <span class="toc-text">native调用js</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/stereotype-methodical-answer/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/stereotype-methodical-answer/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.468Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/stereotype/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/stereotype/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.445Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/readme/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/readme/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.412Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/react-priority/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/react-priority/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.357Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/RACF-optimization/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/RACF-optimization/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.304Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Xing Ye</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello stranger!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
+<p>在JSToNative的通信⽅式中，⼜分为两种调⽤⽅式：异步调⽤和同步调⽤。<br>rn主要依靠异步调⽤；调⽤的发起在JS线程，异步的⽅式不会阻塞JS线程。</p>
+<p>大致流程为：</p>
+<ol>
+<li>调⽤具体的NativeModule时，会触发C++的调⽤流程，这个过程就是创建或者查找对应Module的过程。根据JS侧提供的module信息⽣成具体的Module实例。</li>
+<li>当调⽤Module具体⽅法时，会将对应模块的调⽤信息存放在⼀个数组中，我们称之为Queue；这个Queue中的消息要么是在⼩于5ms的情况下等待Java侧的事件驱动调⽤并清空，要么是⼤于5ms，⾃动触发调⽤并清空。queue等待java或oc线程来取数据，因此这个过程是异步的；</li>
+<li>接下来就⾛到了C++层的调⽤流程，通过JSToNativeBridge将Java层的调⽤信息放到NativeModulesThread消息队列中，等待调⽤。</li>
+<li>然后就进⼊Java层的调⽤，找到与C++侧同名的Java Module包装类，调⽤其invoke⽅法，通过反射实现对应Native Module⽅法的调⽤。</li>
+<li>如果有数据回调的话，其回调流程会通过NativeToJsBridge，调⽤流程与Native调⽤JS⽅法⼤致相同，主要的区别是回传的参数，传递的是callId和结果，其信息存储在JS侧，可以通过callId找到对应的回调函数，并执⾏回调。回调的过程又是一次放入消息队列等待js取出执行的过程，因此异步调用将会花费较多时间。</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/64b1ced21ddac507cc8ce3ab.jpg"></p>
+<h3 id="native-调用-js"><a href="#native-调用-js" class="headerlink" title="native 调用 js"></a>native 调用 js</h3><p>native 调用 js 代码就比较简单了，通过 moduleid 和 methodid 完成方法的调用，通过这两个参数可以找到 JS 侧定义的方法模块。</p>
+<p><img src="https://pic.imgdb.cn/item/64aef4881ddac507cc0c090f.jpg"></p>
+<hr>
+<p>NativeToJS的⽅法调⽤，是异步的操作，会在NativeToJsBridge上做⼊队处理，这个消息队列没有优先级且是串⾏执⾏，所以它的执⾏时间会受到队列消息是否拥堵的影响。</p>
+<p><img src="https://pic.imgdb.cn/item/64b1cf311ddac507cc8dacc7.jpg"></p>
+<p>大致流程为：</p>
+<ol>
+<li>执⾏JSModule⽅法时，我们先通过JSModule注册表，找到对应的实例，没有就初始化并缓存，有就直接使⽤。</li>
+<li>发起C++侧的调⽤流程。</li>
+<li>Native调⽤JS⽅法，最终⾛到NativeToJsBridge上，此处做了⼀个线程切换，由主线程切换到JS线程，⽅法调⽤进⼊消息队列。等对应⽅法被执⾏时，就会触发JS侧callFunctionReturnFlushedQueue的⽅法调⽤，进⼊JS侧的调⽤流程。</li>
+<li>JS侧直接根据Module名、⽅法名找到对应的Module和⽅法，传⼊参数调⽤即完成了整个过程。</li>
+</ol>
+<p>这个过程中js侧并不会立即相映native的调用，而是类似eventLoop这样的处理机制。</p>
+<p>对于这个过程中数据的交换，诸如参数等，在旧的架构都是通过JSON序列化的方式完成。在新的JSI架构中则可以转换两者的数据类型，从而实现直接传递。</p>
+<h2 id="其他概念"><a href="#其他概念" class="headerlink" title="其他概念"></a>其他概念</h2><h3 id="bundle"><a href="#bundle" class="headerlink" title="bundle"></a>bundle</h3><p>在 React web 应用中，打包，部署到上线的产物，是一个 html ，css，js 文件的集合体，最后把这些产物放在服务器上就可以了。<br>但是在 RN 中，最后打包产物是一个 js 文件，叫做 jsbundle ，在 Native 端运行 RN 项目，本质上是远程拉取了 jsbundle ，并通过上述的 js 引擎运行当前 jsbundle，每次运行一个 bundle 就需要外层容器提供一个 js 引擎。</p>
+<p>一个 bundle 可以对应一个页面，也可通过路由的形式对应多个页面。</p>
+<p>bundle 的产生其实就是在 rn 的入口文件中注册的组件。在 RN 中每一个应用都有一个入口文件，RN 中提供了注册根本应用的方法，那就是 AppRegistry，这一点和 React web 应用会有一些区别，web 应用中，主要依赖于 react-dom 中提供的 api ，但是在 RN 项目中，无需再下载 react-dom，取而代之的是 react-native 包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; AppRegistry &#125; <span class="keyword">from</span> <span class="string">&quot;react-native&quot;</span>;</span><br><span class="line"><span class="comment">/* 根组件 */</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&quot;./app&quot;</span>;</span><br><span class="line"></span><br><span class="line">AppRegistry.registerComponent(<span class="string">&quot;Root&quot;</span>, <span class="function">() =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>);</span><br></pre></td></tr></table></figure>
+
+<p>在应用程序启动阶段，当 native 端加载完成引擎、建立起桥后，就会下载 js 文件，然后通过 js 引擎来加载 bundle，执行如上所示的代码。从这里就会进入 react 的渲染过程，比如执行组件等</p>
+<h3 id="rn-应用的启动流程"><a href="#rn-应用的启动流程" class="headerlink" title="rn 应用的启动流程"></a>rn 应用的启动流程</h3><p>以安卓侧为例子，RN 应用的启动流程如下：</p>
+<ol>
+<li>创建 JS 引擎，注册 Native 和 C++ ,C++ 和 JS 层的通信桥，同时会创建 JS 和 Native UI 线程队列。</li>
+<li>异步加载 JS Bundle，这一部分是 JS 交给 JS 引擎去处理，会对 JS 文件进行加载和解析，当然解析的时长受到 JS 文件大小的影响。</li>
+<li>当 JS 解析完毕之后，接下来就要启动 RN 应用了，包括运行 RN 提供的 AppRegistry 入口。</li>
+<li>构建组件树，包括执行 React 运行时代码，渲染组件，接下来通过 Native 提供的 UIManager，把虚拟 DOM 树在 Native 应用中渲染出来，视图也就正常呈现了。</li>
+</ol>
+<p>注意这里是启动流程，上面提到的渲染流程实际上是启动流程的最后一步，也就是在 js 解析之后，开始执行渲染才会进入渲染流程</p>
+<p>这个启动的过程可以简单分解为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">上下文创建 + 渲染</span><br></pre></td></tr></table></figure>
+
+<p>上下文创建，包括 JS 引擎的构建，解析并运行 JS Bundle，准备 JS 上下文是最占用时间的一部分，但这部分也是前端无法优化的地方，需要依赖 native 和 rn 的底层技术进行优化。</p>
+<h3 id="rn-的底层优化"><a href="#rn-的底层优化" class="headerlink" title="rn 的底层优化"></a>rn 的底层优化</h3><p>针对上下文创建的消耗，rn 当然也有一些优化手段。主要有</p>
+<ul>
+<li>预加载</li>
+<li>引擎复用</li>
+</ul>
+<p>引擎预加载和业务场景息息相关，对于一些上下游的页面会有一定的要求，在加载当前页面的时候，如果下游页面是 RN 页面，那么会进行引擎的预加载，构建初始化的 JS 环境。</p>
+<p><img src="https://pic.imgdb.cn/item/64aeed4d1ddac507cc0039ef.jpg"></p>
+<p>如上一个业务线上存在 A，B，C 三个页面，其中 C 是 RN 页面，那么当从 A 进入到 B 的时候，开始启动预加载，加载 C 页面的 Bundle，这样进入到 C 页面后，就不需要做初始化 JS 运行环境等操作，大幅度提高了页面的秒开率。<br>但是预加载的 JS 引擎不能一直存在，所以可以在 从 B -&gt; A 的时候，回收引擎。还有一点需要注意的是，预加载的引擎需要在内存中保留一段时间后才会被回收，所以在进入一个页面中的时候，不要预加载很多页面，这样就会造成内存瞬间暴涨，容易引起 APP 闪退。</p>
+<hr>
+<p>引擎复用，也是一种对页面初始化加载的优化手段，比如 A 进入 RN 的 B 页面，当 B 离开回到 A 的时候，B 的引擎并没有直接回收，而是被保存下来，当 A 再次进入到 B 的时候，直接服用引擎，这样当第二次进入 B 的时候，打开的速度非常快。</p>
+<p><img src="https://pic.imgdb.cn/item/64aeeda51ddac507cc00c63f.jpg"></p>
+<p>引擎复用比较适合从列表页到详情页的场景，比如从商品列表到商品详情，用户可能多次从商品详情返回列表，然后再次进入商品详情。</p>
+<h2 id="新架构"><a href="#新架构" class="headerlink" title="新架构"></a>新架构</h2><p><a target="_blank" rel="noopener" href="https://medium.com/coox-tech/deep-dive-into-react-natives-new-architecture-fb67ae615ccd">https://medium.com/coox-tech/deep-dive-into-react-natives-new-architecture-fb67ae615ccd</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7063738658913779743">https://juejin.cn/post/7063738658913779743</a></p>
+<p>新架构带来的调整主要在于以下四点：</p>
+<ul>
+<li>JavaScript Interface(JSI)</li>
+<li>Fabric</li>
+<li>Turbo Modules</li>
+<li>CodeGen</li>
+</ul>
+<h3 id="JSI"><a href="#JSI" class="headerlink" title="JSI"></a>JSI</h3><p>JSI 的主要功能有三个：</p>
+<ol>
+<li>替代原来的 bridge，实现 js 直接调用原生方法，反过来也一样，解决了之前通信的异步、数据量大的问题。（不需要序列化，不需要异步）</li>
+<li>对不同引擎做统一处理，比如在安卓和 ios 的引擎不同，JSI 可以让 js 侧不感知引擎类型，通过自己来选择合适的引擎进行编译</li>
+<li>定义了与 JS 侧对应的各种数据类型 (undefined, null, boolean, number, symbol, string, or object) 及 JS Value 与 Native Value 相互转化的方法，本质上也是方便和 native 端的通信。</li>
+</ol>
+<p>JSI 的主要优势有</p>
+<ul>
+<li>同步执行：现在可以同步执行那些本来就不应该是异步的函数。</li>
+<li>并发：可以在 JavaScript 中调用在不同线程上执行的函数。</li>
+<li>更低的开销：新架构不需要再对数据进行序列化/反序列化，因此可以避免序列化的开销。</li>
+<li>代码共享：通过引入 C++，现在有可能抽象出所有与平台无关的代码，并在平台之间轻松共享它。</li>
+<li>类型安全：为了确保 JS 可以正确调用 C++ 对象的方法，反之亦然。即 js 和 c++可以完成类型转换然后相互调用方法、传递参数，这个过程是安全的。</li>
+</ul>
+<p>最大的功能其实就在于 js 侧可以直接调用原生方法。<br>具体是怎么做到的呢？其实可以类比一下 dom 的使用方式。 Web 里 JS 代码可以保存对任何 DOM 元素的引用，并在它上面调用方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在这里的 container 会包含一些在 C++ 中初始化的 DOM 元素的引用，这时候如果我们调用 container 上的任何方法，它就会调用 DOM 元素上的方法。<br>JSI 就是以类似的方式运行，JSI 将允许 JS 代码保存对 Native Modules 的引用，并且 JS 可以直接通过引用去调用 Native 上的方法。</p>
+<p><img src="https://pic.imgdb.cn/item/64aef4881ddac507cc0c090f.jpg"></p>
+<p>当 js 访问这个对象上的方法时，c++层可以通过类似代理的形式监听到 js 的访问，从而达到对 js 的感知。这种对象被称为 HostObject<br>HostObject 是 Native Module 在运行时注入到 JSI 中的一个对象，这是一个特殊的对象，并不像普通的 JS 对象一样可以随意的创建或者访问，这个流程需要 Native 的支持，才能在 JS 中创建和使用 HostObject</p>
+<h3 id="Fabric"><a href="#Fabric" class="headerlink" title="Fabric"></a>Fabric</h3><p>Fabric 是新的渲染系统，它将取代当前的 UI Manager。<br>在 Fabric 之前，当 App 运行时，React 会执行你的代码并在 JS 中创建一个 ReactElementTree ，基于这棵树渲染器会在 C++ 中创建一个 ReactShadowTree。</p>
+<p>UI Manager 会使用 Shadow Tree 来计算 UI 元素的位置，而一旦 Layout 完成，Shadow Tree 就会被转换为由 Native Elements 组成的 HostViewTree（例如：RN 里的 View 元素会变成 Android 中的 ViewGroup 和 iOS 中的 UIView）。</p>
+<p><img src="https://pic.imgdb.cn/item/64af66381ddac507ccde4726.jpg"></p>
+<p>而之前线程之间的通信都发生在 Bridge 上，这就意味着需要在传输和数据复制上耗费时间。</p>
+<p>例如如果一个 ReactElementTree 节点恰好是一个 <code>&lt;Image/&gt;</code>，那么 ReactShadowTree 的节点也会是一个图像，但是这些数据必须被复制并分别存储在两个节点中。</p>
+<p>另外由于 JS 和 UI 线程不同步，因此在某些情况下 App 可能会因为丢帧而显得卡顿（例如滚动有大量数据的 FlatList ）<br>而得益于前面的 JSI， JS 可以直接调用 Native 方法，其实就包括了 UI 方法，所以 JS 和 UI 线程可以同步执行从而提高列表、跳转、手势处理等的性能。<br>使用新的 Fabric 渲染，用户交互（如滚动、手势等）可以优先在主线程或 Native 线程中同步执行，而 API 请求等其他任务使用异步执行。</p>
+<p>另外新的 Shadow Tree 将成为 immutable，它会在 JS 和 UI 线程之间共享，以两端进行直接交互。<br>在以前 RN 必须维护两个层次结构的 DOM 节点，但因为现在 Shadow Tree 可以共享，在减少内存消耗的部分也会得到相应的优化。</p>
+<h4 id="新架构的渲染流程"><a href="#新架构的渲染流程" class="headerlink" title="新架构的渲染流程"></a>新架构的渲染流程</h4><p>rn 的 Fabric 同时也带来了新的渲染方式。由于 jsi 的存在，原来通过 bridge 难以实现的渲染方式现在也变得可以实现了。</p>
+<p>rn 把渲染流程分为三大类</p>
+<ul>
+<li>初次渲染</li>
+<li>react 状态更新重渲染</li>
+<li>原生状态更新重渲染</li>
+</ul>
+<p>每个渲染部分将会有类似的流程。<br>首先是初次渲染的流程，大致分为三个阶段：</p>
+<ol>
+<li><strong>渲染</strong>（Render）：可以理解为 react 执行组件，获得 fiber 树，然后在 shadow threaded 中创建一棵 shadow tree 并和 fiber tree 相连。</li>
+</ol>
+<p>这一步主要是 js 侧的执行。当应用启动并开始执行 js 后，就会通过入口进入 js，执行 react 的 render 过程。<br>每调用一个 React 元素，渲染器同时会同步地创建 React 影子节点。但只会创建 HostComponent，符合组件不会创建。<br>最后创建出的 fiber tree，每一个 “fiber” 都代表一个宿主组件，存着一个 C++ 指针，指向 React 影子节点。这些都是因为有了 JSI 才有可能实现的。</p>
+<p>另外，fiber tree 和 shadow tree 都是 immutable 的。也就是说如果 react 发生更新，并不是复制+修改创建一棵新的树，而是绝大部分复用旧的树。这个和在 web 端 diff 算法的复制其实不同，后者大部分时候是在复制元素。</p>
+<p><img src="https://pic.imgdb.cn/item/64af6f371ddac507ccfef19b.jpg"></p>
+<ol start="2">
+<li><strong>提交</strong>（Commit）：shadow 创建完成之后，在 ui 线程（native）计算具体布局信息，然后提交成为<code>next tree</code>。</li>
+</ol>
+<p>这些操作都是在后台线程中异步执行的。<br>为什么要在 native 端计算布局，是因为不同的端的情况不同，布局信息由每个端单独维护，因此也要在 native 侧进行计算。<br>最后的提交成为 next tree，和下面的 rendered tree 构成双缓冲树。这里类似 web 端的行为；不过初次渲染不存在 rendered tree。</p>
+<p><img src="https://pic.imgdb.cn/item/64af6f4c1ddac507ccff28dd.jpg"></p>
+<ol start="3">
+<li><strong>挂载</strong>（Mount）：通过创建之后的 next tree 生成具体的 native 布局树，创建、修改具体的 native 元素，然后把 next tree 变为 rendered tree。<br>挂载阶段由三个步骤组成：<ol>
+<li>树对比： 这个步骤完全用的是 C++ 计算的，会对比 rendered tree 和 next tree 之间的差异。然后对于变更，去生成 native 端的原子变更操作，比如 createView, updateView, removeView, deleteView 等等（还没有真正执行，只是生成操作队列）。这个过程类似 web 端 diff 算法执行后，在 commit 阶段执行具体的 dom 元素操作。在这个步骤中，还会将 React _影子树拍平_，来避免不必要的宿主视图创建。</li>
+<li>树提升，Next Tree → Rendered Tree，即交换两棵树</li>
+<li>视图挂载：具体执行对 native 的操作。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/64af6f5a1ddac507ccff4cf8.jpg"></p>
+<hr>
+<p>然后是 react 更新导致的更新渲染。这一步其实和上面的初次渲染略有不同</p>
+<ul>
+<li>更新的 fiber tree 和 shadow tree 不会重新创建，而是通过 immutable 数据结构来大量复用，只修改更新存在的路径的元素。</li>
+<li>更新时存在 next tree 和 rendered tree，在 commit 阶段会对比两棵树，找到变更。</li>
+<li>最后在挂载阶段，根据上一步的变更执行具体的 native 渲染操作。</li>
+</ul>
+<h4 id="视图拍平"><a href="#视图拍平" class="headerlink" title="视图拍平"></a>视图拍平</h4><p>视图拍平（View Flattening）是 React Native 渲染器避免布局嵌套太深的优化手段。在 Fabric 渲染的挂载阶段，会通过拍平来减小 shadow tree 的嵌套层级，减少 native 元素的创建。</p>
+<p>具体来说，拍平的结果对于那些只参与布局的节点（比如只有某个样式的 View），将其多层合并为一个节点<br>比如有这样一段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span>                          // ReactAppComponent</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;margin:</span> <span class="attr">10</span>&#125;&#125; /&gt;</span> // ContainerComponent</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;margin:</span> <span class="attr">10</span>&#125;&#125;&gt;</span> // TitleComponent</span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">Image</span> &#123;<span class="attr">...</span>&#125; /&gt;</span></span></span><br><span class="line"><span class="xml">          <span class="tag">&lt;<span class="name">Text</span> &#123;<span class="attr">...</span>&#125;&gt;</span>This is a title<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    &lt;/View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里三个 view 都是只参与布局的 view，创建 shadow tree 和 fiber tree 时存在，但没必要在 native 端都创建。因此后面两个 view 会被合并到第一个中，同时保留他们的样式。</p>
+<p><img src="https://pic.imgdb.cn/item/64af71651ddac507cc04f88a.jpg"></p>
+<p><img src="https://pic.imgdb.cn/item/64af716e1ddac507cc0514e9.jpg"></p>
+<h3 id="Turbo-Modules"><a href="#Turbo-Modules" class="headerlink" title="Turbo Modules"></a>Turbo Modules</h3><p>在之前的架构中 JS 使用的所有 Native Modules（例如蓝牙、地理位置、文件存储等）都必须在应用程序打开之前进行初始化，这意味着即使用户不需要某些模块，但是它仍然必须在启动时进行初始化。<br>Turbo Modules 基本上是对这些旧的 Native 模块的增强，正如在前面介绍的那样，现在 JS 将能够持有这些模块的引用，所以 JS 代码可以仅在需要时才加载对应模块，这样可以将显着缩短 RN 应用的启动时间。</p>
+<h1 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h1><p>rn 的性能优化是一个很大的话题，因为其并不像 web 端的 react，很多优化手段需要 native 的支持。并且诸如分包、预加载等方法也要比 web 端复杂的多。<br>而且如果优化仅在前端做，其实能优化的点比较有限。通过一些监控和测量手段有时候也未必能看到明显的提升。<br>总之就是比较玄学，及时了解方案，也不一定能了解原理。在项目中应用的话，只能说是尽可能理解吧。</p>
+<p>rn 性能优化主要有几个大的方面</p>
+<ul>
+<li>首屏优化，即首屏加载时间。一般指的是页面第一次打开的时间，但也要考虑到后续打开的情况。类比指标可以有 FCP、FMP 等</li>
+<li>帧数优化，如果页面上有动画或者连续的交互，那么帧数要保持稳定，不能出现卡顿、闪烁等情况</li>
+<li>响应优化，即用户交互到做出响应的时间优化</li>
+<li>专项优化，比如列表、轮播图等功能性的优化</li>
+<li>其他优化</li>
+</ul>
+<h2 id="首屏优化"><a href="#首屏优化" class="headerlink" title="首屏优化"></a>首屏优化</h2><h3 id="指标和测量方式"><a href="#指标和测量方式" class="headerlink" title="指标和测量方式"></a>指标和测量方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首屏耗时 ≈ js bundle 资源下载及解压耗时 + RN 视图创建耗时 + RN 资源加载耗时 + js bridge 及应用启动耗时 + 首屏视图渲染耗时。</span><br></pre></td></tr></table></figure>
+
+<p>由于 RN 视图创建耗时，RN 资源加载耗时，js bridge 及应用启动耗时为 react native 上下文初始化的一个固定开销，所以我们可以将其统称为 react native 上下文初始化时间。所以最终我们暂且使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首屏耗时 ≈ js bundle 资源下载及解压耗时 + react native 上下文初始化时间 + 首屏视图渲染耗时</span><br></pre></td></tr></table></figure>
+
+<p>首屏渲染的指标应该主要参考几项</p>
+<p><img src="https://pic.imgdb.cn/item/64afb7031ddac507cc0bf7a3.jpg"></p>
+<ul>
+<li>FCP 或 FMP，用户看到具体内容的时间（非骨架屏和 loading 页面）</li>
+<li>LCP，也是一种指标。至于到底是 FP、FCP、FMP 还是 LCP，主要还是取决于不同需求。</li>
+<li>TTI，用户可交互的延迟，一般是从 FMP 到可交互的时间计算。</li>
+</ul>
+<p>这些渲染指标其实都是从 web 端沿用的指标。在 web 端有 performance 这样的 api，以及 lightHouse 这样的性能监测工具。在 rn 中则需要借助 native 的参与，来更好测算渲染时间。<br>举个例子，比如说要测算 LCP。LCP 是 Web 的标准，在 RN 中并没有实现，应该怎么实现呢？</p>
+<p>整体上讲，实现上大致分为 5 个步骤：</p>
+<ul>
+<li>在用户进入时，由 Native 线程记录 Start 时间戳。</li>
+<li>由 Native 线程将 Start 时间戳注入到 JS Context 中。</li>
+<li>由 JS 线程，监听页面中渲染元素的布局事件。</li>
+<li>由 JS 线程，在页面渲染过程中进行计算，并不断更新 LCP 值。</li>
+<li>由 JS 线程，计算得到 End 时间戳，并上报最终的 LCP 值。</li>
+</ul>
+<p>此时，最终上报的 LCP = End Time - Start Time。</p>
+<p>其中难点是怎么收敛 LCP，也就是如何判断可视区完全加载。<br>可以采用的规则是，当所有元素都加载完成，且底部的元素也已经加载完成时，可视区加载完成。元素有一个调用周期，先调用 render，再调用 layout。只调用了 render 的元素，是没有加载完成的元素。调用了 render 且调用了 layout 的元素，是加载完成的元素。能够判断一个元素是否加载完成了，也就能够判断可视区是否加载完成了。</p>
+<p><img src="https://pic.imgdb.cn/item/64afb8131ddac507cc114840.jpg"></p>
+<hr>
+<p>对于 react 的单个组件，渲染时长可以通过生命周期或 hooks 来测算。如果放在整个 App 组件上去监控，那么就是整个页面的渲染时间。</p>
+<blockquote>
+<p>由于 react 的特性，组件的 componentDidUpdate 或 componentDidMount 会在该组件的所有子组件执行完成之后才会执行。因此，作为根组件的 componentDidUpdate 执行时，所有的子组件的更新都已经完成，也就表示 js 侧的渲染完成。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">渲染耗时 = 接口数据返回并更新完成的时间(componentDidUpdate) - 初次进入组件的时间(componentWillMount)</span><br></pre></td></tr></table></figure>
+
+<p>渲染耗时的计算，则可以通过 native 记录的方式。好处是可以调节至 release 模式下进行测算，更加真实。<br>比如，Native 侧统计手机耗时时间：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...一些方法</span></span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">log</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;type = &quot;</span> + type);</span><br><span class="line">        <span class="keyword">if</span> (RNDynamicActivity.bundleType == <span class="string">&quot;static&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;mounted&quot;</span>:</span><br><span class="line">                    TimeRecord.mStaticLog.componentMountedTime = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;render&quot;</span>:</span><br><span class="line">                    TimeRecord.mStaticLog.startRenderTime = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;constructor&quot;</span>:</span><br><span class="line">                    TimeRecord.mStaticLog.initTime = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">&quot;updated&quot;</span>:</span><br><span class="line">                    TimeRecord.mStaticLog.updatedTime = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//...动态化时间记录</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@ReactMethod</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showDynamicTimes</span><span class="params">(Callback callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> isDynamic = RNDynamicActivity.bundleType.equals(<span class="string">&quot;dynamic&quot;</span>);</span><br><span class="line">        HashMap&lt;String, Long&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="comment">//...一些时间统计</span></span><br><span class="line">        callback.invoke(<span class="keyword">new</span> Gson().toJson(hashMap));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>React Native 侧触发：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    Log.log(<span class="string">&quot;constructor&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.fetchData();</span><br><span class="line">    Log.log(<span class="string">&quot;mounted&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">componentDidUpdate</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    Log.log(<span class="string">&quot;updated&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="优化方式"><a href="#优化方式" class="headerlink" title="优化方式"></a>优化方式</h3><p>优化的核心是我们可控的视图渲染耗时，可分为几个部分</p>
+<ul>
+<li>初次渲染。参考上面的渲染流程，这一步是第一次执行 bundle 时，react 渲染、shadow 渲染到 native 渲染的过程，直到显示出元素为止（一般可能是骨架屏）。</li>
+<li>网络请求。一般来说请求到来之前都会显示骨架屏，因此请求时间也会影响可交互时间以及完整的首屏渲染时间。</li>
+<li>首次更新。当网络请求完成后，则会再次更新一次，这时就会显示出具体的元素，并且一般进入可交互阶段。</li>
+<li>资源加载。比如图片、视频等非阻塞资源会在最后加载完成。到这一步，完整的首屏加载才完成。</li>
+</ul>
+<p>首屏优化主要有以下一些方式。</p>
+<ol>
+<li>缓存。通过 AsyncStorage 等工具，将上一次请求的数据缓存起来，每次进入页面时先取缓存中的数据，然后同时发起请求。当请求到达时，和当前数据作比较，如果有不同再去更新。这种方法可以让首屏渲染跳过网络请求的消耗时间，但是如果页面是实时性比较强的就不太合适。并且当页面加载完毕之后再次刷新数据也有可能影响用户体验。</li>
+</ol>
+<p>缓存还有一种更高级的方案，即页面直出，其实就是在页面 bundle 加载时就进行网络请求，然后将数据和页面一起展示出来。</p>
+<ol start="2">
+<li>渲染控制。渲染控制是通过异步渲染、延迟渲染、分级渲染等方式，使某些不重要、不在首屏的元素比首屏元素更晚渲染。或者是通过占位等形式先放上去一部分视图，再延迟渲染一些消耗较大的组件。</li>
+</ol>
+<ul>
+<li>异步渲染/延迟渲染：通过 setTimeout 等形式，让一些组件在某些组件完成渲染之后再去渲染。比如一个长页面下有不同的模块（🌰，商详页，上面是商品详情，下面是其他推荐，可以把可视区域内按优先级渲染，区域外按延迟渲染或懒渲染），部分模块不在首屏显示，就可以将其放在主要模块渲染完成之后再执行渲染。</li>
+<li>分级渲染/分批渲染：通过类似 Priority 这样的机制，让元素按照一定优先级进行渲染。这种不同于异步渲染，渲染的过程本质是同步的，当一个元素渲染完成后会立即调用下一优先级的元素渲染。而且一般不需要手动控制渲染。这种一般用于页面的主要模块和次要模块之间的分批次。（🌰，页面主要的是列表，其他元素都可以放较低优先级。🌰，或者比如多级 tab，按照优先级顺序依次渲染多个 tab 栏）</li>
+</ul>
+<blockquote>
+<p>分布渲染这里其实还有一些可以注意的地方，即不同的组件、元素对于“完成渲染”的定义不同。比如常规的组件可能是在useEffect执行时，但图片组件可能会在图片的onLayout回调执行时。</p>
+</blockquote>
+<ul>
+<li>懒加载或渲染：类似虚拟列表的效果，当某个区域滑动到可视区域时才渲染。这种方式虽然最省性能，但是有可能导致用户快速滑动时，对应的模块才开始渲染，就会感觉到卡顿</li>
+</ul>
+<ol start="3">
+<li>bundle 优化。bundle 大小降低、不需要的页面分包，这样的方式和渲染无关，而是加快 native 下载、执行包的时间。</li>
+</ol>
+<p>优化包体积可以从 tree-shaking、删除一些库等方面入手；而分包则是比较深奥的东西。<br>一般来说，只针对少部分库进行分包是没有必要的，过于零碎的包在下载时也容易造成过大的服务器消耗。分包的对象一般是页面级的，多个页面之间要进行必须的分包，首次只加载首屏的页面，其他页面可以执行懒加载。</p>
+<ol start="4">
+<li>预加载、预请求。一般是上级页面进行预处理，并且要控制预加载包的数量、时机。</li>
+</ol>
+<p>预请求其实是一种比较通用的优化方式，除了对静态资源的优化之外，一些主要接口也可以进行预请求。也可配合缓存实现数据预取的效果<br>预加载则通常指的是整个加载的过程，包括容器加载、引擎加载、bundle 下载、bundle 执行，甚至初次渲染等步骤。预加载涉及到比较大的开销，因此最好由开发者手动控制预加载哪些部分。比如可以根据埋点数据得到用户经常访问的下一个页面，然后在当前页面加载完后预加载下一个页面。<br>预加载这一块的水很深，包括引擎复用、回收等操作。不过这些通常是由 native 底层控制。</p>
+<h2 id="帧数优化"><a href="#帧数优化" class="headerlink" title="帧数优化"></a>帧数优化</h2><p>帧数优化的主要方式有</p>
+<ul>
+<li>阻止不必要的渲染。主要可能产生不必要渲染的地方有<ul>
+<li>redux 的 state，一些频繁更新的数据通过 redux 传递，可能导致其他无关组件被连带更新。通过改用 pubsub 等方式传递数据，而不是利用 redux 仅做状态共享</li>
+<li>没有使用 memo、pureComponent 等方式，或没有生效，导致父组件更新时，大量子组件被连带更新</li>
+<li>本该使用 Animated 动画的地方由 state 控制实现</li>
+</ul>
+</li>
+<li>降低渲染消耗<ul>
+<li>降低 state 影响的层级，把一些需要频繁更新的组件提取出去，不要影响父组件</li>
+</ul>
+</li>
+<li>针对列表、动画等做专项优化</li>
+</ul>
+<p>关于重复渲染的测量工具，可以使用 why-did-you-render 来检查。</p>
+<h2 id="专项优化"><a href="#专项优化" class="headerlink" title="专项优化"></a>专项优化</h2><p>长列表优化其实在上面已经说过，关于 FlatList 的优化方式，主要是通过传递恰当的 api 来保证 rn 自己能形成足够的优化。</p>
+<p>其他特殊组件的优化，则和项目本身息息相关。</p>
+<h2 id="其他优化"><a href="#其他优化" class="headerlink" title="其他优化"></a>其他优化</h2><ol>
+<li>内存优化。对于页面的视频、gif、高负荷动画等，当离开页面时，需要将其置空或销毁，否则将造成很大的内存消耗。</li>
+</ol>
+<p>比如当 A 页面中有视频播放的模块，而 B 页面是 A 的二级页面，在融合模式下，进入 A 页面之后会开始播放视频流，但是当从 A 页面进入到 B 页面之后，本质上 A 页面并没有被回收，但是这个时候，还在加载着视频资源。那么这样下去，会让内存越来越大。<br>那么如何解决这个问题呢？ 当 A 跳转到 B 页面之后，应该停止 A 页面加载资源，或者清空视频资源，让内存维护一个健康的水平。<br>对于一些超多 gif 图片的页面，并还有列表加载功能，这样在向下加载数据的过程中，会渲染更多的 gif 组件，这样就会让内存越来越大，并且不容易下来，或者一些低端的机型，根本无法渲染太多的 gif 图片，那么此时应该如何解决呢？<br>这个时候可以做一个优化，就是只有在视图范围内的元素才渲染真正的 gif 图片，而其他看不见的直接渲染图片或者是占位图。</p>
+<ol start="2">
+<li>图片优化。图片优化的方面有很多，包括但不仅限于</li>
+</ol>
+<ul>
+<li>图片大小，为了同时兼顾图片的清晰和大小，应该选择合适的图片大小和分辨率，不能过大也不能过小（指的是体积而不是尺寸）</li>
+<li>预加载图片，对其他静态资源也是类似的</li>
+<li>占位图。对于背景图，可以采用纯色占位+图片覆盖的形式，防止图片突然出现导致的突兀情况。</li>
+<li>懒加载。图片懒加载可以说是最常见的情况了，可以通过封装一个包含懒加载功能的 Image 组件实现图片的懒加载。</li>
+</ul>
+<ol start="3">
+<li>网络请求优化。</li>
+</ol>
+<ul>
+<li>预请求</li>
+<li>页面带参：重要参数可以通过上游⻚⾯带过来，比如拿一些基础信息和头图部分信息带到详情⻚，使得头图和基础信息模块的数据可以第⼀时间得以展示，加快了⻚⾯⾸屏展示速度。</li>
+<li>请求前置：将请求时机前置到Native⻚⾯初始化时，和MRN框架创建、加载JS等操作并⾏执⾏。比如直接让native侧执行请求，而不需等待js端的执行</li>
+<li>请求分级：降低请求并发，或通过聚合的形式减少发请求的次数</li>
+</ul>
+<ol start="4">
+<li>包体优化</li>
+</ol>
+<ul>
+<li>tree-shaking，可以参考webpack章节对tree-shaking的讲解，在rn中其实是类似的，大致都是减少副作用、规范代码、设置babel等。这里有一些tree-shaking的参考文章：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32831172">https://zhuanlan.zhihu.com/p/32831172</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903544756109319">https://juejin.cn/post/6844903544756109319</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903687412776974">https://juejin.cn/post/6844903687412776974</a></li>
+<li>删除lodash、moment.js等非常庞大的js库。只使用其中的小功能，可以自己造轮子，或者采用内部库的一些精简过的功能库</li>
+<li>对于icon使用的svg、image，要注意不要全量引入庞大的svg库，导入大量无用的svg文件等。其他资源类似Ï</li>
+</ul>
+<h2 id="优化工具"><a href="#优化工具" class="headerlink" title="优化工具"></a>优化工具</h2><h3 id="why-did-you-render"><a href="#why-did-you-render" class="headerlink" title="why-did-you-render"></a>why-did-you-render</h3><p>wdyr在rn中的使用可以参考：<a target="_blank" rel="noopener" href="https://yajanarao.medium.com/how-to-use-why-did-you-render-library-in-react-native-a95121978a75">https://yajanarao.medium.com/how-to-use-why-did-you-render-library-in-react-native-a95121978a75</a></p>
+<p>wdyr可以检测执行的组件的渲染情况，在控制台打印出渲染原因。</p>
+<p><img src="https://pic.imgdb.cn/item/64afde8f1ddac507cca1dfbf.jpg"></p>
+<p>下面是一个codesandbox例子：<a target="_blank" rel="noopener" href="https://codesandbox.io/s/why-did-you-render-sandbox-forked-q73lpx">https://codesandbox.io/s/why-did-you-render-sandbox-forked-q73lpx</a></p>
+<p>wdyr还可以用来检查redux的useSelector，具体可参考官方文档<a target="_blank" rel="noopener" href="https://github.com/welldone-software/why-did-you-render">https://github.com/welldone-software/why-did-you-render</a></p>
+<h3 id="Profiler"><a href="#Profiler" class="headerlink" title="Profiler"></a>Profiler</h3><p>使用真机和电脑链接后，可以通过chrome的开发者工具进行调试，其中也包括chrome的profiler。</p>
+<p>和web端的使用方式类似，profiler可以检查各个线程的执行时间，并以火山图的形式展示，便于查看问题所在。</p>
+<h3 id="RN-debugger"><a href="#RN-debugger" class="headerlink" title="RN debugger"></a>RN debugger</h3><p>RN debugger提供的React⾯板也有一些功能。<br>比如，它可以用于显示组件重复渲染次数，便于发现有问题的组件。</p>
+<p><img src="https://pic.imgdb.cn/item/64affa4c1ddac507cc15eddb.jpg"></p>
+<p>用它可以和wdyr配合，找到准确的重复渲染元素。</p>
+<p>RN debugger还有的其他功能有</p>
+<ul>
+<li>js函数调用次数监测</li>
+<li>显示页面的性能指标时间，比如FCP等指标</li>
+<li>监测JS与native通信情况</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></div><div class="post_share"><div class="social-share" data-image="/img/codes1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/30/react-priority/"><img class="prev-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">使用Priority管理React组件渲染优先级</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/05/konva/"><img class="next-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">konva学习和原理浅析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/12/OS/" title="操作系统知识点总结"><img class="cover" src="/img/codes1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-12</div><div class="title">操作系统知识点总结</div></div></a></div><div><a href="/2021/12/05/blog1-h5-deeping/" title="前端知识深入--HTML5深入"><img class="cover" src="/img/Chrome.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-05</div><div class="title">前端知识深入--HTML5深入</div></div></a></div><div><a href="/2022/02/02/RegExp/" title="正则表达式学习和常用正则"><img class="cover" src="/img/canvas.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-02</div><div class="title">正则表达式学习和常用正则</div></div></a></div><div><a href="/2021/12/10/blog2-css-deeping/" title="CSS学习总结"><img class="cover" src="/img/CSS.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-10</div><div class="title">CSS学习总结</div></div></a></div><div><a href="/2021/12/02/blog4-web/" title="网络知识学习总结"><img class="cover" src="/img/web.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="title">网络知识学习总结</div></div></a></div><div><a href="/2021/12/02/blog5-browser/" title="浏览器知识学习总结"><img class="cover" src="/img/Chrome.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="title">浏览器知识学习总结</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/pinkstar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Ye</div><div class="author-info__description">a singleThreaded boy's blog</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penghei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penghei" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:632885485@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">A SingleThreaded Boy...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92"><span class="toc-number">1.1.</span> <span class="toc-text">交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA"><span class="toc-number">1.1.1.</span> <span class="toc-text">导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E7%94%BB"><span class="toc-number">1.1.2.</span> <span class="toc-text">动画</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">原生模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">原生方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD"><span class="toc-number">1.4.</span> <span class="toc-text">性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E7%BB%BC%E8%BF%B0"><span class="toc-number">1.4.1.</span> <span class="toc-text">性能综述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAM-Bundles-%E5%92%8C%E5%86%85%E8%81%94%E5%BC%95%E7%94%A8%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.2.</span> <span class="toc-text">RAM Bundles 和内联引用优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="toc-number">1.5.1.</span> <span class="toc-text">核心组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%BB%84%E4%BB%B6"><span class="toc-number">1.5.2.</span> <span class="toc-text">列表组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rn-%E4%B8%AD%E7%9A%84%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">rn 中的虚拟列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E4%BC%98%E5%8C%96"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">列表优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FlatList"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">FlatList</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%EF%BC%88%E6%97%A7%E7%89%88%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">架构（旧版）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93"><span class="toc-number">2.2.</span> <span class="toc-text">渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.2.1.</span> <span class="toc-text">渲染线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E6%A0%91"><span class="toc-number">2.2.2.</span> <span class="toc-text">渲染树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.3.</span> <span class="toc-text">渲染过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1"><span class="toc-number">2.3.</span> <span class="toc-text">通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86"><span class="toc-number">2.3.1.</span> <span class="toc-text">基本通信原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js-%E8%B0%83%E7%94%A8-native"><span class="toc-number">2.3.2.</span> <span class="toc-text">js 调用 native</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#native-%E8%B0%83%E7%94%A8-js"><span class="toc-number">2.3.3.</span> <span class="toc-text">native 调用 js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%A6%82%E5%BF%B5"><span class="toc-number">2.4.</span> <span class="toc-text">其他概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bundle"><span class="toc-number">2.4.1.</span> <span class="toc-text">bundle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rn-%E5%BA%94%E7%94%A8%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">2.4.2.</span> <span class="toc-text">rn 应用的启动流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rn-%E7%9A%84%E5%BA%95%E5%B1%82%E4%BC%98%E5%8C%96"><span class="toc-number">2.4.3.</span> <span class="toc-text">rn 的底层优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%9E%B6%E6%9E%84"><span class="toc-number">2.5.</span> <span class="toc-text">新架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSI"><span class="toc-number">2.5.1.</span> <span class="toc-text">JSI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fabric"><span class="toc-number">2.5.2.</span> <span class="toc-text">Fabric</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E6%9E%B6%E6%9E%84%E7%9A%84%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">新架构的渲染流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E6%8B%8D%E5%B9%B3"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">视图拍平</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Turbo-Modules"><span class="toc-number">2.5.3.</span> <span class="toc-text">Turbo Modules</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E5%B1%8F%E4%BC%98%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">首屏优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E6%A0%87%E5%92%8C%E6%B5%8B%E9%87%8F%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text">指标和测量方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">优化方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A7%E6%95%B0%E4%BC%98%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">帧数优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%93%E9%A1%B9%E4%BC%98%E5%8C%96"><span class="toc-number">3.3.</span> <span class="toc-text">专项优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96"><span class="toc-number">3.4.</span> <span class="toc-text">其他优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-number">3.5.</span> <span class="toc-text">优化工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-did-you-render"><span class="toc-number">3.5.1.</span> <span class="toc-text">why-did-you-render</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Profiler"><span class="toc-number">3.5.2.</span> <span class="toc-text">Profiler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RN-debugger"><span class="toc-number">3.5.3.</span> <span class="toc-text">RN debugger</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/07/17/carousel-source-code/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/17/carousel-source-code/" title="无题">无题</a><time datetime="2023-07-16T17:12:50.276Z" title="发表于 2023-07-17 01:12:50">2023-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/07/08/readme/" title="无题"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2023/07/08/readme/" title="无题">无题</a><time datetime="2023-07-07T18:59:52.412Z" title="发表于 2023-07-08 02:59:52">2023-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/30/react-priority/" title="使用Priority管理React组件渲染优先级"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Priority管理React组件渲染优先级"/></a><div class="content"><a class="title" href="/2023/06/30/react-priority/" title="使用Priority管理React组件渲染优先级">使用Priority管理React组件渲染优先级</a><time datetime="2023-06-30T06:58:28.000Z" title="发表于 2023-06-30 14:58:28">2023-06-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/17/react-native/" title="React Native 学习"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React Native 学习"/></a><div class="content"><a class="title" href="/2023/05/17/react-native/" title="React Native 学习">React Native 学习</a><time datetime="2023-05-17T06:58:28.000Z" title="发表于 2023-05-17 14:58:28">2023-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/05/konva/" title="konva学习和原理浅析"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="konva学习和原理浅析"/></a><div class="content"><a class="title" href="/2023/03/05/konva/" title="konva学习和原理浅析">konva学习和原理浅析</a><time datetime="2023-03-05T09:23:35.000Z" title="发表于 2023-03-05 17:23:35">2023-03-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Xing Ye</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello stranger!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")
