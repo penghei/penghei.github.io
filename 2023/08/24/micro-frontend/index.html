@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>微前端初步了解学习 | XingYeBlog</title><meta name="keywords" content="日常学习"><meta name="author" content="Xing Ye,632885485@qq.com"><meta name="copyright" content="Xing Ye"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="微前端概述微前端可定义为：一种将独立的前端应用组成一个更大的整体的架构风格。 微前端将前端整体分解，每一块可以独立开发、测试和部署，同时对用户而言仍是一个整体。 基本特点和优缺点微前端架构具备以下几个核心价值：  技术栈无关：主框架不限制接入应用的技术栈，子应用具备完全自主权 独立开发、独立部署：子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新 独立运行时：每个子应用之间状态隔离">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微前端初步了解学习">
+<meta property="og:url" content="http://example.com/2023/08/24/micro-frontend/index.html">
+<meta property="og:site_name" content="XingYeBlog">
+<meta property="og:description" content="微前端概述微前端可定义为：一种将独立的前端应用组成一个更大的整体的架构风格。 微前端将前端整体分解，每一块可以独立开发、测试和部署，同时对用户而言仍是一个整体。 基本特点和优缺点微前端架构具备以下几个核心价值：  技术栈无关：主框架不限制接入应用的技术栈，子应用具备完全自主权 独立开发、独立部署：子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新 独立运行时：每个子应用之间状态隔离">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/micro-frontend.png">
+<meta property="article:published_time" content="2023-08-24T07:47:08.000Z">
+<meta property="article:modified_time" content="2023-08-29T15:40:59.529Z">
+<meta property="article:author" content="Xing Ye">
+<meta property="article:tag" content="日常学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/micro-frontend.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://example.com/2023/08/24/micro-frontend/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微前端初步了解学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-29 23:40:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/pinkstar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/micro-frontend.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XingYeBlog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">微前端初步了解学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-24T07:47:08.000Z" title="发表于 2023-08-24 15:47:08">2023-08-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-29T15:40:59.529Z" title="更新于 2023-08-29 23:40:59">2023-08-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8E%9F%E7%90%86/">原理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="微前端初步了解学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="微前端概述"><a href="#微前端概述" class="headerlink" title="微前端概述"></a>微前端概述</h1><p>微前端可定义为：一种将独立的前端应用组成一个更大的整体的架构风格。</p>
+<p>微前端将前端整体分解，每一块可以独立开发、测试和部署，同时对用户而言仍是一个整体。<br><img src="images/image-24.png" alt="Alt text"></p>
+<h2 id="基本特点和优缺点"><a href="#基本特点和优缺点" class="headerlink" title="基本特点和优缺点"></a>基本特点和优缺点</h2><p>微前端架构具备以下几个核心价值：</p>
+<ul>
+<li>技术栈无关：主框架不限制接入应用的技术栈，子应用具备完全自主权</li>
+<li>独立开发、独立部署：子应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新</li>
+<li>独立运行时：每个子应用之间状态隔离，运行时状态不共享。但可以通过消息或 url 的方式来通信。</li>
+</ul>
+<p>微前端架构旨在解决单体应用在一个相对长的时间跨度下，由于参与的人员、团队的增多、变迁，从一个普通应用演变成一个巨石应用(Frontend Monolith)后，随之而来的应用不可维护的问题。这类问题在企业级 Web 应用中尤其常见。</p>
+<p>微前端在实现上大致可以分为两种实现思路：</p>
+<ul>
+<li>按页面分解，单实例：在同一时刻只有一个子应用被展示，子应用具备一个完整的生命周期。通常这种实现是依靠路由的，相当于将 spa 的每个路由页面都分为了一个微前端子应用</li>
+<li>按组件或按功能分解，多实例：一个页面上展示多个子应用，这些子应用可能是页面的一个模块，或者负责部分功能。通常使用 Web Components 方案来做子应用封装，当然也可以使用 react、vue 等框架提供的微前端能力来实现。比如 react 可以让页面的部分内容由 react 控制渲染，其他内容则可以交由静态生成或其他应用负责。</li>
+</ul>
+<p>然后再来说下微前端的优缺点：</p>
+<ul>
+<li>优点：<ul>
+<li>独立性，包括上面说的独立开发、独立部署、独立运行时，每个子应用有自己的完整的一套开发流程，可以由不同的开发团队来维护。独立性也为整体应用带来更高维护性、更低风险</li>
+<li>简单、降低耦合：每个单独的微型前端应用的源代码都将比单个整体前端应用的源代码少得多。这些较小的代码库对于开发人员来说更容易维护。尤其是我们避免了组件间耦合所导致的复杂性。</li>
+<li>增量变更：如果我们想大幅度更新应用，实现一些技术栈方面的替换和升级，那么微前端的方式就可以减小重构带来的消耗，我们可以以子应用为单位逐个渐进地升级应用。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>重复依赖：多个子应用之间会有不可避免的重复依赖的情况，类似 react 这样的共用依赖有可能会被下载多次。需要通过一些方式来将这些依赖包和业务代码分离，在共用容器内引入依赖。但考虑到不同子应用的依赖版本不同，并且一个依赖也并不是一定全量引入的（比如组件库可能只需要一部分），如果只是简单的在顶层把这些内容打包进去，就会造成一些更大的问题。</li>
+<li>环境复杂：当微应用越来越多，你在本地开发时肯定无法把所有微应用和对应的后端都启动起来，那么你就不得不在本地进行环境的简化。一个应用有自己的开发、测试、线上等多种环境，不同应用之间的环境如何整合，和服务端的配合，都会使得环境越来越复杂。</li>
+</ul>
+</li>
+</ul>
+<h1 id="微前端实现"><a href="#微前端实现" class="headerlink" title="微前端实现"></a>微前端实现</h1><p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/78362028">https://zhuanlan.zhihu.com/p/78362028</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903953734336525">https://juejin.cn/post/6844903953734336525</a></p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>大多数微前端都是以页面为子应用的。从这个角度考虑，其实微前端是一种 MPA 化的 SPA，因此有些实现方式可能类似传统 MPA。<br>现有的实现方式有：</p>
+<ol>
+<li>服务端集成：即通过 Nginx 配置反向代理来实现不同路径映射到不同应用（如下图所示），这样可以实现项目的独立开发和部署。</li>
+</ol>
+<p><img src="images/image-25.png" alt="Alt text"></p>
+<p>但同时这种做法也会丢失 SPA 的体验，每一次命中路由都会重新请求资源，不能局部更新当前页面。</p>
+<ol start="2">
+<li>运行时集成：使用 iframe ，通过配置不同的 src 加载不同的子应用页面。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;https://test.qq.com/a/index.html&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>iframe 自带的样式、环境隔离机制使得它具备天然的沙盒机制。<br>但 iframe 实现的缺点也很多：比如刷新无法保存状态、不同子应用间难以共享数据等等</p>
+<ol start="3">
+<li>JS 集成：每个微前端都对应一个 <code>&lt;script&gt;</code> 标签，并且在加载时导出一个全局变量。然后，容器应用程序确定应该安装哪些微应用，并调用相关函数以告知微应用何时以及在何处进行渲染。</li>
+</ol>
+<p>这一种是主流的实现方式，下面会详细讲解。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Feed me!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to Feed me!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 这些脚本不会马上渲染应用 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 而是分别暴露全局的渲染方法 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://browse.example.com/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://order.example.com/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://profile.example.com/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;micro-frontend-root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 这些全局函数是上面脚本暴露的</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> microFrontendsByRoute = &#123;</span></span><br><span class="line"><span class="javascript">        <span class="string">&quot;/&quot;</span>: <span class="built_in">window</span>.renderBrowseRestaurants,</span></span><br><span class="line"><span class="javascript">        <span class="string">&quot;/order-food&quot;</span>: <span class="built_in">window</span>.renderOrderFood,</span></span><br><span class="line"><span class="javascript">        <span class="string">&quot;/user-profile&quot;</span>: <span class="built_in">window</span>.renderUserProfile,</span></span><br><span class="line"><span class="javascript">      &#125;;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> renderFunction = microFrontendsByRoute[<span class="built_in">window</span>.location.pathname];</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">      <span class="comment">// 渲染第一个微应用</span></span></span><br><span class="line"><span class="javascript">      renderFunction(<span class="string">&quot;micro-frontend-root&quot;</span>);</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这种方式具有完全的灵活性，可以用 JS 控制什么时候下载每个应用，以及渲染应用时额外传参数。</p>
+<ol start="4">
+<li>Web Component 集成：主要应用于多实例微前端，即一个页面可能存在不同的组件，这些组件都是一个 Web Component。</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 示例代码类似，其实就是用wc代替了全局方法渲染 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 这些标签名是上面代码定义的</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> webComponentsByRoute = &#123;</span></span><br><span class="line"><span class="javascript">    <span class="string">&quot;/&quot;</span>: <span class="string">&quot;micro-frontend-browse-restaurants&quot;</span>,</span></span><br><span class="line"><span class="javascript">    <span class="string">&quot;/order-food&quot;</span>: <span class="string">&quot;micro-frontend-order-food&quot;</span>,</span></span><br><span class="line"><span class="javascript">    <span class="string">&quot;/user-profile&quot;</span>: <span class="string">&quot;micro-frontend-user-profile&quot;</span>,</span></span><br><span class="line"><span class="javascript">  &#125;;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> webComponentType = webComponentsByRoute[<span class="built_in">window</span>.location.pathname];</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 渲染第一个微应用（自定义标签）</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> root = <span class="built_in">document</span>.getElementById(<span class="string">&quot;micro-frontend-root&quot;</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">const</span> webComponent = <span class="built_in">document</span>.createElement(webComponentType);</span></span><br><span class="line"><span class="javascript">  root.appendChild(webComponent);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h2><p>上面说过微前端实现有两种方式，一种是页面，一种是组件。<br>以一个多页面应用为例，每个页面就是一个子应用。那么要实现的主要功能有：</p>
+<ol>
+<li>集成方式：主框架与子应用集成的方式，大体有两种：<ul>
+<li>构建时组合：子应用打包，作为主应用的一个依赖项一起发布。这个最大的缺点在于如果更新子应用，那么主应用也得更新，主应用下的其他子应用也可能会受到影响。</li>
+<li>运行时组合：子应用独立打包，通过 js 动态加载子应用并渲染。</li>
+</ul>
+</li>
+<li>子应用加载：JS Entry vs HTML Entry。在确定了运行时载入的方案后，另一个需要决策的点是，我们需要子应用提供什么形式的资源作为渲染入口？</li>
+</ol>
+<ul>
+<li>JS Entry 的方式通常是子应用将资源打成一个 entry script，比如 下面示例的方式。但这个方案的限制也颇多，如要求子应用的所有资源打包到一个 js bundle 里，包括 css、图片等资源。除了打出来的包可能体积庞大之外的问题之外，资源的并行加载等特性也无法利用上。</li>
+<li>HTML Entry 则更加灵活，直接将子应用打出来 HTML 作为入口，主框架可以通过 fetch html 的方式获取子应用的静态资源，同时将 HTML document 作为子节点塞到主框架的容器中。这样不仅可以极大的减少主应用的接入成本，子应用的开发方式及打包方式基本上也不需要调整，而且可以天然的解决子应用之间样式隔离的问题。</li>
+</ul>
+<p>举个栗子：下面这种情况：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">子应用 index.html</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//unpkg/antd.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">// 子应用入口 ReactDOM.render(<span class="tag">&lt;<span class="name">App</span> /&gt;</span>, document.getElementByI(&#x27;root&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>如果是 JS Entry 方案，主框架需要在子应用加载之前构建好相应的容器节点(比如这里的 “#root” 节点)，不然子应用加载时会因为找不到 container 报错。但问题在于，主应用并不能保证子应用使用的容器节点为某一特定标记元素。而 HTML Entry 的方案则天然能解决这一问题，保留子应用完整的环境上下文，从而确保子应用有良好的开发体验。</p>
+<p>Html Entry方法的主要步骤如下：</p>
+<ul>
+<li>首先通过url获取到整个Html文件</li>
+<li>从html中解析出html，js和css文本，可以通过正则等方法来解析；</li>
+<li>在主应用中创建容器，把html更新到容器中，比如子应用依赖的容器是<code>&lt;div class=&quot;main&gt;&lt;/div&gt;</code>，那就把这个容器元素注入</li>
+<li>动态创建style和script标签，把子应用的css和js赋值在其中，最后把容器放置在主应用中。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解析 HTML，获取 html，js，css 文本</span></span><br><span class="line"><span class="keyword">const</span> &#123;htmlText, jsText, cssText&#125; = importHTMLEntry(<span class="string">&#x27;https://xxxx.com&#x27;</span>)</span><br><span class="line"><span class="comment">// 创建容器</span></span><br><span class="line"><span class="keyword">const</span> $ = <span class="built_in">document</span>.querySelector(container)</span><br><span class="line">$.innerHTML = htmlText</span><br><span class="line"><span class="comment">// 创建 style 和 js 标签</span></span><br><span class="line"><span class="keyword">const</span> $style = createElement(<span class="string">&#x27;style&#x27;</span>, cssText)</span><br><span class="line"><span class="keyword">const</span> $script = createElement(<span class="string">&#x27;script&#x27;</span>, jsText)</span><br><span class="line">$.appendChild([$style, $script])</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>样式控制：多个微前端应用的样式需要有一定模块化规范。常用的几种方式有：<ul>
+<li>类名控制，比如 css-module</li>
+<li>sass、less 提供的嵌套方式，每个微前端应用的样式嵌套在一个命名空间内</li>
+<li>行内样式</li>
+<li>动态样式，比如一个应用加载时通过动态添加 link 标签来引入样式，卸载时再删除该样式</li>
+</ul>
+</li>
+<li>共享依赖：在不同微应用之间应该要共享一些重用的依赖，比如组件库等。常见的方式是创建一个项目整体的公共组件库，任何人都可以为库贡献代码，但是有一个托管者负责确保这些代码的质量、一致性和有效性。<ul>
+<li>共享依赖的常见实现方式，是可以在打包时将一些共用依赖，比如 react，到打包到主应用中。然后每个子应用去通过 external 将这些依赖标记为外部库。最后通过 cdn 形式导入主应用 html。</li>
+</ul>
+</li>
+<li>通信：不同微应用之间可能需要通信。比如有一个商品落地页，需要跳转到详情页。落地页和详情页之间需要通信当前具体的商品 id；常见的通信方式有：<ul>
+<li>自定义 EventBus</li>
+<li>利用页面能力通信，比如 localstorage、webworker 等，或者通过全局变量</li>
+<li>通过 url 参数进行通信，比如把 id 塞到跳转 url 中，在详情页内就可以获取到具体的商品 id 了</li>
+</ul>
+</li>
+<li>js 隔离：单个子应用需要放入一个沙箱内，防止子应用的副作用影响其他子应用。具体实现方法有：<ul>
+<li>快照沙箱：比如在应用的 bootstrap（初始化入口，还未修改全局） 及 mount（完成挂载，已有可用全局） 两个生命周期开始之前分别给全局状态打下快照，然后当应用切出/卸载时，将状态回滚至 bootstrap 开始之前的阶段，确保应用对全局状态的污染全部清零。而当应用二次进入时则再恢复至 mount 前的状态的，从而确保应用在 remount 时拥有跟第一次 mount 时一致的全局上下文。</li>
+<li>proxy沙箱，使用proxy代理window，对于每个子应用都代理了一个fakeWindow，这样在查找变量的时候在本地的fakeWindow上查找，如果没有找到就到主应用的window上查找，而修改时只修改本地的fakeWindow，不会影响到其他的应用，在最终卸载时把fakeWindow删除即可。</li>
+</ul>
+</li>
+</ol>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903953734336525#heading-20">https://juejin.cn/post/6844903953734336525#heading-20</a></p>
+<p>详细内容可以打开上面的参考链接</p>
+<p>大致的实现原理如下：</p>
+<ol>
+<li>首先我们创建主应用，然后在主应用的 App.js 内部，通过 react-router 来实现路由的切换</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Switch&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Browse&#125;</span> /&gt;</span></span></span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/restaurant/:id&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Restaurant&#125;</span> /&gt;</span></span></span><br><span class="line">&lt;/Switch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>也可以不用 react-router，直接通过监听路由跳转也行。<br>这里的 Browse 和 Restaurant，都是子应用；当页面路由跳转时，则会开始动态加载子应用，</p>
+<ol start="2">
+<li>子应用组件：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Browse = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">MicroFrontend</span> <span class="attr">history</span>=<span class="string">&#123;history&#125;</span> <span class="attr">name</span>=<span class="string">&quot;Browse&quot;</span> <span class="attr">host</span>=<span class="string">&#123;browseHost&#125;</span> /&gt;</span></span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> Restaurant = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">MicroFrontend</span> <span class="attr">history</span>=<span class="string">&#123;history&#125;</span> <span class="attr">name</span>=<span class="string">&quot;Restaurant&quot;</span> <span class="attr">host</span>=<span class="string">&#123;restaurantHost&#125;</span> /&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>MicroFrontend 组件提供了子应用的统一加载、渲染逻辑：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MicroFrontend</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; name, host &#125; = <span class="built_in">this</span>.props;</span><br><span class="line">    <span class="keyword">const</span> scriptId = <span class="string">`micro-frontend-script-<span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(scriptId)) &#123;</span><br><span class="line">      <span class="built_in">this</span>.renderMicroFrontend();</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这里是jsEntry方案，即通过加载子应用入口js的方式来加载子应用并执行渲染</span></span><br><span class="line">    <span class="comment">// 如果是htmlEntry，那么这里请求的应该是子应用的入口html，然后根据入口html的script、link等加载所需的资源，并把入口元素document注入到主应用中，再去执行渲染</span></span><br><span class="line">    fetch(<span class="string">`<span class="subst">$&#123;host&#125;</span>/asset-manifest.json`</span>) <span class="comment">// 获取子应用的资源，比如页面需要的静态资源、js等</span></span><br><span class="line">      .then(<span class="function">(<span class="params">res</span>) =&gt;</span> res.json())</span><br><span class="line">      .then(<span class="function">(<span class="params">manifest</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">        script.id = scriptId;</span><br><span class="line">        script.src = <span class="string">`<span class="subst">$&#123;host&#125;</span><span class="subst">$&#123;manifest[<span class="string">&quot;main.js&quot;</span>]&#125;</span>`</span>; <span class="comment">// 脚本的src实际上就是子应用的入口js</span></span><br><span class="line">        script.onload = <span class="built_in">this</span>.renderMicroFrontend; <span class="comment">// 脚本加载完成后执行 renderMicroFrontend渲染子应用</span></span><br><span class="line">        <span class="built_in">document</span>.head.appendChild(script);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  renderMicroFrontend = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; name, history &#125; = <span class="built_in">this</span>.props;</span><br><span class="line">    <span class="comment">// 这个方法会根据具体的应用（比如Browse）来执行渲染方法</span></span><br><span class="line">    <span class="built_in">window</span>[<span class="string">`render<span class="subst">$&#123;name&#125;</span>`</span>](<span class="string">`<span class="subst">$&#123;name&#125;</span>-container`</span>, history);</span><br><span class="line">    <span class="comment">// E.g.: window.renderBrowse(&#x27;browse-container&#x27;, history);</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; name &#125; = <span class="built_in">this</span>.props;</span><br><span class="line">    <span class="comment">// 卸载子应用时同时卸载渲染方法</span></span><br><span class="line">    <span class="built_in">window</span>[<span class="string">`unmount<span class="subst">$&#123;name&#125;</span>`</span>](<span class="string">`<span class="subst">$&#123;name&#125;</span>-container`</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">main</span> <span class="attr">id</span>=<span class="string">&#123;</span>`$&#123;<span class="attr">this.props.name</span>&#125;<span class="attr">-container</span>`&#125; /&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>渲染方法：每个子应用内部应该有自己的一套渲染方法，在 MicroFrontend 挂载时通过 renderMicroFrontend 来执行渲染。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Browse组件项目的index.js</span></span><br><span class="line"><span class="comment">// 当路由跳转时会请求这个文件和其他相关资源，并动态通过script插入当前文件</span></span><br><span class="line"><span class="comment">// 当script加载完成时，执行这里的renderBrowse方法，执行渲染</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&quot;react-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&quot;./App&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> registerServiceWorker <span class="keyword">from</span> <span class="string">&quot;./registerServiceWorker&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.renderBrowse = <span class="function">(<span class="params">containerId, history</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 实际上就是react的渲染方法</span></span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">App</span> <span class="attr">history</span>=<span class="string">&#123;history&#125;</span> /&gt;</span></span>,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(containerId)</span><br><span class="line">  );</span><br><span class="line">  registerServiceWorker();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.unmountBrowse = <span class="function">(<span class="params">containerId</span>) =&gt;</span> &#123;</span><br><span class="line">  ReactDOM.unmountComponentAtNode(<span class="built_in">document</span>.getElementById(containerId));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>其他内容，包括样式的处理、路由传参和其他数据通信方式、公共依赖提取等等。</li>
+</ol>
+<h1 id="qiankun"><a href="#qiankun" class="headerlink" title="qiankun"></a>qiankun</h1></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a></div><div class="post_share"><div class="social-share" data-image="/img/micro-frontend.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/24/low-code/"><img class="prev-cover" src="/img/codes1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">低代码相关知识初步了解</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/20/canvas-tiles-map/"><img class="next-cover" src="/img/canvas.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">canvas分块加载/瓦片地图实现</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/12/OS/" title="操作系统知识点总结"><img class="cover" src="/img/OS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-12</div><div class="title">操作系统知识点总结</div></div></a></div><div><a href="/2021/12/05/blog1-h5-deeping/" title="前端知识深入--HTML5深入"><img class="cover" src="/img/Chrome.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-05</div><div class="title">前端知识深入--HTML5深入</div></div></a></div><div><a href="/2022/02/02/RegExp/" title="正则表达式学习和常用正则"><img class="cover" src="/img/canvas.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-02</div><div class="title">正则表达式学习和常用正则</div></div></a></div><div><a href="/2021/12/10/blog2-css-deeping/" title="CSS学习总结"><img class="cover" src="/img/CSS.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-10</div><div class="title">CSS学习总结</div></div></a></div><div><a href="/2021/12/02/blog4-web/" title="网络知识学习总结"><img class="cover" src="/img/web.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="title">网络知识学习总结</div></div></a></div><div><a href="/2021/12/02/blog5-browser/" title="浏览器知识学习总结"><img class="cover" src="/img/Chrome.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-02</div><div class="title">浏览器知识学习总结</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/pinkstar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xing Ye</div><div class="author-info__description">a singleThreaded boy's blog</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/penghei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/penghei" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:632885485@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">A SingleThreaded Boy...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">微前端概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%89%B9%E7%82%B9%E5%92%8C%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">基本特点和优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">微前端实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">实现方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.</span> <span class="toc-text">基本功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.3.</span> <span class="toc-text">实现步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#qiankun"><span class="toc-number">3.</span> <span class="toc-text">qiankun</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/25/mobile-development/" title="移动端开发相关知识和优化方案"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端开发相关知识和优化方案"/></a><div class="content"><a class="title" href="/2023/08/25/mobile-development/" title="移动端开发相关知识和优化方案">移动端开发相关知识和优化方案</a><time datetime="2023-08-25T01:34:27.000Z" title="发表于 2023-08-25 09:34:27">2023-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/24/low-code/" title="低代码相关知识初步了解"><img src="/img/codes1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="低代码相关知识初步了解"/></a><div class="content"><a class="title" href="/2023/08/24/low-code/" title="低代码相关知识初步了解">低代码相关知识初步了解</a><time datetime="2023-08-24T14:47:00.000Z" title="发表于 2023-08-24 22:47:00">2023-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/24/micro-frontend/" title="微前端初步了解学习"><img src="/img/micro-frontend.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微前端初步了解学习"/></a><div class="content"><a class="title" href="/2023/08/24/micro-frontend/" title="微前端初步了解学习">微前端初步了解学习</a><time datetime="2023-08-24T07:47:08.000Z" title="发表于 2023-08-24 15:47:08">2023-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/20/canvas-tiles-map/" title="canvas分块加载/瓦片地图实现"><img src="/img/canvas.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="canvas分块加载/瓦片地图实现"/></a><div class="content"><a class="title" href="/2023/08/20/canvas-tiles-map/" title="canvas分块加载/瓦片地图实现">canvas分块加载/瓦片地图实现</a><time datetime="2023-08-20T07:34:26.000Z" title="发表于 2023-08-20 15:34:26">2023-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/19/react-ssr/" title="React SSR初步学习"><img src="/img/ssr.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="React SSR初步学习"/></a><div class="content"><a class="title" href="/2023/08/19/react-ssr/" title="React SSR初步学习">React SSR初步学习</a><time datetime="2023-08-19T15:28:56.000Z" title="发表于 2023-08-19 23:28:56">2023-08-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Xing Ye</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hello stranger!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
